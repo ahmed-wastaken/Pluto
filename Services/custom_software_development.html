@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <link rel="icon" type="image/png" href="../components/pluto-favicon.png">
+<title>Custom Software Development | Pluto</title>
+<style>
+:root{--bg:#fff;--bg2:#f7f6fd;--tx:#14102b;--mu:#5d5a78;--bd:#e7e4f5;--card:#fff;--p:#7b68ee;--p2:#ff02f0;--p3:#ffc800;--g:linear-gradient(120deg,#7b68ee,#ff02f0 70%,#ffc800);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e0b1f;--bg2:#15112e;--tx:#f3f1ff;--mu:#a9a5c8;--bd:#2a2550;--card:#1a1538}}
+:root[data-theme="dark"]{--bg:#0e0b1f;--bg2:#15112e;--tx:#f3f1ff;--mu:#a9a5c8;--bd:#2a2550;--card:#1a1538}
+*{box-sizing:border-box;margin:0}html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{background:var(--bg);color:var(--tx);font:16px/1.65 Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.w{max-width:1180px;margin:0 auto;padding:0 24px}
+li>span{cursor:pointer}
+.btn{display:inline-block;padding:13px 26px;border-radius:12px;font-weight:700;background:var(--g);background-size:200% 100%;color:#fff;transition:.4s;box-shadow:0 10px 28px rgba(123,104,238,.35);border:0;cursor:pointer;font-family:inherit;font-size:16px;text-align:center}
+.btn:hover{background-position:100% 0;transform:translateY(-2px);box-shadow:0 14px 34px rgba(255,2,240,.3)}
+.btn.o{background:none;color:var(--tx);box-shadow:none;border:1.5px solid var(--bd)}.btn.o:hover{border-color:var(--p);color:var(--p)}
+.row{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px}
+.hero{position:relative;text-align:center;padding:90px 0 60px;overflow:hidden}
+.blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:.38;z-index:-1;animation:fl 12s ease-in-out infinite}
+.b1{width:420px;height:420px;background:#7b68ee;top:-80px;left:-60px}.b2{width:380px;height:380px;background:#ff02f0;top:60px;right:-80px;animation-delay:-4s}.b3{width:300px;height:300px;background:#ffc800;top:300px;left:40%;animation-delay:-8s;opacity:.25}
+@keyframes fl{50%{transform:translate(40px,-30px) scale(1.12)}}
+h1{font-size:clamp(38px,6.4vw,76px);line-height:1.04;letter-spacing:-.035em;font-weight:900;max-width: 1000px;margin:0 auto 22px}
+h2{font-size:clamp(28px,4vw,46px);line-height:1.12;letter-spacing:-.03em;font-weight:800;margin-bottom:16px}
+.gt{background:linear-gradient(90deg,#7b68ee,#c04dff,#ff02f0,#ff8a5c,#ffc800,#ff8a5c,#ff02f0,#c04dff,#7b68ee);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sh 10s linear infinite}
+@keyframes sh{to{background-position:200% 0}}
+p{color:var(--mu);font-size:18px;}
+.hero p.l{max-width:720px;margin:0 auto;color:var(--mu);font-size:19px}
+.hero .row{justify-content:center}
+section{padding:96px 0}
+.alt{background:var(--bg2)}
+
+/* Split Sections */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.split.r .tx{order:2}
+.split p{color:var(--mu);font-size:17px;line-height:1.7}
+.split .im-wrap{width:100%;display:flex;align-items:center;justify-content:center}
+.split img{width:100%;height:auto;max-height:480px;object-fit:cover;border-radius:22px;box-shadow:0 30px 60px rgba(123,104,238,.15);transition:transform .4s ease,box-shadow .4s ease}
+.split img:hover{transform:translateY(-8px);box-shadow:0 36px 70px rgba(123,104,238,.25)}
+
+/* Feature checklist styling for rich sections */
+.feature-list{list-style:none;padding:0;margin:18px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:12px 18px}
+.feature-list li{display:flex;align-items:flex-start;gap:8px;font-size:15px;color:var(--tx);line-height:1.45}
+.feature-list li svg{width:18px;height:18px;stroke:var(--p);fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;margin-top:2px}
+
+.work{text-align:center;max-width:780px;margin:0 auto 52px}.work p{color:var(--mu);font-size:18px}
+.cards{display:grid;gap:26px}
+.cards.grid-2{grid-template-columns:repeat(2,1fr)}
+.cards.grid-3{grid-template-columns:repeat(3,1fr)}
+.cards.grid-4{grid-template-columns:repeat(4,1fr)}
+
+.card{background:var(--card);border:1px solid var(--bd);border-radius:22px;padding:32px;display:flex;flex-direction:column;gap:14px;transition:.35s;position:relative;overflow:hidden}
+.card::before{content:"";position:absolute;inset:0 0 auto 0;height:4px;background:var(--g);transform:scaleX(0);transform-origin:left;transition:.5s}
+.card:hover{transform:translateY(-8px);box-shadow:0 30px 60px rgba(123,104,238,.2)}.card:hover::before{transform:none}
+.card p{color:var(--mu);font-size:15px;line-height:1.65}
+.card .btn{margin-top:auto; align-self: start;}
+.card .more{margin-top:auto;font-weight:800;color:var(--p);display:inline-flex;align-items:center;gap:6px;transition:gap .2s}
+.card:hover .more{gap:10px}
+h3{font-size:clamp(22px,3vw,30px);letter-spacing:-.02em;line-height:1.2;font-weight:800}
+.cta{text-align:center;margin-top:60px}.cta .row{justify-content:center}
+.lab{font-weight:800;color:var(--p);font-size:14px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px}
+.ic{width:46px;height:46px;padding:10px;border-radius:13px;background:var(--bg2);fill:none;stroke:var(--p);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:.3s; margin-bottom: 8px;}
+.sp-ic{display:inline-block; vertical-align:middle; width:32px; height:32px; padding:6px; border-radius:8px; background:var(--bg2); fill:none; stroke:var(--p); stroke-width:2; stroke-linecap:round; stroke-linejoin:round; margin-right: 12px;}
+
+/* Case Studies */
+.work-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;align-items:stretch}
+.work-card{background:var(--card);border:1px solid var(--bd);border-radius:24px;padding:36px 32px 32px;display:flex;flex-direction:column;position:relative;transition:transform .4s cubic-bezier(.2,.7,.2,1),box-shadow .4s ease,border-color .4s ease;overflow:hidden}
+.work-card::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:var(--g);transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.work-card:hover{transform:translateY(-8px);box-shadow:0 30px 65px rgba(123,104,238,.18);border-color:var(--p)}
+.work-card:hover::before{transform:scaleX(1)}
+.work-header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:24px;min-height:52px}
+.client-logo-box{height:46px;display:flex;align-items:center;justify-content:flex-start}
+.client-logo-box img{max-height:42px;max-width:160px;width:auto;height:auto;object-fit:contain;transition:transform .3s}
+.work-card:hover .client-logo-box img{transform:scale(1.04)}
+.client-badge{display:inline-flex;align-items:center;padding:5px 12px;border-radius:99px;font-size:12px;font-weight:700;color:var(--p);background:var(--bg2);border:1px solid var(--bd);letter-spacing:.02em;white-space:nowrap}
+.work-card h3{font-size:22px;font-weight:800;letter-spacing:-.02em;line-height:1.28;margin-bottom:14px;color:var(--tx)}
+.work-desc{color:var(--mu);font-size:15px;line-height:1.65;margin-bottom:24px;flex-grow:1}
+.metric-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:16px 18px;background:var(--bg2);border-radius:16px;border:1px solid var(--bd);margin-bottom:20px}
+.metric-row.single{grid-template-columns:1fr}
+.metric-item .val{font-size:22px;font-weight:900;background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1.15}
+.metric-item .lbl{font-size:12px;font-weight:600;color:var(--mu);margin-top:4px}
+.work-highlights{display:flex;flex-direction:column;gap:8px;padding-top:14px;border-top:1px dashed var(--bd);margin-bottom:24px}
+.hl-item{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--mu);line-height:1.45}
+.hl-item svg{width:16px;height:16px;flex-shrink:0;stroke:var(--p);fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;margin-top:2px}
+.hl-item strong{color:var(--tx);font-weight:700}
+.work-card .more{font-weight:800;color:var(--p);font-size:15px;display:inline-flex;align-items:center;gap:6px;transition:gap .25s;margin-top:auto;background:none;border:0;cursor:pointer;font-family:inherit;padding:0;text-align:left}
+.work-card:hover .more{gap:10px}
+
+/* Process steps and FAQ */
+.process-step{margin-bottom: 24px; background: var(--card); border: 1px solid var(--bd); border-radius: 22px; padding: 28px 32px; transition: .35s;}
+.process-step:hover{border-color: var(--p); box-shadow: 0 20px 40px rgba(123, 104, 238, .12);}
+.process-step h3{display: flex; align-items: center; font-size: clamp(20px, 2.8vw, 24px); font-weight: 800; color: var(--tx);}
+.process-step p{margin-top: 10px; margin-left: 48px; color: var(--mu); font-size: 16px; line-height: 1.6;}
+
+.faq{max-width:820px;margin:0 auto}.faq .hd{text-align:center;margin-bottom:40px}.faq .hd p{color:var(--mu)}
+details{background:var(--card);border:1px solid var(--bd);border-radius:16px;margin-bottom:12px;transition:.3s}
+details[open]{border-color:var(--p);box-shadow:0 14px 34px rgba(123,104,238,.15)}
+summary{list-style:none;cursor:pointer;padding:20px 24px;display:flex;justify-content:space-between;gap:16px;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary h3{font-size:18px;font-weight:700;letter-spacing:0}
+summary::after{content:"+";font-size:26px;color:var(--p);transition:.3s;line-height:1}
+details[open] summary::after{transform:rotate(45deg)}
+details p{padding:0 24px 22px;color:var(--mu);animation:op .4s;line-height:1.65}
+@keyframes op{from{opacity:0;transform:translateY(-6px)}}
+
+.rv{opacity:0;transform:translateY(36px);transition:opacity .8s,transform .8s cubic-bezier(.2,.7,.2,1)}.rv.in{opacity:1;transform:none}
+
+/* Lightbox Modal */
+#lb{position:fixed;inset:0;background:rgba(14,11,31,.75);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;padding:20px;z-index:9999}
+#lb.on{display:flex}
+#lb .bx{background:var(--card);color:var(--tx);border:1px solid var(--bd);border-radius:24px;max-width:760px;width:100%;max-height:90vh;overflow-y:auto;padding:38px 40px;position:relative;box-shadow:0 30px 90px rgba(14,11,31,.4);animation:op .35s cubic-bezier(.16,1,.3,1)}
+#lb .x{position:absolute;top:18px;right:18px;width:38px;height:38px;border-radius:50%;border:1px solid var(--bd);background:var(--bg2);color:var(--tx);font-size:20px;cursor:pointer;display:grid;place-items:center;transition:background .2s,border-color .2s;z-index:2}
+#lb .x:hover{background:var(--bd);border-color:var(--p)}
+#lb h3{font-size:clamp(22px,2.4vw,28px);margin:14px 0 10px;line-height:1.25;font-weight:800;letter-spacing:-.02em}
+#lb .modal-intro{font-size:15.5px;line-height:1.65;color:var(--tx);font-weight:500;margin-bottom:24px;padding-bottom:18px;border-bottom:1px solid var(--bd)}
+.cs-flow{display:flex;flex-direction:column;gap:18px;margin-bottom:28px}
+.cs-stage{background:var(--bg2);border:1px solid var(--bd);border-radius:16px;padding:20px 22px;transition:border-color .25s}
+.cs-stage:hover{border-color:var(--p)}
+.cs-stage-header{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.cs-tag{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:6px;display:inline-block}
+.tag-prob{background:rgba(255,2,240,.12);color:#c002b4}
+.tag-sol{background:rgba(123,104,238,.12);color:var(--p)}
+.tag-res{background:rgba(15,207,156,.14);color:#08805f}
+@media(prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) .tag-prob{background:rgba(255,2,240,.22);color:#ff75f6}
+  :root:not([data-theme="light"]) .tag-res{background:rgba(15,207,156,.22);color:#34eab8}
+}
+:root[data-theme="dark"] .tag-prob{background:rgba(255,2,240,.22);color:#ff75f6}
+:root[data-theme="dark"] .tag-res{background:rgba(15,207,156,.22);color:#34eab8}
+.cs-stage h4{font-size:16px;font-weight:800;color:var(--tx);margin:0}
+.cs-stage p{font-size:14.5px;line-height:1.6;color:var(--mu);margin:0}
+.cs-bullets{padding-left:18px;margin:10px 0 0;display:flex;flex-direction:column;gap:6px;font-size:14px;color:var(--mu)}
+.cs-bullets li strong{color:var(--tx)}
+.cs-metrics-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}
+.cs-m-card{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:12px 14px;text-align:center}
+.cs-m-card .val{font-size:18px;font-weight:900;background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1.2}
+.cs-m-card .lbl{font-size:11.5px;font-weight:600;color:var(--mu);margin-top:4px}
+.modal-actions{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:16px;border-top:1px solid var(--bd)}
+
+@media(max-width:960px){
+  .work-grid{grid-template-columns:1fr;gap:24px}
+  .cards.grid-2{grid-template-columns:1fr}
+  .cards.grid-3{grid-template-columns:1fr}
+  .feature-list{grid-template-columns:1fr}
+}
+@media(max-width:860px){
+  .split{grid-template-columns:1fr;gap:36px}
+  .split .tx,.split.r .tx{order:2}
+  .split>:not(.tx){order:1}
+  .split img{max-height:360px}
+  section{padding:64px 0}
+  .process-step p{margin-left:0}
+  #lb .bx{padding:26px 18px}
+  .cs-metrics-grid{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<script src="../components/layout.js" data-part="nav"></script>
+
+<header class="hero">
+  <i class="blob b1"></i><i class="blob b2"></i><i class="blob b3"></i>
+  <div class="w">
+    <h1 class="rv">Custom Software Built Around Your Business</h1>
+    <p class="l rv">We build custom tools that take repetitive busywork off your plate and replace costly subscription apps. Run your leads, team scheduling, billing, and projects in one clean system. You pay once to own your software forever: no monthly user fees, no surprise price hikes, and no features locked behind a paywall.</p>
+  </div>
+</header>
+
+<!-- 1. Why Custom Software Works Better (White) -->
+<section>
+  <div class="w">
+    <div class="work rv">
+      <div class="lab">Why Custom Software Works Better</div>
+      <h2>Stop Renting Cookie-Cutter Apps</h2>
+    </div>
+    <div class="cards grid-2">
+      <article class="card rv">
+        <svg class="ic" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <h3>You Own It 100%</h3>
+        <p>No monthly rent checks or user licenses. The code belongs entirely to your company from day one, so nobody can ever cut off your access or change the rules on you.</p>
+      </article>
+      <article class="card rv">
+        <svg class="ic" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <h3>Add as Many Users as You Want</h3>
+        <p>Hire new staff, bring on trade partners, or invite clients without checking your budget. Your price stays exactly the same whether you have 5 people logged in or 500.</p>
+      </article>
+      <article class="card rv">
+        <svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        <h3>Fits Your Everyday Routine</h3>
+        <p>No messy workarounds or confusing buttons you'll never click. Every screen, form, and step is built to match the way your team actually gets work done every day.</p>
+      </article>
+      <article class="card rv">
+        <svg class="ic" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        <h3>All Your Data in One Safe Place</h3>
+        <p>Stop jumping between five disconnected apps and messy spreadsheets. Keep your customer lists, job records, and financial numbers safe under your own direct control.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 2. Subcontractor Bidding & Invitations to Bid (ITB) (Alt) -->
+<section class="alt">
+  <div class="w split">
+    <div class="tx rv">
+      <div class="lab">Subcontractor Management</div>
+      <h2>Subcontractor Bidding & Invitations to Bid (ITB)</h2>
+      <p>Managing trades and subcontractor estimates doesn't have to mean messy email threads, lost attachments, or phone tag. Send out organized bid packages in a few clicks, collect quotes in a standard format, and compare trade pricing side-by-side so you can award jobs faster with complete confidence.</p>
+      <ul class="feature-list">
+        <li>
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <span><strong>One-Click Bid Invites:</strong> Send invitations to bid with plans, drawings, and scope notes attached.</span>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <span><strong>Side-by-Side Bid Leveling:</strong> Compare incoming subcontractor quotes line-by-line to spot scope gaps.</span>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <span><strong>Private Subcontractor Portals:</strong> Subs view project files and upload bids directly without making an account.</span>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <span><strong>Automated Deadline Tracking:</strong> System automatically reminds trades of due dates and plan updates.</span>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <span><strong>Compliance & Insurance Checks:</strong> Track W-9s, licenses, and insurance certificates before awarding work.</span>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <span><strong>Award & Convert to Contract:</strong> Turn the winning bid into a signed subcontract in one click.</span>
+        </li>
+      </ul>
+      <div class="row"><a class="btn" href="../contact-us.html">Let's Talk</a></div>
+    </div>
+    <div class="im-wrap rv">
+      <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1000&q=80" alt="Subcontractor Bidding and Invitations to Bid">
+    </div>
+  </div>
+</section>
+
+<!-- 3. Operations & Inventory (White) -->
+<section>
+  <div class="w split r">
+    <div class="tx rv">
+      <h2>All-in-One Operations & Inventory</h2>
+      <p>Connect your shop floor, warehouse, job sites, and back office into one clear system. Track materials across multiple storage locations, track labor costs in real time, and get instant updates whenever jobs move to the next stage. No more manual data entry, missed handoffs, or costly stock errors.</p>
+      <div class="row"><a class="btn" href="../contact-us.html">Let's Talk</a></div>
+    </div>
+    <div class="im-wrap rv">
+      <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1000&q=80" alt="All-in-One Operations and Inventory">
+    </div>
+  </div>
+</section>
+
+<!-- 4. Simple Team Hubs (Alt) -->
+<section class="alt">
+  <div class="w split">
+    <div class="tx rv">
+      <h2>Simple Team Hubs & Document Sharing</h2>
+      <p>Keep your field crew and office team on the exact same page. Replace scattered group chats and lost email attachments with clean project hubs. Share files, ask questions on active jobs, confirm work orders, and store company guides in one place where anyone can find what they need in seconds.</p>
+      <div class="row"><a class="btn" href="../contact-us.html">Let's Talk</a></div>
+    </div>
+    <div class="im-wrap rv">
+      <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1000&q=80" alt="Team Hubs and Collaboration">
+    </div>
+  </div>
+</section>
+
+<!-- 5. Security & User Permissions (White) -->
+<section>
+  <div class="w split r">
+    <div class="tx rv">
+      <h2>Solid Security & Simple User Permissions</h2>
+      <p>Control who sees what without making things complicated. Give managers full reports, give crew members only the jobs they are working on, and let clients view only their invoices. Everything is protected with strong password security and encrypted backups so your company data stays safe 24/7.</p>
+      <div class="row"><a class="btn" href="../contact-us.html">Let's Talk</a></div>
+    </div>
+    <div class="im-wrap rv">
+      <img src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?auto=format&fit=crop&w=1000&q=80" alt="Security and User Permissions">
+    </div>
+  </div>
+</section>
+
+<!-- 6. CRM (Alt) -->
+<section class="alt">
+  <div class="w split">
+    <div class="tx rv">
+      <h2>Customer Relationship Management (CRM)</h2>
+      <p>Most commercial CRMs charge steep monthly fees every time you add an employee. Our custom CRM gives your sales and support teams a straightforward screen to log phone calls, see customer histories, follow up on deals, and keep relationships warm, with zero added fees as your company grows.</p>
+      <div class="row"><a class="btn" href="../contact-us.html">Let's Talk</a></div>
+    </div>
+    <div class="im-wrap rv">
+      <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1000&q=80" alt="Simple Customer Management">
+    </div>
+  </div>
+</section>
+
+<!-- 7. Billing & Payments (White) -->
+<section>
+  <div class="w split r">
+    <div class="tx rv">
+      <h2>Automated Billing & Faster Payments</h2>
+      <p>Get paid faster without spending hours generating invoices by hand. Set up automatic recurring bills, split project payments into phases, calculate local sales taxes automatically, and collect payments directly through your bank or payment processor. Receipts and balances update instantly the moment money comes in.</p>
+      <div class="row"><a class="btn" href="../contact-us.html">Let's Talk</a></div>
+    </div>
+    <div class="im-wrap rv">
+      <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1000&q=80" alt="Automated Billing and Payments">
+    </div>
+  </div>
+</section>
+
+<!-- 8. Practical AI (Alt) -->
+<section class="alt">
+  <div class="w split">
+    <div class="tx rv">
+      <h2>Practical AI & Helpful Automations</h2>
+      <p>Let smart automation take care of tedious office tasks. Automatically summarize long customer notes, route incoming job requests to the right person, or forecast how much material you'll need next month. You get practical helpers built right into your screens without paying extra monthly AI fees.</p>
+      <div class="row"><a class="btn" href="../contact-us.html">Let's Talk</a></div>
+    </div>
+    <div class="im-wrap rv">
+      <img src="https://static.wixstatic.com/media/0173c2_a6523655f61943ffb64ba66deb1af30e~mv2.jpg" alt="Practical AI and Automations">
+    </div>
+  </div>
+</section>
+
+<!-- 9. Never Miss a New Lead (White) -->
+<section>
+  <div class="w split r">
+    <div class="tx rv">
+      <h2>Never Miss a New Lead</h2>
+      <p>Bring every phone call, web inquiry, and email into one central inbox. Automatically assign new leads to available sales reps, set quick follow-up reminders, and see exactly where each prospective client is in your pipeline so nothing falls through the cracks.</p>
+      <div class="row"><a class="btn" href="../contact-us.html">Let's Talk</a></div>
+    </div>
+    <div class="im-wrap rv">
+      <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1000&q=80" alt="Lead Tracking">
+    </div>
+  </div>
+</section>
+
+<!-- 10. Smart Intake Quote Forms (Alt) -->
+<section class="alt">
+  <div class="w split">
+    <div class="tx rv">
+      <h2>Smart Intake Quote Forms</h2>
+      <p>Make it easy for potential customers to request pricing directly from your team. Our smart forms ask the right questions based on the service selected, collect job site photos or plan files, and push details straight into your team's pipeline with zero manual re-typing.</p>
+      <div class="row"><a class="btn" href="../contact-us.html">Let's Talk</a></div>
+    </div>
+    <div class="im-wrap rv">
+      <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1000&q=80" alt="Smart Intake Forms">
+    </div>
+  </div>
+</section>
+
+<!-- 11. Fast Estimates & Clear Change Orders (White) -->
+<section>
+  <div class="w split r">
+    <div class="tx rv">
+      <h2>Fast Estimates & Clear Change Orders</h2>
+      <p>Put together accurate, polished project bids in minutes using up-to-date material and labor prices. When a client wants to change the scope of work, create a clear change order on the spot, adjust the project schedule and budget automatically, and get client approval before doing the work.</p>
+      <div class="row"><a class="btn" href="../contact-us.html">Let's Talk</a></div>
+    </div>
+    <div class="im-wrap rv">
+      <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1000&q=80" alt="Estimates and Change Orders">
+    </div>
+  </div>
+</section>
+
+<!-- 12. Built-In Digital Signatures (Alt) -->
+<section class="alt">
+  <div class="w split">
+    <div class="tx rv">
+      <h2>Built-In Digital Signatures</h2>
+      <p>Stop paying monthly fees for outside e-signature services. Let clients, staff, and subcontractors sign contracts, work orders, and change requests right inside your system on any phone or laptop. Every signature is legally binding, timestamped, and safely saved to the project record.</p>
+      <div class="row"><a class="btn" href="../contact-us.html">Let's Talk</a></div>
+    </div>
+    <div class="im-wrap rv">
+      <img src="https://images.unsplash.com/photo-1583508915901-b5f84c1dcde1?auto=format&fit=crop&w=1000&q=80" alt="Built-In Digital Signatures">
+    </div>
+  </div>
+</section>
+
+<!-- 13. Client Billing & Payment Portals (White) -->
+<section>
+  <div class="w split r">
+    <div class="tx rv">
+      <h2>Client Billing & Payment Portals</h2>
+      <p>Give your clients an easy, professional self-service link to review their accounts. Customers can check past invoices, view approved change orders, track payment balances, and pay online with a credit card or direct bank transfer anytime they need to.</p>
+      <div class="row"><a class="btn" href="../contact-us.html">Let's Talk</a></div>
+    </div>
+    <div class="im-wrap rv">
+      <img src="https://images.unsplash.com/photo-1553729459-efe14ef6055d?auto=format&fit=crop&w=1000&q=80" alt="Client Billing Portals">
+    </div>
+  </div>
+</section>
+
+<!-- 14. Automatic Reminders for Clients & Staff (Alt) -->
+<section class="alt">
+  <div class="w split">
+    <div class="tx rv">
+      <h2>Automatic Reminders for Clients & Staff</h2>
+      <p>Save your team hours of chasing people down. Set up automatic text and email reminders for upcoming payment due dates, expiring quotes, milestone check-ins, or scheduled on-site visits. Your clients stay informed and your cash flow stays on schedule.</p>
+      <div class="row"><a class="btn" href="../contact-us.html">Let's Talk</a></div>
+    </div>
+    <div class="im-wrap rv">
+      <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1000&q=80" alt="Automatic Reminders">
+    </div>
+  </div>
+</section>
+
+<!-- 15. Project Management & Timelines (White) -->
+<section>
+  <div class="w split r">
+    <div class="tx rv">
+      <h2>Project Management & Timelines</h2>
+      <p>See exactly what is happening across all your jobs at a single glance. Track timelines with easy visual calendars, keep an eye on real material and labor costs versus your initial budget, and identify delays before they become costly headaches.</p>
+      <div class="row"><a class="btn" href="../contact-us.html">Let's Talk</a></div>
+    </div>
+    <div class="im-wrap rv">
+      <img src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=1000&q=80" alt="Visual Project Management">
+    </div>
+  </div>
+</section>
+
+<!-- 16. Daily Task Assignment & Checklists (Alt) -->
+<section class="alt">
+  <div class="w split">
+    <div class="tx rv">
+      <h2>Daily Task Assignment & Checklists</h2>
+      <p>Turn big project plans into clear, everyday steps. Assign tasks to specific crew members, add photos and checklists, set due dates, and track how many hours were spent. Everyone knows what they are responsible for when they clock in each morning.</p>
+      <div class="row"><a class="btn" href="../contact-us.html">Let's Talk</a></div>
+    </div>
+    <div class="im-wrap rv">
+      <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1000&q=80" alt="Daily Task Assignment">
+    </div>
+  </div>
+</section>
+
+<!-- 17. Real-World Work Showcase (White) -->
+<section id="work">
+  <div class="w">
+    <div class="work rv">
+      <div class="lab">Featured Work</div>
+      <h2>Proven Systems in the Real World</h2>
+      <p>Take a look at how custom software helped real businesses eliminate monthly software bills and take complete control of their operations.</p>
+    </div>
+
+    <div class="work-grid">
+      <!-- DMNC Card -->
+      <article class="work-card rv">
+        <div class="work-header">
+          <div class="client-logo-box">
+            <img src="https://static.wixstatic.com/media/0173c2_a283bd5285a9487b893fc1e37ef0aa44~mv2.png" alt="DMNC Logo" loading="lazy">
+          </div>
+          <span class="client-badge">Manufacturing</span>
+        </div>
+        <h3>Custom Customer Management & Multi-Currency Billing</h3>
+        <p class="work-desc">Beijing Dimon CNC sells precision machinery worldwide. They needed a single system to track international machine orders, customer deposits, and multi-currency billing without paying steep recurring fees per salesperson.</p>
+        
+        <div class="metric-row">
+          <div class="metric-item">
+            <div class="val">-91%</div>
+            <div class="lbl">Software Costs Saved</div>
+          </div>
+          <div class="metric-item">
+            <div class="val">4</div>
+            <div class="lbl">Currencies Handled</div>
+          </div>
+        </div>
+
+        <div class="work-highlights">
+          <div class="hl-item">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span><strong>Automated Invoices:</strong> Payment receipts and schedule reminders go out automatically.</span>
+          </div>
+          <div class="hl-item">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span><strong>No User Fees:</strong> The entire global sales team uses the tool with zero per-seat fees.</span>
+          </div>
+        </div>
+
+        <a href="../Our Work/Case studies/dmnc.html" class="more">Read case study →</a>
+      </article>
+
+      <!-- InstaPay Card -->
+      <article class="work-card rv">
+        <div class="work-header">
+          <div class="client-logo-box">
+            <img src="https://www.instapay.eg/wp-content/uploads/2022/01/Asset-6@4x-1024x125.png" alt="InstaPay Logo" loading="lazy">
+          </div>
+          <span class="client-badge">Fintech</span>
+        </div>
+        <h3>National Instant Money Transfer Network</h3>
+        <p class="work-desc">Egypt's nationwide instant transfer system, backed by the Central Bank of Egypt. Enables bank-to-bank and mobile wallet payments 24 hours a day with sub-second delivery and maximum security.</p>
+        
+        <div class="metric-row">
+          <div class="metric-item">
+            <div class="val">24/7/365</div>
+            <div class="lbl">Always-On Uptime</div>
+          </div>
+          <div class="metric-item">
+            <div class="val">&lt;1.2s</div>
+            <div class="lbl">Average Transfer Speed</div>
+          </div>
+        </div>
+
+        <div class="work-highlights">
+          <div class="hl-item">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span><strong>Instant Settlements:</strong> Money arrives safely in the receiving account in under two seconds.</span>
+          </div>
+          <div class="hl-item">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span><strong>Bank-Grade Safety:</strong> Built to handle millions of transactions without downtime.</span>
+          </div>
+        </div>
+
+        <button class="more" type="button" data-i="1">Read case study →</button>
+      </article>
+
+      <!-- e-Finance / e-Cards Card -->
+      <article class="work-card rv">
+        <div class="work-header">
+          <div class="client-logo-box">
+            <img src="https://www.efinanceinvestment.com/themes/custom/efinance/logo.svg" alt="e-Finance Logo" loading="lazy">
+          </div>
+          <span class="client-badge">Public Transit & Cards</span>
+        </div>
+        <h3>Smart Transit Card Issuing System</h3>
+        <p class="work-desc">e-Cards (a subsidiary of e-Finance) needed local software to program millions of contactless transit and smart payment cards for city transit and government support programs.</p>
+        
+        <div class="metric-row single">
+          <div class="metric-item">
+            <div class="val">10M+ Cards</div>
+            <div class="lbl">Issued Annually Across Public Transit Networks</div>
+          </div>
+        </div>
+
+        <div class="work-highlights">
+          <div class="hl-item">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span><strong>High-Speed Production:</strong> Software talks directly to encoding machines for fast setup.</span>
+          </div>
+          <div class="hl-item">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span><strong>Zero Key Errors:</strong> Automated security key checks prevent faulty cards from hitting the gates.</span>
+          </div>
+        </div>
+
+        <button class="more" type="button" data-i="2">Read case study →</button>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 18. Five-Step Process (Alt) -->
+<section class="alt">
+  <div class="w">
+    <div class="work rv">
+      <div class="lab">How We Build</div>
+      <h2>Our Straightforward Five-Step Process</h2>
+    </div>
+
+    <div class="process-step rv">
+      <h3>
+        <svg class="sp-ic" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        1. Learn How Your Business Runs
+      </h3>
+      <p>We sit down with you to understand where your team loses time, which apps you want to replace, and what your ideal workday looks like before writing a single line of code.</p>
+    </div>
+
+    <div class="process-step rv">
+      <h3>
+        <svg class="sp-ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4m0-4h.01"/></svg>
+        2. Build, Test, and Adjust Together
+      </h3>
+      <p>We build your software in small, manageable milestones. You and your team try out working screens early so you can provide direct feedback and make sure everything feels right.</p>
+    </div>
+
+    <div class="process-step rv">
+      <h3>
+        <svg class="sp-ic" viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+        3. Bring Over Your Old Data
+      </h3>
+      <p>We clean up and safely move your existing client records, old job files, and spreadsheets into the new system so you don't lose any valuable history during the switch.</p>
+    </div>
+
+    <div class="process-step rv">
+      <h3>
+        <svg class="sp-ic" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        4. Thorough Testing Before Going Live
+      </h3>
+      <p>We test your software on phones, tablets, and computers, making sure it is fast, easy to navigate, and rock solid under heavy daily use before rolling it out.</p>
+    </div>
+
+    <div class="process-step rv">
+      <h3>
+        <svg class="sp-ic" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        5. Total Handover & Lifelong Ownership
+      </h3>
+      <p>We give you complete access to the code, setup files, and step-by-step guides. You are never locked into our services and will never pay user subscription renewals.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 19. Added Benefits Section (White) -->
+<section>
+  <div class="w">
+    <div class="work rv">
+      <div class="lab">Benefits</div>
+      <h2>High-End Expertise, Tailored to Meet Your Business Needs.</h2>
+      <p>Our product's core strengths lie in security, reliability, privacy, accessibility, and powerful hosting. These attributes underpin our commitment to excellence, ensuring your experience is safe, dependable, private, user-friendly, and technologically robust.</p>
+    </div>
+    <div class="cards grid-3">
+      <article class="card rv">
+        <svg class="ic" viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="3"></rect><path d="M8 10V7a4 4 0 018 0v3"></path></svg>
+        <h3>Security</h3>
+        <p>Security is at the foundation of everything we do: keeping your business protected with a cutting-edge framework and multi-layered defense throughout our platform.</p>
+        <a class="more" href="../Benefits/security_page.html">Learn more →</a>
+      </article>
+      <article class="card rv">
+        <svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4m0-4h.01M8 12h8"></path></svg>
+        <h3>Accessibility</h3>
+        <p>Your platform is more powerful when it's designed for all, regardless of ability. With Pluto, you can create a platform with accessibility settings built right in, allowing any visitor to interact with it.</p>
+        <a class="more" href="../Benefits/accessibility_page.html">Learn more →</a>
+      </article>
+      <article class="card rv">
+        <svg class="ic" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"></rect><path d="M12 18h.01"></path></svg>
+        <h3>Mobile Dashboard</h3>
+        <p>Step away from the desk without losing touch. Your mobile dashboard gives you full access to customer histories, open projects, and billing, so you can make decisions and keep projects moving right from the job site.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 20. FAQ (Alt) -->
+<section class="alt" id="faq-section">
+  <div class="w faq">
+    <div class="hd rv">
+      <h2>Frequently Asked Questions</h2>
+    </div>
+    
+    <details class="rv">
+      <summary><h3>Who actually owns the software once it is built?</h3></summary>
+      <p>You do. You own 100% of the software, the source code, the designs, and the database. Unlike typical software providers who rent access month-to-month, we hand over everything when the project wraps up. You never owe us royalties or recurring fees to keep using it.</p>
+    </details>
+
+    <details class="rv">
+      <summary><h3>How does paying once compare to monthly subscriptions?</h3></summary>
+      <p>Most companies pay steep monthly per-user fees across 4 or 5 different software tools. As you hire more people, those monthly bills keep multiplying. With custom software, you pay once to build the exact system you need. Whether you have 5 staff members or 500, your software cost stays flat at zero ongoing seat fees.</p>
+    </details>
+
+    <details class="rv">
+      <summary><h3>Can you move our existing files and spreadsheets into the new system?</h3></summary>
+      <p>Yes. Moving your data is part of every project. We take your client spreadsheets, old project histories, and contact books, clean them up, and import them right into your new platform so you can get to work without missing a beat.</p>
+    </details>
+
+    <details class="rv">
+      <summary><h3>Where does the software live, and who controls the server?</h3></summary>
+      <p>The software is installed on your own private cloud account (like Amazon Web Services, Google Cloud, or Microsoft Azure) or on your company's own office servers. You have the master keys and complete control over your private records.</p>
+    </details>
+
+    <details class="rv">
+      <summary><h3>What if we need new features in a year or two?</h3></summary>
+      <p>Because the code is clean, modern, and completely yours, it can be updated anytime. You can hire us to build new modules as your company grows, or hand the code over to any software developer or in-house IT team to make updates using our clear documentation.</p>
+    </details>
+
+    <details class="rv">
+      <summary><h3>How do you make sure our financial records and company data stay safe?</h3></summary>
+      <p>Security is built into every layer. We set up role-based access so team members only see what they need, two-factor authentication for logins, and banking-grade encryption for all stored files and transactions.</p>
+    </details>
+
+    <details class="rv">
+      <summary><h3>Do you offer support and help after the software goes live?</h3></summary>
+      <p>Yes. Every platform comes with a dedicated warranty and stabilization period where we ensure everything runs smoothly. After launch, we offer optional support plans to keep your servers updated, backed up, and running quickly.</p>
+    </details>
+  </div>
+</section>
+
+<!-- Lightbox Modal Container -->
+<div id="lb" role="dialog" aria-modal="true" aria-labelledby="lbt">
+  <div class="bx">
+    <button class="x" aria-label="Close">×</button>
+    <div id="lbc"></div>
+  </div>
+</div>
+
+<script src="../components/layout.js" data-part="cta"></script>
+
+<script src="../components/layout.js" data-part="footer"></script>
+
+<script>
+  const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.style.transitionDelay=(Math.min([...x.target.parentNode.children].indexOf(x.target),5)*90)+'ms';x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.12});
+  document.querySelectorAll('.rv').forEach(e=>io.observe(e));
+
+  document.querySelectorAll('details').forEach(d=>{const s=d.firstElementChild;s.addEventListener('click',e=>{e.preventDefault();if(d.a)d.a.cancel();const o=!d.open;
+  if(o)document.querySelectorAll('details[open]').forEach(x=>x!==d&&x.firstElementChild.click());
+  const st=d.offsetHeight;if(o)d.open=true;const en=o?s.offsetHeight+d.lastElementChild.offsetHeight+2:s.offsetHeight+2;d.style.overflow='hidden';
+  d.a=d.animate({height:[st+'px',en+'px']},{duration:480,easing:'cubic-bezier(.2,.7,.2,1)'});
+  d.a.onfinish=d.a.oncancel=()=>{d.open=o;d.style.overflow='';d.a=null}})});
+
+  /* Case Study Modal Data & Interactive Handlers */
+  const CS_DATA = [
+    {
+      badge: 'Manufacturing · Dimon CNC',
+      title: 'Custom Customer Management & Multi-Currency Billing',
+      intro: 'Beijing Dimon CNC Technology Co., Ltd. manufactures precision CNC machinery for buyers worldwide.',
+      problem: 'Handling customer deposits, machinery payment schedules, and four international currencies in off-the-shelf software created invoice errors and high monthly subscription costs.',
+      solutions: [
+        '<strong>Unified Order & Client Book:</strong> Built an easy customer portal that tracks equipment manufacturing stages and balances.',
+        '<strong>Live Multi-Currency Billing:</strong> Automated real-time exchange rates for 4 international currencies.',
+        '<strong>Automated Invoices & Alerts:</strong> Set up automatic invoices and payment reminders triggered by delivery milestones.'
+      ],
+      results: [
+        { val: '-91%', lbl: 'Software costs cut' },
+        { val: '4', lbl: 'Currencies synced' },
+        { val: '100%', lbl: 'Private ownership' }
+      ],
+      resultsSummary: 'Cut software expenses by 91% in recurring years while giving their global team a system built around their exact sales process.',
+      ctaText: 'Talk to Our Team',
+      link: '../contact-us.html'
+    },
+    {
+      badge: 'FinTech · Central Bank of Egypt',
+      title: 'Instant Payment Network (InstaPay)',
+      intro: 'InstaPay is Egypt’s official instant money transfer platform created by the Central Bank of Egypt. It links banks and mobile wallets together so people can send money immediately from their phones.',
+      problem: 'Bank-to-bank transfers used to take hours or days to clear. People and businesses had to wait, and there was no unified system linking all banks securely around the clock.',
+      solutions: [
+        '<strong>Instant Money Transfers:</strong> Built a network that connects banks directly, transferring funds between accounts in seconds.',
+        '<strong>Bank-Grade Protection:</strong> Added strong hardware-level encryption to keep every transfer safe.',
+        '<strong>Fail-Safe Backup:</strong> Built an always-on backup system so money is never lost or delayed if an individual bank has an outage.'
+      ],
+      results: [
+        { val: '<1.2s', lbl: 'Average transfer speed' },
+        { val: '99.99%', lbl: 'System uptime year-round' },
+        { val: '100M+', lbl: 'Monthly transfers processed' }
+      ],
+      resultsSummary: 'Provided millions of people with a fast, reliable way to move money anytime without ever setting foot inside a bank branch.',
+      ctaText: 'Talk to Our Team',
+      link: '../contact-us.html'
+    },
+    {
+      badge: 'Transit · e-Finance / e-Cards',
+      title: 'Smart Card Setup & Programming System',
+      intro: 'e-Cards (part of the e-Finance Group) manufactures and programs the contactless tap cards used for metro systems, public buses, and state support cards across Egypt.',
+      problem: 'Configuring smart cards required expensive foreign software and machinery. Producing cards for millions of daily commuters was slow and costly, and adding new bus or metro lines took too long.',
+      solutions: [
+        '<strong>Custom Card Software:</strong> Created intuitive software to program and encode transit cards in bulk locally.',
+        '<strong>Automated Safety Keys:</strong> Loaded digital security keys onto cards automatically without human error.',
+        '<strong>Instant Error Checks:</strong> Created automated quality checks that flag any faulty card before it ever reaches turnstiles.'
+      ],
+      results: [
+        { val: '10M+', lbl: 'Cards produced yearly' },
+        { val: '40%', lbl: 'Faster card setup speed' },
+        { val: 'Zero', lbl: 'Security key mistakes' }
+      ],
+      resultsSummary: 'Lowered card production expenses, removed reliance on third-party vendors, and gave transit riders reliable cards without supply delays.',
+      ctaText: 'Talk to Our Team',
+      link: '../contact-us.html'
+    }
+  ];
+
+  const lb = document.getElementById('lb');
+  const lc = document.getElementById('lbc');
+  let lastActiveElement;
+
+  document.addEventListener('click', e => {
+    const btn = e.target.closest('.more[data-i]');
+    if (btn) {
+      lastActiveElement = btn;
+      const item = CS_DATA[btn.dataset.i];
+      if (!item) return;
+
+      lc.innerHTML = `
+        <span class="client-badge">${item.badge}</span>
+        <h3 id="lbt">${item.title}</h3>
+        <div class="modal-intro">${item.intro}</div>
+
+        <div class="cs-flow">
+          <div class="cs-stage">
+            <div class="cs-stage-header">
+              <span class="cs-tag tag-prob">The Problem</span>
+              <h4>What was broken?</h4>
+            </div>
+            <p>${item.problem}</p>
+          </div>
+
+          <div class="cs-stage">
+            <div class="cs-stage-header">
+              <span class="cs-tag tag-sol">Our Work</span>
+              <h4>What was built</h4>
+            </div>
+            <ul class="cs-bullets">
+              ${item.solutions.map(s => `<li>${s}</li>`).join('')}
+            </ul>
+          </div>
+
+          <div class="cs-stage">
+            <div class="cs-stage-header">
+              <span class="cs-tag tag-res">The Impact</span>
+              <h4>Results achieved</h4>
+            </div>
+            <p>${item.resultsSummary}</p>
+            <div class="cs-metrics-grid">
+              ${item.results.map(r => `
+                <div class="cs-m-card">
+                  <div class="val">${r.val}</div>
+                  <div class="lbl">${r.lbl}</div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-actions">
+          <a class="btn" href="${item.link}">${item.ctaText}</a>
+        </div>
+      `;
+      lb.classList.add('on');
+      lb.querySelector('.x').focus();
+    } else if (e.target === lb || e.target.closest('.x')) {
+      cl();
+    }
+  });
+
+  const cl = () => {
+    if (lb) lb.classList.remove('on');
+    if (lastActiveElement) lastActiveElement.focus();
+  };
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && lb && lb.classList.contains('on')) cl();
+  });
+</script>
+</body>
+</html>

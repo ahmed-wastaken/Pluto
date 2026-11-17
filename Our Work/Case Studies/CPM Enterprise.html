@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <link rel="icon" type="image/png" href="../../components/pluto-favicon.png">
+<title>Case Study: CPM Enterprise | Pluto</title>
+<style>
+:root{--bg:#fff;--bg2:#f7f6fd;--tx:#14102b;--mu:#5d5a78;--bd:#e7e4f5;--card:#fff;--p:#7b68ee;--p2:#ff02f0;--p3:#ffc800;--g:linear-gradient(120deg,#7b68ee,#ff02f0 70%,#ffc800);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e0b1f;--bg2:#15112e;--tx:#f3f1ff;--mu:#a9a5c8;--bd:#2a2550;--card:#1a1538}}
+:root[data-theme="dark"]{--bg:#0e0b1f;--bg2:#15112e;--tx:#f3f1ff;--mu:#a9a5c8;--bd:#2a2550;--card:#1a1538}
+*{box-sizing:border-box;margin:0}html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{background:var(--bg);color:var(--tx);font:16px/1.65 Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.w{max-width:1180px;margin:0 auto;padding:0 24px}
+.btn{display:inline-block;padding:13px 26px;border-radius:12px;font-weight:700;background:var(--g);background-size:200% 100%;color:#fff;transition:.4s;box-shadow:0 10px 28px rgba(123,104,238,.35)}
+.btn:hover{background-position:100% 0;transform:translateY(-2px);box-shadow:0 14px 34px rgba(255,2,240,.3)}
+.btn.o{background:none;color:var(--tx);box-shadow:none;border:1.5px solid var(--bd)}.btn.o:hover{border-color:var(--p);color:var(--p)}
+.row{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px}
+.hero{position:relative;text-align:center;padding:90px 0 60px;overflow:hidden}
+.blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:.38;z-index:-1;animation:fl 12s ease-in-out infinite}
+.b1{width:420px;height:420px;background:#7b68ee;top:-80px;left:-60px}.b2{width:380px;height:380px;background:#ff02f0;top:60px;right:-80px;animation-delay:-4s}.b3{width:300px;height:300px;background:#ffc800;top:300px;left:40%;animation-delay:-8s;opacity:.25}
+@keyframes fl{50%{transform:translate(40px,-30px) scale(1.12)}}
+h1{font-size:clamp(38px,6.4vw,76px);line-height:1.04;letter-spacing:-.035em;font-weight:900;max-width: 1000px;margin:0 auto 24px}
+h2{font-size:clamp(28px,4vw,46px);line-height:1.12;letter-spacing:-.03em;font-weight:800;margin-bottom:16px}
+h3{font-size:clamp(20px,2.5vw,28px);letter-spacing:-.02em;line-height:1.2;font-weight:800}
+.gt{background:linear-gradient(90deg,#7b68ee,#c04dff,#ff02f0,#ff8a5c,#ffc800,#ff8a5c,#ff02f0,#c04dff,#7b68ee);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sh 10s linear infinite}
+@keyframes sh{to{background-position:200% 0}}
+p{color:var(--mu);font-size:18px}
+section{padding:96px 0}
+.alt{background:var(--bg2)}
+.work{text-align:center;max-width:860px;margin:0 auto 52px}
+.lab{font-weight:800;color:var(--p);font-size:14px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px}
+.cards{display:grid;gap:24px}
+.cards.grid-2{grid-template-columns:repeat(2,1fr)}
+.cards.grid-3{grid-template-columns:repeat(3,1fr)}
+.cards.grid-4{grid-template-columns:repeat(4,1fr)}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:22px;padding:32px;display:flex;flex-direction:column;gap:14px;transition:.35s;position:relative;overflow:hidden}
+.card::before{content:"";position:absolute;inset:0 0 auto 0;height:4px;background:var(--g);transform:scaleX(0);transform-origin:left;transition:.5s}
+.card:hover{transform:translateY(-8px);box-shadow:0 30px 60px rgba(123,104,238,.2)}
+.card:hover::before{transform:none}
+.card p{color:var(--mu);font-size:16px;line-height:1.6}
+.card-header-row{display:flex;align-items:center;gap:14px}
+.ic{width:44px;height:44px;min-width:44px;padding:10px;border-radius:13px;background:var(--bg2);fill:none;stroke:var(--p);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:.3s}
+.stats-banner{background:var(--card);border:1px solid var(--bd);border-radius:24px;padding:48px 36px;margin-top:48px;box-shadow:0 20px 50px rgba(123,104,238,.07)}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;text-align:center}
+.stat-item{display:flex;flex-direction:column;align-items:center;padding:0 12px;position:relative}
+.stat-item:not(:last-child)::after{content:"";position:absolute;right:-14px;top:20%;height:60%;width:1px;background:var(--bd)}
+.stat-val{font-size:clamp(40px,5vw,56px);font-weight:900;letter-spacing:-.03em;line-height:1;margin-bottom:12px;background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat-lbl{font-size:15px;color:var(--mu);font-weight:600;line-height:1.4}
+.stat-footer{text-align:center;margin-top:36px;padding-top:24px;border-top:1px solid var(--bd);font-size:19px;font-weight:700;color:var(--tx)}
+.narrative-block{max-width:880px;margin:0 auto;display:flex;flex-direction:column;gap:24px}
+.narrative-block p{font-size:18px;line-height:1.75}
+.custom-list{list-style:none;padding:0;margin:12px 0 0;display:flex;flex-direction:column;gap:16px}
+.custom-list li{position:relative;padding-left:32px;color:var(--mu);font-size:17px;line-height:1.6}
+.custom-list li::before{content:"";position:absolute;left:4px;top:10px;width:10px;height:10px;border-radius:50%;background:var(--g)}
+.sub-feature-card{background:var(--card);border:1px solid var(--bd);border-radius:20px;padding:32px;margin-top:28px}
+.rv{opacity:0;transform:translateY(36px);transition:opacity .8s,transform .8s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+@media(max-width:860px){
+  .cards.grid-2,.cards.grid-3,.cards.grid-4{grid-template-columns:1fr}
+  .stats-grid{grid-template-columns:1fr 1fr;gap:36px}
+  .stat-item:not(:last-child)::after{display:none}
+  section{padding:64px 0}
+}
+@media(max-width:540px){
+  .stats-grid{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .rv{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<script src="../../components/layout.js" data-part="nav"></script>
+
+<!-- HERO SECTION: Title, Target Market, Core Offer, and Results -->
+<header class="hero">
+  <i class="blob b1"></i><i class="blob b2"></i><i class="blob b3"></i>
+  <div class="w">
+    <div class="lab rv">Case Study</div>
+    <h1 class="rv">How CPM Enterprise Hit Record Quarterly Revenue and 22% YoY Growth Without Wasting Hours Prospecting</h1>
+
+    <div class="cards grid-2 rv" style="text-align:left; margin-top:40px;">
+      <article class="card">
+        <div class="card-header-row">
+          <svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+          <h3>Target Market</h3>
+        </div>
+        <p>General Contractors nationwide on public projects valued between $1M and $150M</p>
+      </article>
+
+      <article class="card">
+        <div class="card-header-row">
+          <svg class="ic" viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+          <h3>Core Offer</h3>
+        </div>
+        <p>BIM Coordination &amp; Modeling, Advanced Scheduling, and Risk Mitigation</p>
+      </article>
+    </div>
+
+    <!-- Results Over 3+ Years Stats Banner -->
+    <div class="stats-banner rv">
+      <div class="lab" style="margin-bottom:28px;">Results Over 3+ Years</div>
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-val">200+</div>
+          <div class="stat-lbl">qualified leads delivered every single year</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-val">30%</div>
+          <div class="stat-lbl">close rate from booked call to signed contract/retained client</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-val">22%</div>
+          <div class="stat-lbl">year-over-year revenue growth</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-val">~$10k</div>
+          <div class="stat-lbl">average deal size</div>
+        </div>
+      </div>
+      <div class="stat-footer">
+        Resulted in the highest quarterly revenue in company history
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- SECTION: The Problem -->
+<section class="alt">
+  <div class="w">
+    <div class="work rv">
+      <div class="lab">The Problem</div>
+      <h2>Dry Spells, Burnt-Out Sales Reps, and Damaged Deliverability</h2>
+    </div>
+
+    <div class="narrative-block rv">
+      <p>Before working with us, CPM Enterprise was stuck in the classic outbound trap.</p>
+      <p>Their sales team was spending their days manually hunting down prospects, scraping emails, and sending out cold messages one by one. Because they were doing this without proper technical setup (no dedicated domains, warmups, or SPF/DKIM/DMARC protocols), their domain reputation took a massive hit and emails were landing straight in spam.</p>
+      <p>Even worse, every hour their team spent searching for leads was an hour they weren't closing deals. Whenever they got busy delivering work, prospecting stopped completely, leading to constant dry spells and inconsistent cash flow.</p>
+      <p>They didn't need another expensive retainer agency to drop vague reports on their desk; they needed a plug-and-play outbound engine that handed their sales team qualified meetings and let them pay only for results.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION: The Solution -->
+<section>
+  <div class="w">
+    <div class="work rv">
+      <div class="lab">The Solution</div>
+      <h2>A Hands-Off, Pay-Per-Lead Outbound Engine</h2>
+      <p>We stepped in to completely remove the technical and operational burden of cold outreach from their plate.</p>
+    </div>
+
+    <div class="cards grid-2 rv">
+      <article class="card">
+        <h3>Bulletproof Domain Infrastructure</h3>
+        <p>We built a dedicated secondary domain infrastructure from scratch, dialed in SPF, DKIM, and DMARC protocols, and handled the warmups to guarantee inbox placement while keeping CPM's main business domain 100% safe.</p>
+      </article>
+
+      <article class="card">
+        <h3>Laser-Targeted Lists</h3>
+        <p>We stopped the spray-and-pray approach and mapped out double-verified lead lists across the entire US:</p>
+        <ul class="custom-list">
+          <li><strong>The Companies:</strong> General Contractors actively running or awarded public projects between $1M and $150M.</li>
+          <li><strong>The Decision-Makers:</strong> Project Managers, Estimators, and higher-ranking construction executives.</li>
+        </ul>
+      </article>
+    </div>
+
+    <!-- Messaging & Strict Qualification -->
+    <div class="sub-feature-card rv">
+      <h3>Messaging That Addressed Real Operational Headaches</h3>
+      <p style="margin-top:12px;">Our copy hit the exact pain points keeping GC leadership up at night:</p>
+      <ul class="custom-list" style="margin-bottom:20px;">
+        <li>Running out of in-house BIM bandwidth on complex projects.</li>
+        <li>The risk of heavy liquidated damages if schedules slip.</li>
+        <li>Mitigating supply chain chaos with advanced CPM scheduling.</li>
+      </ul>
+      <p>BIM coordination and modeling became the primary hook giving GCs an immediate, high-value solution they could plug into their awarded projects right away.</p>
+    </div>
+
+    <div class="sub-feature-card rv" style="margin-top:24px;">
+      <h3>Strict Qualification (Pay-Per-Lead Model)</h3>
+      <p style="margin-top:12px;">CPM didn't pay for vanity metrics, opens, or bad fits. Every prospect that landed on their calendar had to meet strict criteria before it counted:</p>
+      <ul class="custom-list">
+        <li>Verified project awarded at $1M+.</li>
+        <li>Verified decision-maker title (PM, Estimator, or higher).</li>
+        <li>Real, active interest in BIM or scheduling support.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION: Why It Worked -->
+<section class="alt">
+  <div class="w">
+    <div class="work rv">
+      <div class="lab">Overview</div>
+      <h2>Why It Worked</h2>
+    </div>
+
+    <div class="cards grid-3 rv">
+      <article class="card">
+        <div class="card-header-row">
+          <svg class="ic" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <h3>Zero Downside</h3>
+        </div>
+        <p>Because our model is strictly pay-per-qualified-lead, CPM never gambled cash on monthly retainers or empty promises.</p>
+      </article>
+
+      <article class="card">
+        <div class="card-header-row">
+          <svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <h3>More Time Closing</h3>
+        </div>
+        <p>Their sales reps stopped acting like list scrapers and got back to doing what actually drives revenue: pitching and closing.</p>
+      </article>
+
+      <article class="card">
+        <div class="card-header-row">
+          <svg class="ic" viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+          <h3>Scalability</h3>
+        </div>
+        <p>Whenever they wanted to expand capacity, the infrastructure was already built to feed them consistent, sales-ready opportunities nationwide.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- CTA & FOOTER -->
+<script src="../../components/layout.js" data-part="cta"></script>
+<script src="../../components/layout.js" data-part="footer"></script>
+
+<script>
+const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.style.transitionDelay=(Math.min([...x.target.parentNode.children].indexOf(x.target),5)*90)+'ms';x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.12});
+document.querySelectorAll('.rv').forEach(e=>io.observe(e));
+</script>
+</body>
+</html>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <link rel="icon" type="image/png" href="../components/pluto-favicon.png">
+<title>Education Suite for Schools | Pluto</title>
+<style>
+:root{--bg:#fff;--bg2:#f7f6fd;--tx:#14102b;--mu:#5d5a78;--bd:#e7e4f5;--card:#fff;--p:#7b68ee;--p2:#ff02f0;--p3:#ffc800;--g:linear-gradient(120deg,#7b68ee,#ff02f0 70%,#ffc800);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e0b1f;--bg2:#15112e;--tx:#f3f1ff;--mu:#a9a5c8;--bd:#2a2550;--card:#1a1538}}
+:root[data-theme="dark"]{--bg:#0e0b1f;--bg2:#15112e;--tx:#f3f1ff;--mu:#a9a5c8;--bd:#2a2550;--card:#1a1538}
+*{box-sizing:border-box;margin:0}html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--tx);font:16px/1.65 Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;overflow-x:hidden}
+a{color:inherit;text-decoration:none}.w{max-width:1180px;margin:0 auto;padding:0 24px}
+.btn{display:inline-block;padding:13px 26px;border-radius:12px;font-weight:700;background:var(--g);background-size:200% 100%;color:#fff;transition:.4s;box-shadow:0 10px 28px rgba(123,104,238,.35);border:0;cursor:pointer;font-size:16px;font-family:inherit}
+.btn:hover{background-position:100% 0;transform:translateY(-2px)}
+.btn.o{background:none;color:var(--tx);box-shadow:none;border:1.5px solid var(--bd)}.btn.o:hover{border-color:var(--p);color:var(--p)}
+.row{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px}
+.hero{position:relative;text-align:center;padding:90px 0 60px;overflow:hidden}.hero .row{justify-content:center}
+.blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:.38;z-index:-1;animation:fl 12s ease-in-out infinite}
+.b1{width:420px;height:420px;background:#7b68ee;top:-80px;left:-60px}.b2{width:380px;height:380px;background:#ff02f0;top:60px;right:-80px;animation-delay:-4s}.b3{width:300px;height:300px;background:#ffc800;top:300px;left:40%;animation-delay:-8s;opacity:.25}
+@keyframes fl{50%{transform:translate(40px,-30px) scale(1.12)}}
+h1{font-size:clamp(38px,6.4vw,76px);line-height:1.04;letter-spacing:-.035em;font-weight:900;max-width: 1000px;margin:0 auto 22px}
+h2{font-size:clamp(28px,4vw,46px);line-height:1.12;letter-spacing:-.03em;font-weight:800;margin-bottom:16px}
+h3{font-size:22px;letter-spacing:-.02em;line-height:1.25;font-weight:800}
+.gt{background:linear-gradient(90deg,#7b68ee,#c04dff,#ff02f0,#ff8a5c,#ffc800,#ff8a5c,#ff02f0,#c04dff,#7b68ee);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sh 10s linear infinite}
+@keyframes sh{to{background-position:200% 0}}
+p{color:var(--mu);font-size:18px}.hero p.l{max-width:760px;margin:0 auto;font-size:19px}
+section{padding:96px 0}.alt{background:var(--bg2)}
+.hd{text-align:center;max-width:780px;margin:0 auto 52px}
+.lab{font-weight:800;color:var(--p);font-size:14px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px}
+.cards{display:grid;gap:24px}.g2{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:22px;padding:32px;display:flex;flex-direction:column;gap:12px;transition:.35s;position:relative;overflow:hidden}
+.card::before{content:"";position:absolute;inset:0 0 auto 0;height:4px;background:var(--g);transform:scaleX(0);transform-origin:left;transition:.5s}
+.card:hover{transform:translateY(-8px);box-shadow:0 30px 60px rgba(123,104,238,.2)}.card:hover::before{transform:none}
+.card p{font-size:15px;line-height:1.65}.card h3{font-size:19px}
+.ic{width:46px;height:46px;padding:10px;border-radius:13px;background:var(--bg2);fill:none;stroke:var(--p);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:.3s}
+.alt .ic{background:var(--card)}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}.split.r .tx{order:2}.split p{font-size:17px;line-height:1.7;margin-bottom:12px}
+.tag{display:inline-block;padding:6px 16px;border:1px solid var(--bd);border-radius:99px;font-size:13px;font-weight:700;color:var(--p);background:var(--card);margin-bottom:16px}
+.ph{width:100%;border-radius:22px;box-shadow:0 30px 60px rgba(123,104,238,.15);object-fit:cover;max-height:460px;transition:.4s}.ph:hover{transform:translateY(-8px)}
+.pn{border-radius:22px;padding:34px;box-shadow:0 30px 60px rgba(123,104,238,.2);min-height:340px;display:grid;place-items:center}
+.pn.a{background:linear-gradient(135deg,#7b68ee,#ff02f0)}.pn.b{background:linear-gradient(135deg,#00b6ff,#7b68ee)}.pn.c{background:linear-gradient(135deg,#ffc800,#ff02f0)}.pn.d{background:linear-gradient(135deg,#0fcf9c,#00b6ff)}
+.win{background:#fff;color:#14102b;border-radius:16px;padding:20px;width:100%;max-width:340px;box-shadow:0 30px 90px rgba(20,16,43,.35);font-size:14px}
+.win b{display:block;font-size:15px;margin-bottom:10px}.win i{display:block;height:9px;border-radius:5px;background:#e7e4f5;margin:8px 0}
+.win .rw{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-top:1px solid #e7e4f5;font-weight:600}
+.pill{padding:3px 11px;border-radius:99px;font-size:12px;font-weight:800;background:#d9f7ee;color:#08805f}.pill.w2{background:#fff1c2;color:#8a6500}.pill.r2{background:#ffe0f9;color:#b0009f}
+.logos{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:16px}
+.lg{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:18px 10px;text-align:center;font-weight:700;font-size:14px;transition:.3s}.lg:hover{border-color:var(--p);transform:translateY(-4px)}.lg img{width:44px;height:44px;display:block;margin:0 auto 8px}
+.stat .v{font-size:clamp(40px,6vw,64px);font-weight:900;letter-spacing:-.03em;line-height:1.1;background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent}
+.band{background:var(--card);border:1px solid var(--bd);border-radius:22px;padding:28px 32px;display:flex;gap:22px;align-items:center;flex-wrap:wrap;justify-content:space-between}
+.band p{font-size:17px;max-width:800px}.band b{color:var(--tx)}
+.dev{align-items:flex-start}.dev .tg{font-size:12px;font-weight:800;color:var(--p)}
+.more{margin-top:auto;font-weight:800;color:var(--p);font-size:15px;background:none;border:0;cursor:pointer;font-family:inherit;padding:0;text-align:left}
+.q{font-size:17px;color:var(--tx)}.q small{display:block;color:var(--mu);font-size:14px;margin-top:6px}
+.wc .cl{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:8px}
+.badge{padding:5px 12px;border-radius:99px;font-size:12px;font-weight:700;color:var(--p);background:var(--bg2);border:1px solid var(--bd)}
+.mv{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:16px 18px;background:var(--bg2);border-radius:16px;border:1px solid var(--bd)}.mv .val{font-size:26px;font-weight:900;background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent}.mv small{font-size:12px;font-weight:600;color:var(--mu);display:block}
+#lb{position:fixed;inset:0;background:rgba(14,11,31,.7);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:20px;z-index:9999}#lb.on{display:flex}
+#lb .bx{background:var(--card);color:var(--tx);border:1px solid var(--bd);border-radius:22px;max-width:680px;width:100%;max-height:88vh;overflow:auto;padding:36px;position:relative;animation:op .35s}
+@keyframes op{from{opacity:0;transform:translateY(14px)}}
+#lb h3{font-size:26px;margin-bottom:6px}#lb p{font-size:16px;margin:12px 0}#lb .x{position:absolute;top:14px;right:16px;width:38px;height:38px;border-radius:50%;border:1px solid var(--bd);background:var(--bg2);color:var(--tx);font-size:20px;cursor:pointer}
+#lb ul{padding-left:20px;color:var(--mu);margin:10px 0}#lb blockquote{border-left:4px solid var(--p);padding-left:16px;color:var(--tx);margin:16px 0}
+.sn{position:sticky;top:72px;z-index:50;background:var(--bg);border-top:1px solid var(--bd);border-bottom:1px solid var(--bd)}
+.sn .in{display:flex;width:max-content;max-width:100%;margin:0 auto;overflow-x:auto;scrollbar-width:none;padding:0 12px}.sn .in::-webkit-scrollbar{display:none}
+.sn a{position:relative;padding:16px 18px;font-weight:700;font-size:15px;color:var(--mu);white-space:nowrap;transition:color .25s}
+.sn a::after{content:"";position:absolute;left:18px;right:18px;bottom:0;height:3px;border-radius:3px;background:var(--g);transform:scaleX(0);transform-origin:left;transition:transform .35s}
+.sn a:hover,.sn a.on{color:var(--p)}.sn a:hover::after,.sn a.on::after{transform:scaleX(1)}
+section[id]{scroll-margin-top:var(--off,130px)}
+.crumb{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border:1px solid var(--bd);border-radius:99px;background:var(--card);font-weight:800;font-size:13px;color:var(--p);margin-bottom:14px}.crumb::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--g)}
+.wide{display:block;max-width:960px;margin:0 auto}
+.rv{opacity:0;transform:translateY(36px);transition:opacity .8s,transform .8s cubic-bezier(.2,.7,.2,1)}.rv.in{opacity:1;transform:none}
+:focus-visible{outline:3px solid var(--p);outline-offset:3px}
+@media(max-width:1000px){.g4{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:1fr 1fr}}
+@media(max-width:860px){.split{grid-template-columns:1fr;gap:36px}.split .tx,.split.r .tx{order:2}.split>:not(.tx){order:1}section{padding:64px 0}.g2,.g3,.g4{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+
+/* ===== Mobile polish (phones/tablets only — desktop unchanged) ===== */
+@media(max-width:860px){
+  article.card.wc[style*="grid-template-columns"]{grid-template-columns:1fr!important;gap:24px!important}
+}
+@media(max-width:480px){.mv .val{font-size:22px}.mv{padding:14px}}
+</style>
+</head>
+<body>
+<script src="../components/layout.js" data-part="nav"></script>
+
+<header class="hero">
+<i class="blob b1"></i><i class="blob b2"></i><i class="blob b3"></i>
+<div class="w">
+<h1 class="rv">The Complete Digital Education Suite for Your School</h1>
+<p class="l rv">We give schools one connected platform built on Google for Education: unlimited accounts for educators, students and parents, 100TB of cloud storage, attendance, guardian updates, online tuition payments, an LMS, training and ongoing support. We set up everything, so your school can focus on education, not technology. Pay once and use it for life, with no per-user fees and no recurring subscriptions.</p>
+<div class="row rv"><a class="btn" href="../contact-us.html">Let's Talk</a><a class="btn o" href="#features">See what's included</a></div>
+</div>
+</header>
+
+<section style="padding:0 0 50px"><div class="w">
+  <div class="band rv" style="max-width:900px;margin:0 auto;justify-content:center;text-align:center">
+    <p style="margin:0 auto"><b>We are now the same company as ETA Solutions Space LLC,</b> a certified Google Partner in the MENA region, located at El Gamea El Kabir, beside El Amrawy Pharmacy, Montazah Second – Alexandria. Same team, same service, now part of Pluto Companies.</p>
+  </div>
+</div></section>
+
+<nav class="sn" id="sn" aria-label="Sections on this page"><div class="in">
+<a href="#features">Google For Education</a><a href="#services">Our Services</a><a href="#classroom">Google Classroom</a><a href="#chromebooks">Chromebooks</a><a href="#work">Case Studies</a>
+</div></nav>
+
+<section class="alt" id="features"><div class="w">
+<div class="hd rv"><div class="lab">Google Workspace for Education</div><h2>Empower educators with tools to transform education</h2><p>Secure your learning environment, boost teaching with AI-driven tools, and increase collaboration and productivity, all in one suite we install and run for you.</p></div>
+<div class="cards g4" id="f8"></div>
+</div></section>
+
+<section><div class="w">
+<div class="hd rv"><div class="lab">Every edition includes</div><h2>The full Google for Education suite</h2><p>Sixteen connected apps, one login, on any device.</p></div>
+<div class="logos" id="logos"></div>
+</div></section>
+
+<section class="alt"><div class="w">
+<div class="hd rv"><div class="lab">Privacy &amp; security</div><h2>Google provides industry-leading privacy and security</h2></div>
+<div class="cards g3" id="stats" style="text-align:center;margin-bottom:24px"></div>
+<div class="cards g4" id="priv"></div>
+</div></section>
+
+<section><div class="w">
+<div class="hd rv"><div class="lab">Teaching &amp; learning</div><h2>A suite of secure, easy-to-use tools designed for teaching and learning</h2></div>
+<div class="cards g3" id="tools"></div>
+<div class="hd rv" style="margin-top:80px"><h2>Plan and differentiate faster with no-cost AI tools for educators</h2><p>Gemini for Education, Gemini Notebook and Gemini in Classroom are included at no cost. Advanced capabilities come with Education Plus and select add-ons.</p></div>
+<div class="cards g4" id="ai"></div>
+</div></section>
+
+<section class="alt" id="services"><div class="w">
+<div class="hd rv"><div class="lab">What we handle for you</div><h2>Everything set up, nothing left to your staff</h2><p>From the first account to the first hot-fix, our team does the work. You pay once, and the platform is yours for life.</p></div>
+<div class="cards g3" id="svc"></div>
+</div></section>
+
+<section id="custom"><div class="w">
+<div class="hd rv" style="margin-bottom: 80px;"><div class="lab">Built by us, on top of Google</div><h2>Five features your school won't find in a standard Google setup</h2></div>
+<div id="four"></div>
+</div></section>
+
+<section class="alt" id="classroom"><div class="w">
+<div class="hd rv" style="margin-bottom:0"><span class="crumb">Google Classroom</span><h2>Where teaching and learning come together</h2><p>Classroom helps educators create engaging lessons they can personalize, manage and measure, and it can be learned in minutes.</p></div>
+<img class="ph wide rv" loading="lazy" style="margin-top:40px" alt="A teacher looks over a young student's work on a laptop in class" src="https://lh3.googleusercontent.com/ZiOti6JGTLCL2f0nnQp39w_eUNtiZSMESAHL7JkWdoEhMEgM7_gZUhA5Mg0suWE7xsoInld4dsNvlNRD4x3kYl3S8M490mIEgEQZ-CnVU4bqnOISckU=w1440-v1-e30">
+</div></section>
+<div id="cr"></div>
+
+<section class="alt" id="chromebooks"><div class="w">
+<div class="hd rv" style="margin-bottom:40px"><span class="crumb">Chromebooks</span><h2>Teach and learn with Chromebooks</h2><p>Powerful, secure devices designed to help educators and students create their own learning environment.</p></div>
+<img class="ph wide rv" loading="lazy" alt="Students and a teacher gathered around a Chromebook" src="https://lh3.googleusercontent.com/qlxfCymAsQ6dnW52ncgxuK7W3YFf2drxK6-kxDsFR72U0-FqfCzTljy7wZ5q5BsdPmlPs_8F34l8R56kurAHfWZWBLHemfYty7ijE5vl2TcrZwISTl0=w1440-v1-e30">
+</div></section>
+
+<section><div class="w">
+<div class="hd rv"><span class="crumb">Chromebooks</span><h2>Built for teaching and learning</h2><p>Chromebooks meet your institution's needs with built-in accessibility and security that deepen classroom connections while keeping user information safe.</p></div>
+<div class="cards g4" id="bt"></div>
+</div></section>
+
+<section class="alt"><div class="w">
+<div class="hd rv"><span class="crumb">Chromebooks</span><h2>Designed for everyone</h2><p>Whether you're a student, teacher or IT administrator, Chromebooks come with features designed just for you.</p></div>
+<div class="cards g4" id="ev"></div>
+</div></section>
+
+<section><div class="w">
+<div class="hd rv"><span class="crumb">Chromebooks</span><h2>Find the right Chromebook for your school</h2><p>We supply affordable, education-ready Chromebooks from Lenovo and ASUS, enrolled in your Google Admin console and ready on day one. Ask us for current models and pricing.</p></div>
+<div class="cards g3" id="devices"></div>
+</div></section>
+
+<section class="alt"><div class="w">
+<div class="hd rv"><span class="crumb">Chromebooks</span><h2>ChromeOS device management</h2><p>Enhance deployment, onboarding, security and IT support for your whole fleet with ChromeOS Education Upgrade.</p></div>
+<div class="cards g3" id="mg"></div>
+</div></section>
+
+<section><div class="w">
+<div class="hd rv"><span class="crumb">Chromebooks</span><h2>What school leaders say about Chromebooks</h2></div>
+<div class="cards g2" id="tm"></div>
+</div></section>
+
+<section class="alt" id="work"><div class="w">
+<div class="hd rv"><div class="lab">Case studies</div><h2>See how institutions are using Google for Education</h2><p>Start with our own deployment in Cairo, then explore four stories from Google's customers.</p></div>
+<article class="card wc rv" style="margin-bottom:24px;display:grid;grid-template-columns:1.3fr 1fr;gap:32px">
+<div><div class="cl"><span class="badge">Our work · Cairo, Egypt</span></div><h3 style="font-size:26px">British International College of Cairo</h3>
+<p style="margin-top:10px">A Cairo-based school and member of the Odyssey French International Education Group needed a streamlined digital learning solution to improve communication between teachers, students and guardians. We developed a custom LMS on the Google for Education platform that automates attendance, grades and performance updates sent directly to guardians. It also generates weekly and end-of-year academic reports, cutting administrative workload.</p></div>
+<div style="display:flex;flex-direction:column;justify-content:center;gap:14px"><div class="mv"><div><span class="val">-38%</span><small>Software subscription costs, year one</small></div><div><span class="val">-70%</span><small>Software subscription costs, after year one</small></div></div><a class="btn" href="../Our Work/Case Studies/bicc.html" style="text-align:center">Read the full case study</a></div>
+</article>
+<div class="cards g2" id="cs"></div>
+</div></section>
+
+<div id="lb" role="dialog" aria-modal="true" aria-labelledby="lbt"><div class="bx"><button class="x" aria-label="Close">×</button><div id="lbc"></div></div></div>
+
+<script src="../components/layout.js" data-part="cta"></script>
+<script src="../components/layout.js" data-part="footer"></script>
+
+<script>
+const $=id=>document.getElementById(id),P={
+shield:'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',user:'<circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/>',star:'<path d="M12 2l3 7 7 .6-5.4 4.7 1.7 7.2L12 17.8 5.7 21.5l1.7-7.2L2 9.6 9 9z"/>',layers:'<path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>',check:'<circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-6"/>',eye:'<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8S1 12 1 12z"/><circle cx="12" cy="12" r="3"/>',leaf:'<path d="M5 19c0-9 5-14 15-14 0 10-5 15-14 15M5 19l8-8"/>',zap:'<path d="M13 2L3 14h8l-1 8 10-12h-8z"/>',book:'<path d="M4 4h10a4 4 0 0 1 4 4v12H8a4 4 0 0 1-4-4zM8 8h6"/>',mon:'<rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/>',chat:'<path d="M21 12a8 8 0 0 1-12 7l-6 2 2-5a8 8 0 1 1 16-4z"/>',chart:'<path d="M3 3v18h18M7 15l4-5 4 3 5-7"/>',card:'<rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/>',heart:'<path d="M12 21s-8-5-8-11a4.5 4.5 0 0 1 8-3 4.5 4.5 0 0 1 8 3c0 6-8 11-8 11z"/>',qr:'<rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h3v3h-3zM20 14v7M14 20h3"/>',cam:'<path d="M23 7l-7 5 7 5zM1 5h15v14H1z"/>',cloud:'<path d="M18 18a4 4 0 0 0 0-8 6 6 0 0 0-11.5 1.5A4 4 0 0 0 7 18z"/>',cap:'<path d="M2 9l10-5 10 5-10 5zM6 11v5c3 2.5 9 2.5 12 0v-5"/>',life:'<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><path d="M5 5l4 4M15 15l4 4M19 5l-4 4M9 15l-4 4"/>',users:'<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/>',lock:'<rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>',gear:'<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/>'};
+const ic=k=>`<svg class="ic" viewBox="0 0 24 24">${P[k]}</svg>`;
+const cards=(id,a,cls='')=>$(id).innerHTML=a.map(([i,t,d])=>`<article class="card ${cls} rv">${i?ic(i):''}<h3>${t}</h3><p>${d}</p></article>`).join('');
+cards('f8',[['book','Easy to use','Simple tools let educators focus on teaching and need less professional development.'],['shield','Private and secure','Secure by default and private by design, protecting your whole school community.'],['cap','Prepares students','Students build the skills they need for higher education and the workforce.'],['layers','Enables consolidation','One comprehensive solution reduces the need for other EdTech tools.'],['check','Reliable','Your digital learning environment works as it should, every school day.'],['eye','Accessible','An equitable learning environment for everyone in your education community.'],['leaf','Sustainable','Built on a carbon-neutral cloud, so it is easier on the planet.'],['zap','Helpful','Real-time collaboration and time-saving tools keep everyone focused on learning.']]);
+const apps=[['gmail','Gmail'],['calendar','Calendar'],['meet','Meet'],['classroom','Classroom'],['docs','Docs'],['sheets','Sheets'],['slides','Slides'],['forms','Forms'],['assignments','Assignments'],['admin','Admin'],['drive','Drive'],['gemini-v2','Gemini'],['groups-v2','Groups'],['sites','Sites'],['tasks-v2','Tasks'],['gemini-notebook','Notebook']];
+$('logos').innerHTML=apps.map(([f,n])=>`<div class="lg rv"><img loading="lazy" alt="" src="https://edu.google.com/assets/icons/google-brands/${f}.svg">${n}</div>`).join('');
+cards('svc',[['users','Unlimited accounts','Accounts for every educator, student and parent, created and organized for you.'],['cloud','100TB of cloud storage','Pooled storage shared across your whole school.'],['check','Attendance','Daily attendance recorded in one place and shared with the right people.'],['chat','Guardian updates','Daily and weekly emails on missing work, upcoming work and class activity.'],['card','Online tuition payments','Parents pay fees online and the school sees every balance.'],['book','Learning management','Customizable grade weights, ready-made templates for each grade, and insight into grading data.'],['cap','Training','15 hours of written and video material, plus training for educators and admins.'],['life','Support','L1, L2 and L3 support, hot-fixes within 24 hours, and one year of revisions.'],['lock','Pay once, use for life','No per-user fees, no recurring subscriptions and no features behind paywalls.']]);
+const win=(t,body)=>`<div class="win"><b>${t}</b>${body}</div>`,rw=(a,b)=>`<div class="rw"><span>${a}</span>${b}</div>`;
+const F=[
+['a','Tuition','Pay tuition online','Parents settle fees from their phone, any time. Installment plans, automatic reminders and instant receipts replace queues at the accounts office, while the school sees every payment and balance in real time.',win('Tuition · Term 2',rw('Installment 1','<span class="pill">Paid</span>')+rw('Installment 2','<span class="pill w2">Due Sunday</span>')+rw('Installment 3','<span class="pill r2">Upcoming</span>')+'<i></i>'),'card'],
+['b','Clinic','Know right away when your child is sick','When a student visits the school clinic, guardians receive a report straight away covering the visit, what was observed and the next steps, so parents are never left guessing and the clinic keeps a clear record.',win('Clinic report',rw('Student','<b style="margin:0">Omar, Grade 5</b>')+rw('Reason','Headache')+rw('Status','<span class="pill w2">Resting</span>')+'<i></i><i style="width:60%"></i>'),'heart'],
+['c','QR','Attendance with a QR code, verified by school Wi-Fi','Students scan a QR code to check in. The system confirms the phone is connected to the school\'s Wi-Fi, so attendance is only recorded from inside the classroom and cannot be marked from home.',win('Scan to check in','<div style="display:grid;place-items:center;padding:8px"><svg width="110" height="110" viewBox="0 0 24 24" fill="none" stroke="#7b68ee" stroke-width="1.6">'+P.qr+'</svg></div>'+rw('Wi-Fi','<span class="pill">School network ✓</span>')),'qr'],
+['d','AI','Attendance by AI and facial recognition','Using the school\'s existing security cameras, AI recognizes students as they sit down and marks them present automatically. Teachers skip the roll call and gain minutes of lesson time every period.',win('Class 6B · Live',rw('Recognized','<span class="pill">28 / 30</span>')+rw('Absent','<span class="pill r2">2</span>')+'<div style="height:70px;border-radius:10px;background:#e7e4f5;display:flex;gap:14px;align-items:center;justify-content:center;margin-top:8px">'+'<span style="width:30px;height:36px;border:2px solid #0fcf9c;border-radius:6px"></span>'.repeat(3)+'</div>'),'cam'],
+['a','Gradebook','Gradebook and official transcript','Educators manage grades efficiently, and the system automatically generates official transcripts at the end of the term or year.',win('Transcript generation',rw('Term','<span class="pill">Fall 2026</span>')+rw('Status','<span class="pill">Generated</span>')+'<i></i><i style="width:70%"></i>'),'book']];
+$('four').innerHTML=F.map(([c,t,h,d,m,i],n)=>`<div class="split ${n%2?'r':''}" style="margin-bottom:${n<4?120:0}px"><div class="tx rv"><h2>${h}</h2><p>${d}</p><div class="row"><a class="btn" href="../contact-us.html">Let's Talk</a></div></div><div class="pn ${c} rv">${m}</div></div>`).join('');
+$('stats').innerHTML=[['100M','phishing attempts are blocked by Gmail every day'],['99.9%','of spam, phishing attempts and malware are blocked by AI protections in Gmail'],['30,000','unsafe websites are identified by Google every week']].map(([v,t])=>`<div class="card stat rv"><div class="v">${v}</div><p>${t}</p></div>`).join('');
+cards('priv',[['lock','You own your data','You keep full intellectual property rights and decide who can download your data, and when.'],['shield','Strict privacy protocols','Rigorous privacy standards guide every stage of product development.'],['eye','No advertising','Core services such as Gmail, Calendar and Classroom show no ads.'],['check','Supports FERPA, COPPA, GDPR and more','Built to support compliance with demanding global privacy and security requirements.']]);
+cards('tools',[['book','Classroom','Create courses, manage classes and see student activity. Gemini in Classroom adds AI tools for teaching and learning.'],['mon','Meet','Host up to 1,000 participants with breakout rooms, Q&A, polls and live translated captions.'],['check','Assignments','Distribute, analyze and grade student work from your LMS.'],['gear','Admin','Manage your entire organization with simple, complete tools in the Admin console.'],['layers','Docs, Sheets and Slides','Collaborate in real time on documents, spreadsheets and presentations.'],['cloud','Drive and Gmail','Shared storage and secure email across your whole school community.']]);
+cards('ai',[['star','Prepare for every meeting','An agent summarizes details, deadlines, attendees and files, then delivers them in Chat.'],['chat','Translate action items','Capture meeting actions, translate them and share them so everyone is aligned.'],['zap','Auto-label priority emails','Surface urgent messages and due dates, from compliance to budget approvals.'],['cloud','Save attachments to Drive','Save signed permission slips to a folder and update the class roster automatically.']]);
+const CR=[['Enrich and personalize learning',[['star','Differentiated instruction','Customize classwork for every student with real-time feedback and easy communication.'],['book','Practice sets with AI help','Interactive assignments, even from existing Forms, with real-time feedback.'],['book','Read Along','Students read aloud and get live feedback, while educators see accuracy, speed and progress.'],['eye','Interactive video questions','Questions on YouTube videos with insights into student performance.'],['check','Academic integrity','Originality reports compare work with billions of web pages and over 40 million books.'],['users','Accessible and inclusive','Students customize their environment to reduce barriers to learning.'],['cap','Future-ready skills','To-do lists, automatic due dates and productivity tools build organization.'],['layers','Popular integrations','Add, use and grade content from EdTech tools right inside Classroom.']]],
+['Amplify instruction with tools that simplify everyday tasks',[['chart','Classroom analytics','See how students engage with, complete and perform on assignments.'],['book','Lesson planning','Share a class link so peers can preview and import quality classwork.'],['check','Plagiarism detection','Unlimited originality reports and a school-owned repository of past work.'],['chart','SIS-connected grading','Customize grading periods and scales, and export grades to your SIS.'],['zap','Save time on everyday tasks','Assign, grade and give feedback across classes, including on iOS and Android.'],['chat','Communication','Embedded chat and meetings connect educators, students and parents.'],['star','Efficient grading','Student-visible rubrics, reusable comment banks and bulk grading.'],['layers','Hundreds of apps','Hundreds of EdTech apps integrate with Classroom.']]],
+['Operate with visibility, insights and control',[['chart','Data-driven decisions','View class performance, grade trends and adoption across the school.'],['gear','Manage classes at scale','Create classes automatically and sync class lists from your SIS.'],['book','Templates and curricula','Share class templates, and let guardians view classwork through weekly email summaries.'],['eye','Virtual class visits','Leaders can temporarily join classes to support teachers and substitutes.'],['lock','Industry-leading privacy','Same infrastructure as Workspace, with regular third-party audits.'],['zap','Flexible and reliable','A global network with full-stack security and 99% uptime.'],['gear','Extensible','APIs let you connect your SIS and customize Classroom.'],['users','Support for staff','Free resources, professional development and online courses for educators.']]]];
+$('cr').outerHTML=CR.map(([t,a],n)=>`<section class="${n%2?'alt':''}"><div class="w"><div class="hd rv"><span class="crumb">Google Classroom</span><h2>${t}</h2></div><div class="cards g4">${a.map(([i,h,d])=>`<article class="card rv">${ic(i)}<h3>${h}</h3><p>${d}</p></article>`).join('')}</div>${n==2?'<p class="rv" style="margin-top:48px;text-align:center">Google Classroom has been awarded the ISTE Seal, confirming it as an education-ready platform aligned to the ISTE Standards.</p>':''}</div></section>`).join('');
+cards('bt',[['users','More collaboration','Learn from anywhere and work together in real time, on shared or 1:1 devices.'],['life','Designed to last','Durable hardware and repair programs keep devices going year after year.'],['shield','Security','Layers of encryption and zero successful reported ransomware attacks.'],['card','Long-term value','An investment that can save your institution money over time.']]);
+cards('ev',[['book','K-8 students','Built-in security keeps kids safe, with durable builds and all-day battery.'],['cap','High school and college','High-performance, lightweight models that work smoothly with Workspace.'],['star','Educators','Chromebook Plus brings generative AI features designed for teachers and staff.'],['gear','IT admins and staff','Deploy, manage and secure every device with automatic updates and cloud policies.']]);
+
+$('devices').innerHTML=[
+  ['Lenovo IdeaPad Chromebook 3','14" everyday classroom laptop','Reliable and budget-friendly with up to 10 hours of battery life and a vibrant 14-inch display for schoolwork.','https://static.wixstatic.com/media/0173c2_3f89f10094a84aa4b64c81beab0752e0~mv2.avif'],
+  ['Lenovo IdeaPad Slim 3','14" slim and light student laptop','A lightweight device powered by AMD Ryzen, designed for portable simplicity and long battery life.','https://static.wixstatic.com/media/0173c2_658d84941b2e4383be06d76641a9d4e0~mv2.jpg'],
+  ['ASUS Chromebook CX15','15.6" expansive display laptop','Military-grade durability with a 15.6-inch FHD display and versatile connectivity for daily tasks.','https://static.wixstatic.com/media/0173c2_76d06782b80a436cb21e43498bbac734~mv2.png']
+].map(([t,s,d,i])=>`<article class="card dev rv" style="align-items:stretch">
+<div style="background:#fff; border:1px solid var(--bd); border-radius:16px; padding:16px; margin-bottom:16px; display:flex; justify-content:center; align-items:center; height:194px; box-sizing:border-box;">
+  <img src="${i}" alt="${t}" loading="lazy" style="width:100%; height:100%; object-fit:contain;">
+</div>
+<span class="tg">${s}</span>
+<h3>${t}</h3>
+<p>${d}</p>
+<a class="more" href="../contact-us.html" style="margin-top:auto">Ask for pricing</a>
+</article>`).join('');
+
+cards('mg',[['zap','Simple deployment','Enroll new and existing devices in your school\'s domain and get students set up faster.'],['gear','Easy management','Set security, content filters and more from the Google Admin console.'],['life','24/7 IT support','Get help any time, day or night, at no additional cost.']]);
+$('tm').innerHTML=[['Hillsborough Township Public Schools','Amy Mele, District Tech Coach','Teachers say supporting students is easier when everyone shares one platform, because they can demonstrate a lesson and students can follow along exactly.'],['Forsyth County School System','Dr. Lessell Martiny Bray, Chief Technology and Information Officer','Her team can push an app to thousands of Chromebooks at once and manage them remotely.'],['Anaheim Union High School District','Erik Greenwood, Chief Technology Officer','Adopting Chromebooks and Google Workspace has had a huge impact in class and beyond.'],['Vicksburg Warren School District','Dr. Kim Germany, Director of Curriculum, Instruction & Technology Integration','Every student from pre-K to 12th grade has their own device as their learning tool.']].map(([s,w,q])=>`<article class="card rv"><span class="badge" style="align-self:flex-start">${s}</span><p class="q">${q}<small>${w}</small></p></article>`).join('');
+const CS=[['McGuffey School District','Pennsylvania, USA','Giving teachers more freedom in the classroom','A rural district moved from shared computer labs to Chromebooks and Classroom.',['In a largely rural, low-income district, two computer labs once served 166 teachers across four schools.','About 170 Chromebooks arrived through a Digital Promise grant in 2013, and Classroom opened the door to personalized, student-led learning.','Students work from study halls, buses or home, including on phones under a bring-your-own-device policy.','A technology coach, supported by the Dynamic Learning Project, launched classroom "Pop-ins" and teacher badges, and added online-safety lessons.'],'https://edu.google.com/resources/customer-stories/mcguffey-middle-school/'],
+['University of Lynchburg','Virginia, USA','Providing academic, social and secure lifelines','Workspace for Education Plus supported active learning, recorded lectures and stronger security.',['The university adopted Workspace in 2016 and upgraded to Education Plus in 2020 to support active-learning classrooms.','Real-time collaboration, shared documents and Google Forms replaced paper forms and email back-and-forth.','Education Plus security tools let IT remove a spoofed-email scam from every inbox before recipients saw it.','During the 2020 closure, 300 faculty were trained on Meet in five days.'],'https://edu.google.com/resources/customer-stories/university-of-lynchburg/'],
+['Academies Enterprise Trust','United Kingdom','Easy-to-use, flexible and secure tools for your organization','A trust of about 58 schools scaled remote learning with Meet and Education Plus.',['One of the UK\'s largest academy sponsors, with about 38,000 students, has used Google since 2011.','Education Plus lets it host meetings of up to 250 people and livestream to as many as 100,000 within its domain.','Teachers record "Masterclasses" in Meet and share them across the trust.','Streamlined reporting gives IT a clearer view of usage and performance.'],'https://edu.google.com/resources/customer-stories/academies-enterprise-trust/'],
+['Upper Dublin School District','Pennsylvania, USA','Stronger email security that you can depend on','Education Plus added flexible training and a safety net against malware.',['A 1:1 Chromebook district of 4,100 students recorded professional-development sessions in Meet for on-demand viewing.','Gmail\'s security sandbox opens attachments in isolation and analyzes them before delivery.','IT describes it as a "set-it-and-forget-it" layer that works in the background.','The upgrade avoided buying separate endpoint security for non-Chromebook devices.'],'https://edu.google.com/resources/customer-stories/upper-dublin-school-district/']];
+$('cs').innerHTML=CS.map(([n,l,t,b],i)=>`<article class="card wc rv"><div class="cl"><span class="badge">${n}</span><span class="badge">${l}</span></div><h3>${t}</h3><p>${b}</p><button class="more" data-i="${i}">Learn more →</button></article>`).join('');
+const lb=$('lb'),lc=$('lbc');let last;
+document.addEventListener('click',e=>{const b=e.target.closest('.more[data-i]');if(b){last=b;const[n,l,t,,d,u]=CS[b.dataset.i];lc.innerHTML=`<span class="badge">${n} · ${l}</span><h3 id="lbt" style="margin-top:12px">${t}</h3><ul>${d.map(x=>`<li>${x}</li>`).join('')}</ul><p><a class="btn" href="${u}" target="_blank" rel="noopener">Read the full case study</a></p>`;lb.classList.add('on');lb.querySelector('.x').focus()}else if(e.target===lb||e.target.closest('.x'))cl()});
+const cl=()=>{lb.classList.remove('on');last&&last.focus()};document.addEventListener('keydown',e=>e.key==='Escape'&&cl());
+const sn=$('sn'),sl=[...sn.querySelectorAll('a')],mn=document.querySelector('nav:not(.sn)');
+function mh(){return mn&&/sticky|fixed/.test(getComputedStyle(mn).position)?mn.offsetHeight:(mn?0:72)}
+function spy(){const h=mh();sn.style.top=h+'px';document.documentElement.style.setProperty('--off',h+sn.offsetHeight+8+'px');
+let a=null;sl.forEach(l=>{const e=document.querySelector(l.getAttribute('href'));if(e&&e.getBoundingClientRect().top<=h+sn.offsetHeight+60)a=l});
+sl.forEach(l=>{const on=l===a;l.classList.toggle('on',on);on?l.setAttribute('aria-current','true'):l.removeAttribute('aria-current')});
+const r=sn.querySelector('.in');if(a&&a!==spy.l){spy.l=a;r.scrollTo({left:a.offsetLeft-r.clientWidth/2+a.offsetWidth/2,behavior:'smooth'})}}
+let tk;addEventListener('scroll',()=>{tk||(tk=requestAnimationFrame(()=>{tk=0;spy()}))},{passive:true});addEventListener('resize',spy);addEventListener('load',spy);spy();
+const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.style.transitionDelay=Math.min([...x.target.parentNode.children].indexOf(x.target),5)*90+'ms';x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.12});
+document.querySelectorAll('.rv').forEach(e=>io.observe(e));
+</script>
+</body>
+</html>

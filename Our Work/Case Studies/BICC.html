@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <link rel="icon" type="image/png" href="../../components/pluto-favicon.png">
+<title>Case Study: British International College of Cairo | Pluto</title>
+<style>
+:root{--bg:#fff;--bg2:#f7f6fd;--tx:#14102b;--mu:#5d5a78;--bd:#e7e4f5;--card:#fff;--p:#7b68ee;--p2:#ff02f0;--p3:#ffc800;--g:linear-gradient(120deg,#7b68ee,#ff02f0 70%,#ffc800);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e0b1f;--bg2:#15112e;--tx:#f3f1ff;--mu:#a9a5c8;--bd:#2a2550;--card:#1a1538}}
+:root[data-theme="dark"]{--bg:#0e0b1f;--bg2:#15112e;--tx:#f3f1ff;--mu:#a9a5c8;--bd:#2a2550;--card:#1a1538}
+*{box-sizing:border-box;margin:0}html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{background:var(--bg);color:var(--tx);font:16px/1.65 Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.w{max-width:1180px;margin:0 auto;padding:0 24px}
+.btn{display:inline-block;padding:13px 26px;border-radius:12px;font-weight:700;background:var(--g);background-size:200% 100%;color:#fff;transition:.4s;box-shadow:0 10px 28px rgba(123,104,238,.35);cursor:pointer}
+.btn:hover{background-position:100% 0;transform:translateY(-2px);box-shadow:0 14px 34px rgba(255,2,240,.3)}
+.btn.o{background:none;color:var(--tx);box-shadow:none;border:1.5px solid var(--bd)}.btn.o:hover{border-color:var(--p);color:var(--p)}
+.row{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px}
+.hero{position:relative;text-align:center;padding:90px 0 60px;overflow:hidden}
+.blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:.38;z-index:-1;animation:fl 12s ease-in-out infinite}
+.b1{width:420px;height:420px;background:#7b68ee;top:-80px;left:-60px}.b2{width:380px;height:380px;background:#ff02f0;top:60px;right:-80px;animation-delay:-4s}.b3{width:300px;height:300px;background:#ffc800;top:300px;left:40%;animation-delay:-8s;opacity:.25}
+@keyframes fl{50%{transform:translate(40px,-30px) scale(1.12)}}
+h1{font-size:clamp(38px,6.4vw,76px);line-height:1.04;letter-spacing:-.035em;font-weight:900;max-width: 1000px;margin:0 auto 24px}
+h2{font-size:clamp(28px,4vw,46px);line-height:1.12;letter-spacing:-.03em;font-weight:800;margin-bottom:16px}
+h3{font-size:clamp(20px,2.5vw,28px);letter-spacing:-.02em;line-height:1.2;font-weight:800}
+.gt{background:linear-gradient(90deg,#7b68ee,#c04dff,#ff02f0,#ff8a5c,#ffc800,#ff8a5c,#ff02f0,#c04dff,#7b68ee);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sh 10s linear infinite}
+@keyframes sh{to{background-position:200% 0}}
+p{color:var(--mu);font-size:18px}
+section{padding:96px 0}
+.alt{background:var(--bg2)}
+.work{text-align:center;max-width:860px;margin:0 auto 52px}
+.lab{font-weight:800;color:var(--p);font-size:14px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px}
+.cards{display:grid;gap:24px}
+.cards.grid-2{grid-template-columns:repeat(2,1fr)}
+.cards.grid-3{grid-template-columns:repeat(3,1fr)}
+.cards.grid-4{grid-template-columns:repeat(4,1fr)}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:22px;padding:32px;display:flex;flex-direction:column;gap:14px;transition:.35s;position:relative;overflow:hidden}
+.card::before{content:"";position:absolute;inset:0 0 auto 0;height:4px;background:var(--g);transform:scaleX(0);transform-origin:left;transition:.5s}
+.card:hover{transform:translateY(-8px);box-shadow:0 30px 60px rgba(123,104,238,.2)}
+.card:hover::before{transform:none}
+.card p{color:var(--mu);font-size:16px;line-height:1.6}
+.card-header-row{display:flex;align-items:center;gap:14px}
+.ic{width:44px;height:44px;min-width:44px;padding:10px;border-radius:13px;background:var(--bg2);fill:none;stroke:var(--p);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:.3s}
+.hero-btn-wrap{margin:28px 0 10px}
+.stats-banner{background:var(--card);border:1px solid var(--bd);border-radius:24px;padding:48px 36px;margin-top:48px;box-shadow:0 20px 50px rgba(123,104,238,.07)}
+.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;text-align:center}
+.stat-item{display:flex;flex-direction:column;align-items:center;padding:0 12px;position:relative}
+.stat-item:not(:last-child)::after{content:"";position:absolute;right:-14px;top:20%;height:60%;width:1px;background:var(--bd)}
+.stat-val{font-size:clamp(40px,5vw,56px);font-weight:900;letter-spacing:-.03em;line-height:1;margin-bottom:12px;background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat-lbl{font-size:15px;color:var(--mu);font-weight:600;line-height:1.4}
+.narrative-block{max-width:880px;margin:0 auto;display:flex;flex-direction:column;gap:24px}
+.narrative-block p{font-size:18px;line-height:1.75}
+.custom-list{list-style:none;padding:0;margin:12px 0 0;display:flex;flex-direction:column;gap:16px}
+.custom-list li{position:relative;padding-left:32px;color:var(--mu);font-size:17px;line-height:1.6}
+.custom-list li::before{content:"";position:absolute;left:4px;top:10px;width:10px;height:10px;border-radius:50%;background:var(--g)}
+.rv{opacity:0;transform:translateY(36px);transition:opacity .8s,transform .8s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+@media(max-width:860px){
+  .cards.grid-2,.cards.grid-3,.cards.grid-4{grid-template-columns:1fr}
+  .stats-grid{grid-template-columns:1fr;gap:36px}
+  .stat-item:not(:last-child)::after{display:none}
+  section{padding:64px 0}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .rv{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<script src="../../components/layout.js" data-part="nav"></script>
+
+<!-- HERO SECTION: Title, Deliverable, Capabilities, and Results -->
+<header class="hero">
+  <i class="blob b1"></i><i class="blob b2"></i><i class="blob b3"></i>
+  <div class="w">
+    <div class="lab rv">Case Study</div>
+    <h1 class="rv">How British International College of Cairo Automated Academic Reporting and Slashed Software Overhead by Up to 70%</h1>
+
+    <div class="hero-btn-wrap rv">
+      <a class="btn" href="../../contact-us.html">Let's Talk</a>
+    </div>
+
+    <div class="cards grid-2 rv" style="text-align:left; margin-top:40px;">
+      <article class="card">
+        <div class="card-header-row">
+          <svg class="ic" viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+          <h3>Core Deliverable</h3>
+        </div>
+        <p>Custom Learning Management System (LMS) built on Google for Education</p>
+      </article>
+
+      <article class="card">
+        <div class="card-header-row">
+          <svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          <h3>Primary Capabilities</h3>
+        </div>
+        <p>Automated guardian communication, automated attendance and grading pipelines, and scheduled academic reporting</p>
+      </article>
+    </div>
+
+    <!-- Results at a Glance Stats Banner -->
+    <div class="stats-banner rv">
+      <div class="lab" style="margin-bottom:28px;">Results at a Glance</div>
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-val">-38%</div>
+          <div class="stat-lbl">First-year software subscription cost reduction</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-val">-70%</div>
+          <div class="stat-lbl">Software subscription cost reduction in subsequent years</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-val">100%</div>
+          <div class="stat-lbl">Automated attendance, grading, and performance updates sent directly to guardians</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- SECTION: The Problem -->
+<section class="alt">
+  <div class="w">
+    <div class="work rv">
+      <div class="lab">The Problem</div>
+      <h2>Fragmented Communication, Manual Report Generation, and Escalating Licensing Fees</h2>
+      <p>British International College of Cairo needed an efficient way to connect teachers, students, and guardians. Prior to the project:</p>
+    </div>
+
+    <div class="narrative-block rv">
+      <ul class="custom-list">
+        <li>Operational and academic communication between school staff and families lacked a unified, direct channel.</li>
+        <li>Staff faced heavy administrative burdens manually tracking attendance, compiling grades, and assembling weekly and end-of-year academic reports.</li>
+        <li>The school was exposed to costly, recurring third-party software subscriptions that drained budget year after year.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION: The Solution -->
+<section>
+  <div class="w">
+    <div class="work rv">
+      <div class="lab">The Solution</div>
+      <h2>A Streamlined Custom LMS Built on Google for Education</h2>
+      <p>To eliminate administrative friction and remove third-party vendor lock-in, a custom LMS was engineered directly on the Google for Education platform:</p>
+    </div>
+
+    <div class="cards grid-3 rv">
+      <article class="card">
+        <div class="card-header-row">
+          <svg class="ic" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          <h3>Direct Guardian Communication &amp; Alerts</h3>
+        </div>
+        <p>The platform automates student performance notifications, attendance logs, and grade tracking, delivering updates directly to guardians without teacher intervention.</p>
+      </article>
+
+      <article class="card">
+        <div class="card-header-row">
+          <svg class="ic" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          <h3>Automated Academic Reporting</h3>
+        </div>
+        <p>Built-in reporting engines automatically compile and format both weekly progress summaries and comprehensive end-of-year academic report cards.</p>
+      </article>
+
+      <article class="card">
+        <div class="card-header-row">
+          <svg class="ic" viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          <h3>Cost-Efficient Infrastructure</h3>
+        </div>
+        <p>Leveraging the Google for Education environment replaced expensive external SaaS licenses, drastically lowering operational costs from year one.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION: Why It Worked -->
+<section class="alt">
+  <div class="w">
+    <div class="work rv">
+      <div class="lab">Why It Worked</div>
+      <h2>Why It Worked</h2>
+    </div>
+
+    <div class="cards grid-3 rv">
+      <article class="card">
+        <div class="card-header-row">
+          <svg class="ic" viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+          <h3>Immediate &amp; Compounding ROI</h3>
+        </div>
+        <p>Software subscription expenses dropped by 38% in the first year and 70% in all following years.</p>
+      </article>
+
+      <article class="card">
+        <div class="card-header-row">
+          <svg class="ic" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+          <h3>Administrative Workload Reduction</h3>
+        </div>
+        <p>Automating report generation and attendance tracking freed educators and administrative staff from repetitive manual data handling.</p>
+      </article>
+
+      <article class="card">
+        <div class="card-header-row">
+          <svg class="ic" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <h3>Proactive Guardian Engagement</h3>
+        </div>
+        <p>Parents receive verified, real-time academic and attendance metrics automatically, ensuring transparency throughout the school term.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- CTA & FOOTER -->
+<script src="../../components/layout.js" data-part="cta"></script>
+<script src="../../components/layout.js" data-part="footer"></script>
+
+<script>
+const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.style.transitionDelay=(Math.min([...x.target.parentNode.children].indexOf(x.target),5)*90)+'ms';x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.12});
+document.querySelectorAll('.rv').forEach(e=>io.observe(e));
+</script>
+</body>
+</html>

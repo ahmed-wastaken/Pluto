@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <link rel="icon" type="image/png" href="../components/pluto-favicon.png">
+<title>eCommerce Development | Pluto</title>
+
+<!-- Added Inter font to ensure typography matches the style guide exactly -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+:root{--bg:#fff;--bg2:#f7f6fd;--tx:#14102b;--mu:#5d5a78;--bd:#e7e4f5;--card:#fff;--p:#7b68ee;--p2:#ff02f0;--p3:#ffc800;--g:linear-gradient(120deg,#7b68ee,#ff02f0 70%,#ffc800);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e0b1f;--bg2:#15112e;--tx:#f3f1ff;--mu:#a9a5c8;--bd:#2a2550;--card:#1a1538}}
+:root[data-theme="dark"]{--bg:#0e0b1f;--bg2:#15112e;--tx:#f3f1ff;--mu:#a9a5c8;--bd:#2a2550;--card:#1a1538}
+*{box-sizing:border-box;margin:0}html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{background:var(--bg);color:var(--tx);font:16px/1.65 Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.w{max-width:1180px;margin:0 auto;padding:0 24px}
+li>span{cursor:pointer}
+.btn{display:inline-block;padding:13px 26px;border-radius:12px;font-weight:700;background:var(--g);background-size:200% 100%;color:#fff;transition:.4s;box-shadow:0 10px 28px rgba(123,104,238,.35);border:0;cursor:pointer;font-family:inherit;font-size:16px;text-align:center}
+.btn:hover{background-position:100% 0;transform:translateY(-2px);box-shadow:0 14px 34px rgba(255,2,240,.3)}
+.btn.o{background:none;color:var(--tx);box-shadow:none;border:1.5px solid var(--bd)}.btn.o:hover{border-color:var(--p);color:var(--p)}
+.row{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px}
+.hero{position:relative;text-align:center;padding:90px 0 60px;overflow:hidden}
+.blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:.38;z-index:-1;animation:fl 12s ease-in-out infinite}
+.b1{width:420px;height:420px;background:#7b68ee;top:-80px;left:-60px}.b2{width:380px;height:380px;background:#ff02f0;top:60px;right:-80px;animation-delay:-4s}.b3{width:300px;height:300px;background:#ffc800;top:300px;left:40%;animation-delay:-8s;opacity:.25}
+@keyframes fl{50%{transform:translate(40px,-30px) scale(1.12)}}
+h1{font-size:clamp(38px,6.4vw,76px);line-height:1.04;letter-spacing:-.035em;font-weight:900;max-width: 1000px;margin:0 auto 22px}
+h2{font-size:clamp(28px,4vw,46px);line-height:1.12;letter-spacing:-.03em;font-weight:800;margin-bottom:16px}
+p{color:var(--mu);font-size:18px;}
+.hero p.l{max-width:720px;margin:0 auto;color:var(--mu);font-size:19px}
+.hero .row{justify-content:center}
+section{padding:96px 0}
+.alt{background:var(--bg2)}
+
+.work{text-align:center;max-width:780px;margin:0 auto 64px}.work p{color:var(--mu);font-size:18px}
+.cards{display:grid;gap:26px}
+.cards.grid-2{grid-template-columns:repeat(2,1fr)}
+.cards.grid-3{grid-template-columns:repeat(3,1fr)}
+.cards.grid-4{grid-template-columns:repeat(4,1fr)}
+
+.card{background:var(--card);border:1px solid var(--bd);border-radius:22px;padding:32px;display:flex;flex-direction:column;gap:14px;transition:.35s;position:relative;overflow:hidden}
+.card::before{content:"";position:absolute;inset:0 0 auto 0;height:4px;background:var(--g);transform:scaleX(0);transform-origin:left;transition:.5s}
+.card:hover{transform:translateY(-8px);box-shadow:0 30px 60px rgba(123,104,238,.2)}.card:hover::before{transform:none}
+.card p{color:var(--mu);font-size:15px;line-height:1.65}
+.card .more{margin-top:auto;font-weight:800;color:var(--p);display:inline-flex;align-items:center;gap:6px;transition:gap .2s}
+.card:hover .more{gap:10px}
+h3{font-size:clamp(22px,3vw,30px);letter-spacing:-.02em;line-height:1.2;font-weight:800}
+
+.lab{font-weight:800;color:var(--p);font-size:14px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px}
+.ic{width:46px;height:46px;padding:10px;border-radius:13px;background:var(--bg2);fill:none;stroke:var(--p);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:.3s; margin-bottom: 8px;}
+/* Image Section Structure */
+.full-img{width:100%;height:auto;max-height:100%;object-fit:cover;border-radius:22px;box-shadow:0 30px 60px rgba(123,104,238,.15);margin:0 auto 72px;display:block;}
+.text-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px 48px;}
+.text-grid h3{margin-bottom:12px;}
+.text-grid p{font-size:16px;color:var(--mu);line-height:1.65;}
+
+/* Timeline Process */
+.timeline{position:relative;max-width:800px;margin:0 auto;padding-left:56px;}
+.timeline::before{content:'';position:absolute;left:15px;top:16px;bottom:16px;width:3px;background:var(--g);transform-origin:top;transform:scaleY(0);transition:transform 1.5s cubic-bezier(.2,.7,.2,1);}
+.timeline.in::before{transform:scaleY(1);}
+.tl-item{position:relative;margin-bottom:48px;}
+.tl-item:last-child{margin-bottom:0;}
+.tl-ic{position:absolute;left:-56px;top:0;width:32px;height:32px;padding:6px;border-radius:8px;background:var(--card);border:2px solid var(--p);fill:none;stroke:var(--p);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;z-index:2;}
+.tl-content h3{font-size:clamp(20px,2.8vw,24px);font-weight:800;color:var(--tx);margin-bottom:10px;}
+.tl-content p{color:var(--mu);font-size:16px;line-height:1.6;margin-bottom:14px;}
+.tl-content strong{color:var(--tx);}
+
+.rv{opacity:0;transform:translateY(36px);transition:opacity .8s,transform .8s cubic-bezier(.2,.7,.2,1)}.rv.in{opacity:1;transform:none}
+
+@media(max-width:960px){
+  .cards.grid-2{grid-template-columns:1fr}
+  .cards.grid-3{grid-template-columns:1fr}
+  .text-grid{grid-template-columns:1fr;gap:48px;}
+}
+@media(max-width:860px){
+  section{padding:64px 0}
+  .full-img{margin-bottom:56px;}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<script src="../components/layout.js" data-part="nav"></script>
+
+<header class="hero">
+  <i class="blob b1"></i><i class="blob b2"></i><i class="blob b3"></i>
+  <div class="w">
+    <div class="lab rv">Create More than an eCommerce Website</div>
+    <h1 class="rv">Sell everywhere with Pluto eCommerce</h1>
+    <p class="l rv">The all-in-one eCommerce platform for construction suppliers and equipment vendors. Sell materials, tools and equipment online through your eCommerce website, social media and sales channels, or in person with POS. Manage shipping, payments, marketing and more, from one unified dashboard.</p>
+  </div>
+</header>
+
+<section>
+  <div class="w">
+    <div class="work rv">
+      <h2>Your eCommerce evolution awaits</h2>
+      <p>Create an eCommerce website that adapts with your business at every stage, from starting out to selling internationally.</p>
+    </div>
+    <div class="cards grid-3">
+      <article class="card rv">
+        <svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4m0-4h.01"/></svg>
+        <h3>Start</h3>
+        <p>Bring your business ideas to life and make money selling online with an advanced eCommerce store.</p>
+      </article>
+      <article class="card rv">
+        <svg class="ic" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        <h3>Move</h3>
+        <p>Take your supply yard, showroom or counter sales online and expand your customer base to a limitless market, 24/7.</p>
+      </article>
+      <article class="card rv">
+        <svg class="ic" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <h3>Migrate</h3>
+        <p>Migrate to Pluto and experience our complete end-to-end eCommerce solution, engineered for your success.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="w">
+    <div class="work rv">
+      <h2>Pluto eCommerce infrastructure. Fast. Reliable. Secure.</h2>
+    </div>
+    <div class="cards grid-3">
+      <article class="card rv">
+        <svg class="ic" viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        <h3>Industry-leading speed</h3>
+        <p>Our powerful, performance-first infrastructure ensures fast page loading to deliver an enhanced online ordering experience for your customers.</p>
+      </article>
+      <article class="card rv">
+        <svg class="ic" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+        <h3>Scalable and resilient</h3>
+        <p>Your eCommerce website is equipped to handle record traffic, high-volume sales, and up to 750 simultaneous transactions per second.</p>
+      </article>
+      <article class="card rv">
+        <svg class="ic" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        <h3>Enterprise-grade security</h3>
+        <p>Your site security is fully managed by our experts, using threat prevention and real-time detection, coupled with PCI DSS Level 1 compliance for maximum protection.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="w">
+    <div class="work rv">
+      <h2>Solutions built to scale</h2>
+      <p>Advance your growth with enterprise-grade systems.</p>
+    </div>
+    <div class="cards grid-3">
+      <article class="card rv">
+        <svg class="ic" viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        <h3>Sell</h3>
+        <p>Sell at your counter or showroom with Pluto Retail POS or on-the-go with Pluto Mobile POS. Your online and in-person sales, payments and inventory sync automatically.</p>
+      </article>
+      <article class="card rv">
+        <svg class="ic" viewBox="0 0 24 24"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg>
+        <h3>Optimize</h3>
+        <p>Grow organic traffic with customizable SEO tools, build relationships with your complete marketing suite, and target shoppers with Al-led Facebook Ads with Pluto.</p>
+      </article>
+      <article class="card rv">
+        <svg class="ic" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        <h3>Manage</h3>
+        <p>Unify management of multichannel sales, marketing campaigns and shipping integrations, from one dashboard. Manage on-the-go with the Pluto Owner app.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="w">
+    <div class="work rv">
+      <h2>Storefront & eCommerce website</h2>
+      <p>We customize your eCommerce store to create an exceptional shopping experience-from storefront to checkout.</p>
+    </div>
+    <img class="full-img rv" src="1.jpg" alt="Storefront and eCommerce website">
+    
+    <div class="text-grid">
+      <div class="rv">
+        <h3>Custom online store</h3>
+        <p>We create a unique and memorable shopping experience. Tailored to every aspect of your site, including your storefront, custom cart, and express checkout, to convert shoppers to customers.</p>
+      </div>
+      <div class="rv">
+        <h3>Mobile-optimized storefront</h3>
+        <p>Sell and market your products to customers on the move. Your online store looks great on any device: desktop, tablet and mobile.</p>
+      </div>
+      <div class="rv">
+        <h3>Extensive media library</h3>
+        <p>Grab your customers' attention with incredible, eye-catching imagery.</p>
+      </div>
+      <div class="rv">
+        <h3>Multichannel sales</h3>
+        <p>Expand your commercial reach with multiple sales channels. Sell on Facebook, Instagram, Google Shopping, eBay, and more from a single dashboard.</p>
+      </div>
+      <div class="rv">
+        <h3>Global eCommerce business</h3>
+        <p>Adapt your business to an international audience. Translate your store into 90+ languages, create local subdomains, and optimize all translated sites for SEO.</p>
+      </div>
+      <div class="rv">
+        <h3>Robust blog platform</h3>
+        <p>Engage and grow your customer base by adding a blog to your site. Share your content on social and enjoy built-in features, like scheduled posts and additional blog contributors.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="w">
+    <div class="work rv">
+      <h2>Cart & checkout</h2>
+      <p>Convert shoppers to customers by offering a streamlined, secure checkout.</p>
+    </div>
+    <img class="full-img rv" src="2.jpg" alt="Cart and checkout">
+    
+    <div class="text-grid">
+      <div class="rv">
+        <h3>SSL certificate</h3>
+        <p>Protect your store and customers with a 256-bit SSL certificate. All of your site content, personal information, and payments are secured by advanced, end-to-end encryption.</p>
+      </div>
+      <div class="rv">
+        <h3>Debit/credit card payments</h3>
+        <p>Instantly accept secure credit and debit card payments from all major brands, including Visa and American Express. With transparent pricing, you get one fixed rate for all credit cards.</p>
+      </div>
+      <div class="rv">
+        <h3>50+ secure payment gateways</h3>
+        <p>Select a payment solution that best suits your business and region. Choose from dozens of leading payment gateways, from our native Payments solution to third-party gateways like PayPal, Stripe, Square, and more.</p>
+      </div>
+      <div class="rv">
+        <h3>Automated sales tax</h3>
+        <p>Get automated sales tax calculation in just a few clicks. Offer customers a transparent checkout process with the most current, geo-specific tax rates from Avalara® for every transaction, worldwide.</p>
+      </div>
+      <div class="rv">
+        <h3>Currency Converter</h3>
+        <p>Let customers browse your shop in their local currencies, worldwide. Add our currency converter to your store and choose the currencies you want to display on your site, hassle-free.</p>
+      </div>
+      <div class="rv">
+        <h3>Express checkout</h3>
+        <p>Encourage customers to purchase your products faster by sending them straight to checkout. Add standalone Pay buttons anywhere on your site to instantly accept payments for specific items.</p>
+      </div>
+      <div class="rv">
+        <h3>Integrated Members Area</h3>
+        <p>Create a loyal customer base with exclusive member accounts. Once they log in, members can create a wishlist, view their order history, follow your forum, manage their events, get express checkout and more.</p>
+      </div>
+      <div class="rv">
+        <h3>Abandoned cart recovery</h3>
+        <p>Turn leads into customers by recovering abandoned shopping carts. Send automated emails encouraging shoppers to complete their purchase on your site and offer related products.</p>
+      </div>
+      <div class="rv">
+        <h3>Custom shipping rates</h3>
+        <p>Set your own shipping rates for products with specific delivery costs. Determine your rates by region, category, weight and price range, or create a flat rate shipping rule.</p>
+      </div>
+      <div class="rv">
+        <h3>Delivery & curbside pickup</h3>
+        <p>Let customers choose how they get their orders. Offer delivery to the job site or let customers collect orders in person.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="w">
+    <div class="work rv">
+      <h2>Store management</h2>
+      <p>Run your entire business efficiently from one powerful eCommerce platform.</p>
+    </div>
+    <img class="full-img rv" src="3.jpg" alt="Store management">
+    
+    <div class="text-grid">
+      <div class="rv">
+        <h3>Catalog & inventory management</h3>
+        <p>Manage your store catalog and inventory smoothly. With open APIs, you can easily connect your preferred inventory tools to your store, keeping everything fully synced at all times.</p>
+      </div>
+      <div class="rv">
+        <h3>Streamlined shipping</h3>
+        <p>Handle shipping and print labels for all orders from a single dashboard. Get competitive rates from leading domestic and international shipping services.</p>
+      </div>
+      <div class="rv">
+        <h3>Hassle-free fulfillment</h3>
+        <p>Simplify storage and fulfillment with third-party solutions. Add suppliers and manufacturers you work with to your system or connect to leading warehousing services like ShipBob.</p>
+      </div>
+      <div class="rv">
+        <h3>Smart business automations</h3>
+        <p>Streamline your workflow with custom business automations. Send automated reminders to shoppers or suppliers and save valuable time with triggered, prioritized tasks for your team.</p>
+      </div>
+      <div class="rv">
+        <h3>Smooth refund process</h3>
+        <p>Monitor and handle refunds with ease. Cancel store orders and issue your customers partial or full refunds to their payment method, right from your dashboard.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="w">
+    <div class="work rv">
+      <h2>Store analytics</h2>
+      <p>Make informed decisions with detailed, built-in eCommerce analytics and insights.</p>
+    </div>
+    <img class="full-img rv" src="4.jpg" alt="Store analytics">
+    
+    <div class="text-grid">
+      <div class="rv">
+        <h3>Business insights</h3>
+        <p>Monitor your store's performance and review your sales success with an integrated analytics dashboard and professional reports. Analyze your revenue, marketing campaigns, customer base, top-selling products and more.</p>
+      </div>
+      <div class="rv">
+        <h3>Top products</h3>
+        <p>Monitor your store with up-to-date product metrics and reports. Review which items are your best (and worst) performers based on the highest quantity sold, most revenue earned and most viewed.</p>
+      </div>
+      <div class="rv">
+        <h3>Traffic reports</h3>
+        <p>Focus your marketing efforts with site traffic analytics. Learn how much traffic your site is getting, how visitors find your store online and view their specific referral points.</p>
+      </div>
+      <div class="rv">
+        <h3>Google Analytics</h3>
+        <p>Learn from Google Analytics how visitors behave in your online store.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="w">
+    <div class="work rv">
+      <div class="lab">Benefits</div>
+      <h2>High-End Expertise, Tailored to Meet Your Business Needs.</h2>
+      <p>Our product's core strengths lie in security, reliability, privacy, accessibility, and powerful web hosting. These attributes underpin our commitment to excellence, ensuring your experience is safe, dependable, private, user-friendly, and technologically robust.</p>
+    </div>
+    <div class="cards grid-3">
+      <article class="card rv">
+        <svg class="ic" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        <h3>Security</h3>
+        <p>Security is at the foundation of everything we do-keeping your business protected with a cutting-edge framework and multi-layered defense throughout our platform.</p>
+        <a class="more" href="../Benefits/security_page.html">Learn more →</a>
+      </article>
+      <article class="card rv">
+        <svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4m0-4h.01M8 12h8"/></svg>
+        <h3>Accessibility</h3>
+        <p>Your website is more powerful when it's designed for all, regardless of ability. With Pluto, you can create a website with accessibility settings built right in, allowing any visitor to interact with it.</p>
+        <a class="more" href="../Benefits/accessibility_page.html">Learn more →</a>
+      </article>
+      <article class="card rv">
+        <svg class="ic" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
+        <h3>Mobile Dashboard</h3>
+        <p>Use our Owner app to manage and grow your business or community on the go.</p>
+        <a class="more" href="../Benefits/mobile_dashboard_page.html">Learn more →</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="w">
+    <div class="work rv">
+      <div class="lab">Process</div>
+      <h2>Our Tried and Tested Four-Step Process</h2>
+      <p>We take a structured approach to web design. Our development process was created to ensure every project is delivered on time and on budget. Once your web design project kicks off, here's what to expect:</p>
+    </div>
+
+    <div class="timeline rv">
+      <div class="tl-item">
+        <svg class="tl-ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+        <div class="tl-content">
+          <h3>01 Discovery</h3>
+          <p><strong>1.1 Creative Brief</strong><br>To deeper understand your objectives with the new website - we invite you to complete our custom and proprietary Creative Brief as a first step to the design of your new website. Geared for results, your custom Brief will include questions about your audience, goals, CTAs, and your definition of success for our bespoke work.</p>
+          <p><strong>1.2 Digital Analysis</strong><br>Understanding the purpose of your website is vital to our success - we begin the process by discussing your new website's goals and audience. After, we craft a strategy to meet or exceed your objectives with analytics and cognitive behavior in mind.</p>
+          <p><strong>1.3 Strategy</strong><br>Having analyzed your industry, references, and industry direction - we devise a strong directional strategy for the next steps of the project and draw up a plan of the meeting schedule to follow. Our strategy includes visual direction and team brainstorming.</p>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <svg class="tl-ic" viewBox="0 0 24 24"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/></svg>
+        <div class="tl-content">
+          <h3>02 Design</h3>
+          <p><strong>2.1 Concept Ideation</strong><br>As a cohesive multidisciplinary team, our web designers collaborate with our branding team to ensure your website expresses your every brand essence and desire. We utilize knowledge transfer and design trends to understand your industry and craft a web design to help your business stand out.</p>
+          <p><strong>2.2 UX - Experience Design</strong><br>Flowcharts and wireframes identify user motivation and define the hierarchy of items on a site based on your audience's needs. We experiment with cutting-edge innovation and design principles to elevate your website to the top of your industry.</p>
+          <p><strong>2.3 UI - Interface Design</strong><br>Next, we build modern high-fidelity design screens that tell a story and reflect your newfound web design direction. This meticulous process expands into multiple device sizes and web design breakpoints.</p>
+          <p><strong>2.4 Prototype</strong><br>As a final step in our detailed design process, we create clickable animated prototypes to walk the client through what our vision of the web design will be and reference and additional animations we envision (or even create them using professional motion software).</p>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <svg class="tl-ic" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        <div class="tl-content">
+          <h3>03 Development</h3>
+          <p><strong>3.1 Systems Architecture</strong><br>We thoughtfully discuss and decide the fundamental organization of a the backend system that will be optimal for your website. Selecting the most elegant of solutions to effectively reach the desired design solution in the allotted timeline - we proceed to the development stage.</p>
+          <p><strong>3.2 Full Stack and CMS Integrations</strong><br>We are skilled in a variety of programming languages to provide you with flexibility for your site. Unlike many web design companies that utilize outdated approaches and templates, all our work is entirely custom and we specialize in headless CMS as a back-end-only content management system, making website management and content creation easy.</p>
+          <p><strong>3.3 Quality Assurance</strong><br>Upon design completion, the website undergoes rigorous testing which utilizes the most state-of-the-art technologies to report and expedite any design inconsistencies and updates needed.</p>
+          <p><strong>3.4 Launch</strong><br>The most exciting of steps, we walk our clients through each and every step of the launch process and ensure nothing is overlooked. In the strictest of disciplines, website launches are the strictest!</p>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <svg class="tl-ic" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        <div class="tl-content">
+          <h3>04 Support</h3>
+          <p><strong>4.1 Maintenance and Updates</strong><br>The relationship between a web design company and its clients should not end with the launch of a website. We ensure that your site continues working for you by maintaining secure hosting and providing daily data backups and security scans. We are also available for any updates, improvements, or expansions of your website.</p>
+          <p><strong>4.2 Performance Monitoring</strong><br>Every project we build has performance and security in mind. We exceed modern web standards by optimizing accessibility, usability, responsiveness across platforms, and organic search. These factors not only improve the user's experience but also drive sales, decrease potential legal issues and help your brand grow.</p>
+          <p><strong>4.3 Robust Training</strong><br>We ensure the process of creating and maintaining your website is as simple as possible. Part of our process teaches you the intricacies of your website to translate our knowledge to you. We provide training videos, guides, and/or on-site training to help your team get up to speed with your new website.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt"><div class="w">
+<div class="work rv in" style="transition-delay: 0ms;"><div class="lab">Deliverables</div><h2>What will you receive at the end of the project?</h2></div>
+<div class="cards grid-2">
+<article class="card rv in" style="transition-delay: 0ms;"><svg class="ic" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"></rect><path d="M3 9h18M8 21h8M12 18v3"></path></svg><h3>Web Design and Development</h3><p>A responsive website that looks great, works well on all devices, secure, and brings in leads.</p></article>
+<article class="card rv in" style="transition-delay: 90ms;"><svg class="ic" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg><h3>SEO optimization</h3><p>We guarantee excellent website performance, well-organized content, and accurate tags to avoid Google penalties.</p></article>
+<article class="card rv in" style="transition-delay: 180ms;"><svg class="ic" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg><h3>Continuous support</h3><p>L1, L2 and L3 support services, we deliver hot-fixes within 24 hours to prevent or resolve any issues in usage, technology and code that may arise.</p></article>
+<article class="card rv in" style="transition-delay: 270ms;"><svg class="ic" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg><h3>Web Hosting</h3><p>Reliable and scalable web hosting with 99.9% uptime and can handle any amount of traffic.</p></article>
+<article class="card rv in" style="transition-delay: 360ms;"><svg class="ic" viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="3"></rect><path d="M8 10V7a4 4 0 018 0v3"></path></svg><h3>Security Monitoring</h3><p>24/7 security monitoring, HTTPS, SSL protection, and DDoS protection to make sure your website is secure at all times.</p></article>
+<article class="card rv in" style="transition-delay: 450ms;"><svg class="ic" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg><h3>Dedicated Website Manager</h3><p>Assigned manager to answer any questions and implements security updates, performance-enhancing measures, and content updates.</p></article>
+</div>
+</div>
+</section>
+
+<script src="../components/layout.js" data-part="cta"></script>
+<script src="../components/layout.js" data-part="footer"></script>
+
+<script>
+  const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.style.transitionDelay=(Math.min([...x.target.parentNode.children].indexOf(x.target),5)*90)+'ms';x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.12});
+  document.querySelectorAll('.rv, .timeline').forEach(e=>io.observe(e));
+</script>
+</body>
+</html>

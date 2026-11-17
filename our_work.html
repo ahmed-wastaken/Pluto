@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <link rel="icon" type="image/png" href="components/pluto-favicon.png">
+<title>Our Work | Pluto</title>
+<style>
+:root{--bg:#fff;--bg2:#f7f6fd;--tx:#14102b;--mu:#5d5a78;--bd:#e7e4f5;--card:#fff;--p:#7b68ee;--p2:#ff02f0;--p3:#ffc800;--g:linear-gradient(120deg,#7b68ee,#ff02f0 70%,#ffc800);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e0b1f;--bg2:#15112e;--tx:#f3f1ff;--mu:#a9a5c8;--bd:#2a2550;--card:#1a1538}}
+:root[data-theme="dark"]{--bg:#0e0b1f;--bg2:#15112e;--tx:#f3f1ff;--mu:#a9a5c8;--bd:#2a2550;--card:#1a1538}
+*{box-sizing:border-box;margin:0}html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{background:var(--bg);color:var(--tx);font:16px/1.65 Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.w{max-width:1180px;margin:0 auto;padding:0 24px}
+.btn{display:inline-block;padding:13px 26px;border-radius:12px;font-weight:700;background:var(--g);background-size:200% 100%;color:#fff;transition:.4s;box-shadow:0 10px 28px rgba(123,104,238,.35);border:0;cursor:pointer;font-family:inherit;font-size:16px;text-align:center}
+.btn:hover{background-position:100% 0;transform:translateY(-2px);box-shadow:0 14px 34px rgba(255,2,240,.3)}
+.row{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px}
+.hero{position:relative;text-align:center;padding:90px 0 60px;overflow:hidden}
+.blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:.38;z-index:-1;animation:fl 12s ease-in-out infinite}
+.b1{width:420px;height:420px;background:#7b68ee;top:-80px;left:-60px}.b2{width:380px;height:380px;background:#ff02f0;top:60px;right:-80px;animation-delay:-4s}.b3{width:300px;height:300px;background:#ffc800;top:300px;left:40%;animation-delay:-8s;opacity:.25}
+@keyframes fl{50%{transform:translate(40px,-30px) scale(1.12)}}
+h1{font-size:clamp(38px,6.4vw,76px);line-height:1.04;letter-spacing:-.035em;font-weight:900;max-width: 1000px;margin:0 auto 22px}
+h2{font-size:clamp(28px,4vw,46px);line-height:1.12;letter-spacing:-.03em;font-weight:800;margin-bottom:16px}
+h3{font-size:clamp(22px,3vw,32px);letter-spacing:-.02em;line-height:1.2;font-weight:800}
+.gt{background:linear-gradient(90deg,#7b68ee,#c04dff,#ff02f0,#ff8a5c,#ffc800,#ff8a5c,#ff02f0,#c04dff,#7b68ee);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sh 10s linear infinite}
+@keyframes sh{to{background-position:200% 0}}
+p{color:var(--mu);font-size:18px}
+.hero p.l{max-width:720px;margin:0 auto;font-size:19px}
+section{padding:96px 0}
+.alt{background:var(--bg2)}
+.work{text-align:center;max-width:780px;margin:0 auto 52px}.work p{color:var(--mu);font-size:18px}
+.lab{font-weight:800;color:var(--p);font-size:14px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.cards.grid-2{grid-template-columns:repeat(2,1fr)}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:22px;padding:32px;display:flex;flex-direction:column;gap:14px;transition:.35s;position:relative;overflow:hidden}
+.card::before{content:"";position:absolute;inset:0 0 auto 0;height:4px;background:var(--g);transform:scaleX(0);transform-origin:left;transition:.5s}
+.card:hover{transform:translateY(-8px);box-shadow:0 30px 60px rgba(123,104,238,.2)}.card:hover::before{transform:none}
+.card p{color:var(--mu);font-size:15px}
+.card .btn{margin-top:auto;align-self:start}
+.card .more{margin-top:auto;font-weight:800;color:var(--p)}
+.lg{height:52px;display:flex;align-items:center}
+.lg img{height:56px;width:auto;max-width:100%}.ld{display:none}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) .ll{display:none}:root:not([data-theme="light"]) .ld{display:block}}
+:root[data-theme="dark"] .ll{display:none}:root[data-theme="dark"] .ld{display:block}
+
+/* Optimized Card Preview Frame */
+.card-preview {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: 14px;
+  overflow: hidden;
+  margin-bottom: 16px;
+  background: var(--bg2);
+  border: 1px solid var(--bd);
+  box-shadow: 0 10px 26px rgba(123, 104, 238, 0.12);
+  position: relative;
+  display: block;
+}
+
+/* Downscale anti-aliasing filter to stop 2880px images from pixelating */
+.card-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: high-quality;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  transition: transform 0.4s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.card:hover .card-preview img {
+  transform: scale(1.03) translateZ(0);
+}
+
+.trust{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:44px}
+.tr{background:var(--card);border:1px solid var(--bd);border-radius:20px;padding:28px;transition:.35s}
+.tr:hover{transform:translateY(-6px);border-color:var(--p)}
+.tr svg{width:48px;height:48px;margin-bottom:16px;padding:11px;border-radius:14px;background:var(--g);fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.tr h3{font-size:16px;line-height:1.5;font-weight:700;letter-spacing:0}
+.work-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;align-items:stretch;max-width:900px;margin:0 auto}
+.work-card{background:var(--card);border:1px solid var(--bd);border-radius:24px;padding:36px 32px 32px;display:flex;flex-direction:column;position:relative;transition:transform .4s cubic-bezier(.2,.7,.2,1),box-shadow .4s ease,border-color .4s ease;overflow:hidden}
+.work-card::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:var(--g);transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.work-card:hover{transform:translateY(-8px);box-shadow:0 30px 65px rgba(123,104,238,.18);border-color:var(--p)}
+.work-card:hover::before{transform:scaleX(1)}
+.work-header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:24px;min-height:52px}
+.client-logo-box{height:46px;display:flex;align-items:center;justify-content:flex-start}
+.client-logo-box img{max-height:42px;max-width:160px;width:auto;height:auto;object-fit:contain;transition:transform .3s}
+.work-card:hover .client-logo-box img{transform:scale(1.04)}
+.client-badge{display:inline-flex;align-items:center;padding:5px 12px;border-radius:99px;font-size:12px;font-weight:700;color:var(--p);background:var(--bg2);border:1px solid var(--bd);letter-spacing:.02em;white-space:nowrap}
+.work-card h3{font-size:22px;font-weight:800;letter-spacing:-.02em;line-height:1.28;margin-bottom:14px;color:var(--tx)}
+.work-desc{color:var(--mu);font-size:15px;line-height:1.65;margin-bottom:24px;flex-grow:1}
+.metric-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:16px 18px;background:var(--bg2);border-radius:16px;border:1px solid var(--bd);margin-bottom:20px}
+.metric-row.single{grid-template-columns:1fr}
+.metric-item .val{font-size:22px;font-weight:900;background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1.15}
+.metric-item .lbl{font-size:12px;font-weight:600;color:var(--mu);margin-top:4px}
+.work-highlights{display:flex;flex-direction:column;gap:8px;padding-top:14px;border-top:1px dashed var(--bd);margin-bottom:24px}
+.hl-item{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--mu);line-height:1.45}
+.hl-item svg{width:16px;height:16px;flex-shrink:0;stroke:var(--p);fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;margin-top:2px}
+.hl-item strong{color:var(--tx);font-weight:700}
+.work-card .more{font-weight:800;color:var(--p);font-size:15px;display:inline-flex;align-items:center;gap:6px;transition:gap .25s;margin-top:auto;background:none;border:0;cursor:pointer;font-family:inherit;padding:0;text-align:left}
+.work-card:hover .more{gap:10px}
+.rv{opacity:0;transform:translateY(36px);transition:opacity .8s,transform .8s cubic-bezier(.2,.7,.2,1)}.rv.in{opacity:1;transform:none}
+
+/* Lightbox Modal & Detailed Case Study Styles[cite: 1] */
+#lb{position:fixed;inset:0;background:rgba(14,11,31,.75);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;padding:20px;z-index:9999}
+#lb.on{display:flex}
+#lb .bx{background:var(--card);color:var(--tx);border:1px solid var(--bd);border-radius:24px;max-width:760px;width:100%;max-height:90vh;overflow-y:auto;padding:38px 40px;position:relative;box-shadow:0 30px 90px rgba(14,11,31,.4);animation:op .35s cubic-bezier(.16,1,.3,1)}
+@keyframes op{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+#lb .x{position:absolute;top:18px;right:18px;width:38px;height:38px;border-radius:50%;border:1px solid var(--bd);background:var(--bg2);color:var(--tx);font-size:20px;cursor:pointer;display:grid;place-items:center;transition:background .2s,border-color .2s;z-index:2}
+#lb .x:hover{background:var(--bd);border-color:var(--p)}
+#lb h3{font-size:clamp(22px,2.4vw,28px);margin:14px 0 10px;line-height:1.25;font-weight:800;letter-spacing:-.02em}
+#lb .modal-intro{font-size:15.5px;line-height:1.65;color:var(--tx);font-weight:500;margin-bottom:24px;padding-bottom:18px;border-bottom:1px solid var(--bd)}
+.cs-flow{display:flex;flex-direction:column;gap:18px;margin-bottom:28px}
+.cs-stage{background:var(--bg2);border:1px solid var(--bd);border-radius:16px;padding:20px 22px;transition:border-color .25s}
+.cs-stage:hover{border-color:var(--p)}
+.cs-stage-header{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.cs-tag{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:6px;display:inline-block}
+.tag-prob{background:rgba(255,2,240,.12);color:#c002b4}
+.tag-sol{background:rgba(123,104,238,.12);color:var(--p)}
+.tag-res{background:rgba(15,207,156,.14);color:#08805f}
+@media(prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) .tag-prob{background:rgba(255,2,240,.22);color:#ff75f6}
+  :root:not([data-theme="light"]) .tag-res{background:rgba(15,207,156,.22);color:#34eab8}
+}
+:root[data-theme="dark"] .tag-prob{background:rgba(255,2,240,.22);color:#ff75f6}
+:root[data-theme="dark"] .tag-res{background:rgba(15,207,156,.22);color:#34eab8}
+.cs-stage h4{font-size:16px;font-weight:800;color:var(--tx);margin:0}
+.cs-stage p{font-size:14.5px;line-height:1.6;color:var(--mu);margin:0}
+.cs-bullets{padding-left:18px;margin:10px 0 0;display:flex;flex-direction:column;gap:6px;font-size:14px;color:var(--mu)}
+.cs-bullets li strong{color:var(--tx)}
+.cs-metrics-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}
+.cs-m-card{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:12px 14px;text-align:center}
+.cs-m-card .val{font-size:18px;font-weight:900;background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1.2}
+.cs-m-card .lbl{font-size:11.5px;font-weight:600;color:var(--mu);margin-top:4px}
+.modal-actions{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:16px;border-top:1px solid var(--bd)}
+
+@media(max-width:860px){
+  .cards,.cards.grid-2,.trust,.work-grid{grid-template-columns:1fr}
+  section{padding:64px 0}
+  #lb .bx{padding:26px 18px}
+  .cs-metrics-grid{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+.hl{position:relative;display:inline-block;transition:color .25s}.hl::after{content:"";position:absolute;left:0;bottom:-4px;height:2px;width:100%;background:var(--g);transform:scaleX(0);transform-origin:left;transition:transform .35s cubic-bezier(.2,.7,.2,1)}.hl:hover{color:var(--p)}.hl:hover::after{transform:scaleX(1)}
+</style></head><body>
+
+<script src="components/layout.js" data-part="nav"></script>
+
+<header class="hero"><i class="blob b1"></i><i class="blob b2"></i><i class="blob b3"></i><div class="w">
+<h1 class="rv">Real Projects, Real Results</h1>
+<p class="l rv">From lead-generation programs to custom software and learning platforms, every project is built around how the client actually runs their business.</p>
+<div class="row rv" style="justify-content:center"><a class="btn" href="contact-us.html">Let’s Talk</a></div>
+</div></header>
+
+<section id="work"><div class="w">
+<div class="work rv"><div class="lab">Our Work</div><h2>Fostering Innovation One<br>Project at a Time</h2>
+<p>Embark on a digital journey with Pluto, where innovation meets precision. Dive into our web development portfolio, a testament to our mastery in crafting immersive online experiences.</p></div>
+<div class="cards">
+<article class="card rv">
+  <div class="lg"><img src="https://static.wixstatic.com/media/0173c2_04fd54fd3eff4bbb8809658297650e47~mv2.png" alt="CPM Enterprise"></div>
+  <p>We partnered with CPM Enterprise, a construction project management and engineering consultancy based out of Raleigh, NC, specializing in advanced scheduling, BIM modeling, delay resolution, and risk mitigation, to build a scalable pipeline of qualified opportunities.</p>
+  <p>Over 3+ years, our lead-generation strategy delivered 200+ leads annually, a 30% conversion rate, and contributed to 22% year-over-year revenue growth, culminating in the highest quarterly revenue in the company’s history.</p>
+  <a class="more" href="Our Work/Case Studies/CPM Enterprise.html">Learn more →</a>
+</article>
+<article class="card rv">
+  <div class="lg"><img src="https://static.wixstatic.com/media/0173c2_a283bd5285a9487b893fc1e37ef0aa44~mv2.png" alt="Dimon"></div>
+  <p>Beijing Dimon CNC Technology Co., Ltd., a Beijing-based CNC machine manufacturer, needed a more efficient way to manage customer balances, installment payments, and billing without relying on multiple expensive software subscriptions.</p>
+  <p>We developed a custom CRM and billing platform that centralizes client information and outstanding balances, automatically sends monthly installment reminders, generates invoices, and seamlessly handles transactions across 4 currencies. The solution reduced software subscription costs by 59% in the first year and 91% in subsequent years, while giving the company a scalable system built specifically around its operations.</p>
+  <a class="more" href="Our Work/Case Studies/dmnc.html">Learn more →</a>
+</article>
+<article class="card rv">
+  <div class="lg"><img src="https://static.wixstatic.com/media/0173c2_4964890dccf845688aaa675509e17c2e~mv2.png" alt="British International College of Cairo"></div>
+  <p>British International College of Cairo, a Cairo-based school and member of the Odyssey French International Education Group, needed a streamlined digital learning solution to improve communication between teachers, students, and guardians.</p>
+  <p>We developed a custom LMS built on the Google for Education platform, automating attendance, grades, and performance updates sent directly to guardians. The system also generates weekly and end-of-year academic reports, reducing administrative workload while lowering software subscription costs by 38% in the first year and 70% in subsequent years.</p>
+  <a class="more" href="Our Work/Case Studies/bicc.html">Learn more →</a>
+</article>
+</div></div></section>
+
+<section class="alt" id="demo"><div class="w">
+<div class="work rv in" style="transition-delay: 0ms;"><div class="lab">Demo</div><h2>See What We Build, Live</h2>
+<p>A closer look at the websites and web apps our team designs, builds and maintains for construction and engineering businesses.</p></div>
+<div class="cards grid-2">
+<article class="card rv in" style="transition-delay: 0ms;">
+  <div class="card-preview">
+    <img src="Our Work/Websites/Cover Images/cpm enterprise.png" alt="CPM Enterprise Preview" />
+  </div>
+  <h3>CPM Enterprise</h3>
+  <p>Comprehensive construction management platform highlighting civil, commercial, and infrastructure solutions.</p>
+  <a class="btn" href="Our Work/Websites/CPM Enterprise.html" target="_blank" rel="noopener noreferrer">View live &rarr;</a>
+</article>
+<article class="card rv in" style="transition-delay: 90ms;">
+  <div class="card-preview">
+    <img src="Our Work/Websites/Cover Images/Delta Line Construction.png" alt="Delta Line Construction Preview" />
+  </div>
+  <h3>Delta Line Construction</h3>
+  <p>Engineered logistics and industrial contracting site designed for streamlined service inquiries.</p>
+  <a class="btn" href="Our Work/Websites/Delta Line Construction.html" target="_blank" rel="noopener noreferrer">View live &rarr;</a>
+</article>
+<article class="card rv in" style="transition-delay: 180ms;">
+  <div class="card-preview">
+    <img src="Our Work/Websites/Cover Images/MB Western.png" alt="M.B. Western Preview" />
+  </div>
+  <h3>M.B. Western</h3>
+  <p>Industrial construction and field service showcase featuring fabrication capabilities and project specs.</p>
+  <a class="btn" href="Our Work/Websites/MB Western.html" target="_blank" rel="noopener noreferrer">View live &rarr;</a>
+</article>
+<article class="card rv in" style="transition-delay: 270ms;">
+  <div class="card-preview">
+    <img src="Our Work/Websites/Cover Images/Tri-State Electric.png" alt="Tri-State Electric Preview" />
+  </div>
+  <h3>Tri-State Electric</h3>
+  <p>Technical engineering and fabrication portfolio built with detailed equipment catalogs and contact forms.</p>
+  <a class="btn" href="Our Work/Websites/Tri-State Electric.html" target="_blank" rel="noopener noreferrer">View live &rarr;</a>
+</article>
+</div></div></section>
+
+<section id="trust"><div class="w"><div class="rv" style="text-align:center"><div class="lab">Trust</div><h2>Why Businesses Choose Pluto</h2></div>
+<div class="trust"><div class="tr rv"><svg viewBox="0 0 24 24"><path d="M8 12l3 3 5-6M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/></svg><h3>We work directly with Google, Microsoft, and AWS. This multi-cloud background allows our team to build and maintain software on the major platforms, giving clients access to manufacturer-level support and resources without platform lock-in.</h3></div>
+<div class="tr rv"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2 20c0-4 3-6 7-6s7 2 7 6M17 5a3.5 3.5 0 010 6M22 20c0-3-1.5-5-4-5.7"/></svg><h3>Our staff includes IT consultants, project managers, technical architects, developers, QA engineers, security and DevOps engineers, along with AI and blockchain specialists. Having these disciplines in-house means we manage the entire project lifecycle without relying on external contractors.</h3></div>
+<div class="tr rv"><svg viewBox="0 0 24 24"><circle cx="12" cy="9" r="6"/><path d="M8.5 14l-1.5 8 5-3 5 3-1.5-8"/></svg><h3>We follow strict internal quality management processes during all stages of development. By relying on standardized, documented procedures and peer reviews, our teams minimize errors and consistently meet exact client specifications and industry requirements.</h3></div>
+<div class="tr rv"><svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="3"/><path d="M8 10V7a4 4 0 018 0v3"/></svg><h3>We protect client data using established information security protocols and current defensive technologies. Our security professionals maintain updated internal policies to prevent breaches and keep proprietary code, user information, and trade secrets private.</h3></div>
+</div></div></section>
+
+<section class="alt" id="case-studies">
+  <div class="w">
+    <div class="work rv">
+      <div class="lab">Talent</div>
+      <h2>Engineered for Scale, Built for Value</h2>
+      <p>Our Chief Engineer has delivered some of Egypt’s most significant financial and industrial technology projects. Two featured examples are shown below.</p>
+    </div>
+
+    <div class="work-grid">
+      <article class="work-card rv">
+        <div class="work-header">
+          <div class="client-logo-box">
+            <img src="https://www.instapay.eg/wp-content/uploads/2022/01/Asset-6@4x-1024x125.png" alt="InstaPay Logo" loading="lazy">
+          </div>
+          <span class="client-badge">FinTech</span>
+        </div>
+        <h3>National Real-Time Instant Payment Network</h3>
+        <p class="work-desc">Egypt's sovereign national payment rail backed by the Central Bank of Egypt, empowering multi-bank financial transfers 24/7/365 with sub-second clearing and uncompromised cryptographic resilience.</p>
+        
+        <div class="metric-row">
+          <div class="metric-item">
+            <div class="val">24/7/365</div>
+            <div class="lbl">Continuous Sub-Second Uptime</div>
+          </div>
+          <div class="metric-item">
+            <div class="val">Tier-1</div>
+            <div class="lbl">Central Banking Compliance</div>
+          </div>
+        </div>
+
+        <div class="work-highlights">
+          <div class="hl-item">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span><strong>Ultra-Low Latency:</strong> High-frequency transaction settlement architecture.</span>
+          </div>
+          <div class="hl-item">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span><strong>Full Redundancy:</strong> Distributed cross-bank failover protocol.</span>
+          </div>
+        </div>
+
+        <button class="more" type="button" data-i="0">Read case study →</button>
+      </article>
+
+      <article class="work-card rv">
+        <div class="work-header">
+          <div class="client-logo-box">
+            <img src="https://www.efinanceinvestment.com/themes/custom/efinance/logo.svg" alt="e-Finance Logo" loading="lazy">
+          </div>
+          <span class="client-badge">GovTech &amp; Transit</span>
+        </div>
+        <h3>National Smart Card Personalization System</h3>
+        <p class="work-desc">e-Cards (e-Finance Investment Group subsidiary) powers the localized issuance and encrypted encoding of high-volume smart cards for nationwide transit networks and state payments.</p>
+        
+        <div class="metric-row single">
+          <div class="metric-item">
+            <div class="val">Nationwide</div>
+            <div class="lbl">Public Transit &amp; Encrypted Digital Payments Infrastructure</div>
+          </div>
+        </div>
+
+        <div class="work-highlights">
+          <div class="hl-item">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span><strong>Industrial CPS:</strong> Card Personalization System localized hardware handshake.</span>
+          </div>
+          <div class="hl-item">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span><strong>Hardware Security:</strong> Military-grade cryptographic module authorization.</span>
+          </div>
+        </div>
+
+        <button class="more" type="button" data-i="1">Read case study →</button>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox Modal Container[cite: 1] -->
+<div id="lb" role="dialog" aria-modal="true" aria-labelledby="lbt">
+  <div class="bx">
+    <button class="x" aria-label="Close">×</button>
+    <div id="lbc"></div>
+  </div>
+</div>
+
+<script src="components/layout.js" data-part="cta"></script>
+<script src="components/layout.js" data-part="footer"></script>
+
+<script>
+const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.style.transitionDelay=(Math.min([...x.target.parentNode.children].indexOf(x.target),5)*90)+'ms';x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.12});
+document.querySelectorAll('.rv').forEach(e=>io.observe(e));
+
+/* Clear, Simple Case Studies: Problem, Solution, Results[cite: 1] */
+const CS_DATA = [
+  {
+    badge: 'FinTech · Central Bank of Egypt',
+    title: 'Instant Payment Network (InstaPay)',
+    intro: 'InstaPay is Egypt’s official instant payment network created by the Central Bank of Egypt. It links all banks and mobile wallets together so people can send money immediately from their phones.',
+    problem: 'Sending money between different banks used to take hours or even days. People and businesses had to wait around for transfers to clear, and there was no single system that let all banks talk to each other safely and instantly around the clock.',
+    solutions: [
+      '<strong>Instant Money Movement:</strong> Built an engine that connects banks in real time, moving funds between accounts in just seconds.',
+      '<strong>Bank-Grade Protection:</strong> Added strong hardware-level data encryption to make sure transfers cannot be hacked or intercepted.',
+      '<strong>Always-On Backup:</strong> Created a backup safety system so if one bank loses connection, money is never lost or charged twice.'
+    ],
+    results: [
+      { val: '<1.2s', lbl: 'Average transfer speed' },
+      { val: '99.99%', lbl: 'System uptime year-round' },
+      { val: '100M+', lbl: 'Monthly transfers processed' }
+    ],
+    resultsSummary: 'Gave millions of people in Egypt a fast, secure way to transfer money anytime, day or night, without stepping foot in a bank branch.',
+    ctaText: 'Talk to Our Team',
+    link: 'contact-us.html'
+  },
+  {
+    badge: 'Transit & Government · e-Finance / e-Cards',
+    title: 'National Smart Card Setup System',
+    intro: 'e-Cards (part of the e-Finance Group) manufactures and programs the secure contactless tap cards used for metro systems, public buses, and government support programs across Egypt.',
+    problem: 'Printing and programming secure smart cards required expensive foreign software and machinery. Making cards for millions of daily commuters was slow and costly, and adapting them to new metro lines took too much time.',
+    solutions: [
+      '<strong>Custom Programming Software:</strong> Designed easy-to-run software that programs transit cards in bulk right here in Egypt.',
+      '<strong>Automated Safety Keys:</strong> Created a secure automated process to load digital transit keys onto cards without manual human handling.',
+      '<strong>Live Error Checking:</strong> Built instant digital quality checks so faulty or broken cards are caught and fixed before reaching turnstiles.'
+    ],
+    results: [
+      { val: '10M+', lbl: 'Smart cards made every year' },
+      { val: '40%', lbl: 'Faster card setup speed' },
+      { val: 'Zero', lbl: 'Security key errors' }
+    ],
+    resultsSummary: 'Cut production costs, eliminated reliance on outside vendors, and ensured public transit riders get dependable, tap-and-go travel cards without supply delays.',
+    ctaText: 'Talk to Our Team',
+    link: 'contact-us.html'
+  }
+];
+
+const lb = document.getElementById('lb');
+const lc = document.getElementById('lbc');
+let lastActiveElement;
+
+document.addEventListener('click', e => {
+  const btn = e.target.closest('.more[data-i]');
+  if (btn) {
+    lastActiveElement = btn;
+    const item = CS_DATA[btn.dataset.i];
+    
+    lc.innerHTML = `
+      <span class="client-badge">${item.badge}</span>
+      <h3 id="lbt">${item.title}</h3>
+      <div class="modal-intro">${item.intro}</div>
+      
+      <div class="cs-flow">
+        <div class="cs-stage">
+          <div class="cs-stage-header">
+            <span class="cs-tag tag-prob">The Problem</span>
+            <h4>What was broken?</h4>
+          </div>
+          <p>${item.problem}</p>
+        </div>
+
+        <div class="cs-stage">
+          <div class="cs-stage-header">
+            <span class="cs-tag tag-sol">Our Work</span>
+            <h4>What was built</h4>
+          </div>
+          <ul class="cs-bullets">
+            ${item.solutions.map(s => `<li>${s}</li>`).join('')}
+          </ul>
+        </div>
+
+        <div class="cs-stage">
+          <div class="cs-stage-header">
+            <span class="cs-tag tag-res">The Impact</span>
+            <h4>Results achieved</h4>
+          </div>
+          <p>${item.resultsSummary}</p>
+          <div class="cs-metrics-grid">
+            ${item.results.map(r => `
+              <div class="cs-m-card">
+                <div class="val">${r.val}</div>
+                <div class="lbl">${r.lbl}</div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-actions">
+        <a class="btn" href="${item.link}">${item.ctaText}</a>
+      </div>
+    `;
+    lb.classList.add('on');
+    lb.querySelector('.x').focus();
+  } else if (e.target === lb || e.target.closest('.x')) {
+    cl();
+  }
+});
+
+const cl = () => {
+  lb.classList.remove('on');
+  if (lastActiveElement) lastActiveElement.focus();
+};
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && lb.classList.contains('on')) cl();
+});
+</script></body></html>

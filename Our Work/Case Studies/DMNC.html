@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <link rel="icon" type="image/png" href="../../components/pluto-favicon.png">
+<title>Case Study: Beijing Dimon CNC Technology Co., Ltd. | Pluto</title>
+<style>
+:root{--bg:#fff;--bg2:#f7f6fd;--tx:#14102b;--mu:#5d5a78;--bd:#e7e4f5;--card:#fff;--p:#7b68ee;--p2:#ff02f0;--p3:#ffc800;--g:linear-gradient(120deg,#7b68ee,#ff02f0 70%,#ffc800);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e0b1f;--bg2:#15112e;--tx:#f3f1ff;--mu:#a9a5c8;--bd:#2a2550;--card:#1a1538}}
+:root[data-theme="dark"]{--bg:#0e0b1f;--bg2:#15112e;--tx:#f3f1ff;--mu:#a9a5c8;--bd:#2a2550;--card:#1a1538}
+*{box-sizing:border-box;margin:0}html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{background:var(--bg);color:var(--tx);font:16px/1.65 Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.w{max-width:1180px;margin:0 auto;padding:0 24px}
+.btn{display:inline-block;padding:13px 26px;border-radius:12px;font-weight:700;background:var(--g);background-size:200% 100%;color:#fff;transition:.4s;box-shadow:0 10px 28px rgba(123,104,238,.35)}
+.btn:hover{background-position:100% 0;transform:translateY(-2px);box-shadow:0 14px 34px rgba(255,2,240,.3)}
+.btn.o{background:none;color:var(--tx);box-shadow:none;border:1.5px solid var(--bd)}.btn.o:hover{border-color:var(--p);color:var(--p)}
+.hero-btn-wrap{display:flex;justify-content:center;margin-bottom:32px}
+.hero{position:relative;text-align:center;padding:90px 0 60px;overflow:hidden}
+.blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:.38;z-index:-1;animation:fl 12s ease-in-out infinite}
+.b1{width:420px;height:420px;background:#7b68ee;top:-80px;left:-60px}.b2{width:380px;height:380px;background:#ff02f0;top:60px;right:-80px;animation-delay:-4s}.b3{width:300px;height:300px;background:#ffc800;top:300px;left:40%;animation-delay:-8s;opacity:.25}
+@keyframes fl{50%{transform:translate(40px,-30px) scale(1.12)}}
+h1{font-size:clamp(38px,6.4vw,76px);line-height:1.04;letter-spacing:-.035em;font-weight:900;max-width: 1000px;margin:0 auto 24px}
+h2{font-size:clamp(28px,4vw,46px);line-height:1.12;letter-spacing:-.03em;font-weight:800;margin-bottom:16px}
+h3{font-size:clamp(20px,2.5vw,26px);letter-spacing:-.02em;line-height:1.2;font-weight:800}
+.gt{background:linear-gradient(90deg,#7b68ee,#c04dff,#ff02f0,#ff8a5c,#ffc800,#ff8a5c,#ff02f0,#c04dff,#7b68ee);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sh 10s linear infinite}
+@keyframes sh{to{background-position:200% 0}}
+p{color:var(--mu);font-size:18px}
+section{padding:96px 0}
+.alt{background:var(--bg2)}
+.work{text-align:center;max-width:860px;margin:0 auto 52px}
+.lab{font-weight:800;color:var(--p);font-size:14px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px}
+.cards{display:grid;gap:24px}
+.cards.grid-2{grid-template-columns:repeat(2,1fr)}
+.cards.grid-3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:22px;padding:32px;display:flex;flex-direction:column;gap:14px;transition:.35s;position:relative;overflow:hidden;text-align:left}
+.card::before{content:"";position:absolute;inset:0 0 auto 0;height:4px;background:var(--g);transform:scaleX(0);transform-origin:left;transition:.5s}
+.card:hover{transform:translateY(-8px);box-shadow:0 30px 60px rgba(123,104,238,.2)}
+.card:hover::before{transform:none}
+.card p{color:var(--mu);font-size:16px;line-height:1.6}
+.card-header-row{display:flex;align-items:center;gap:14px}
+.ic{width:44px;height:44px;min-width:44px;padding:10px;border-radius:13px;background:var(--bg2);fill:none;stroke:var(--p);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:.3s}
+.stats-banner{background:var(--card);border:1px solid var(--bd);border-radius:24px;padding:48px 36px;margin-top:48px;box-shadow:0 20px 50px rgba(123,104,238,.07)}
+.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;text-align:center}
+.stat-item{display:flex;flex-direction:column;align-items:center;padding:0 12px;position:relative}
+.stat-item:not(:last-child)::after{content:"";position:absolute;right:-14px;top:20%;height:60%;width:1px;background:var(--bd)}
+.stat-val{font-size:clamp(40px,5vw,56px);font-weight:900;letter-spacing:-.03em;line-height:1;margin-bottom:12px;background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat-lbl{font-size:15px;color:var(--mu);font-weight:600;line-height:1.4}
+.narrative-block{max-width:880px;margin:0 auto 40px;display:flex;flex-direction:column;gap:20px;text-align:center}
+.narrative-block p{font-size:18px;line-height:1.75}
+.rv{opacity:0;transform:translateY(36px);transition:opacity .8s,transform .8s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+@media(max-width:860px){
+  .cards.grid-2,.cards.grid-3{grid-template-columns:1fr}
+  .stats-grid{grid-template-columns:1fr;gap:36px}
+  .stat-item:not(:last-child)::after{display:none}
+  section{padding:64px 0}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .rv{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<script src="../../components/layout.js" data-part="nav"></script>
+
+<!-- HERO SECTION: Case Study, Company Title, Live Demo Button, Industry & Service Cards, Results at a Glance -->
+<header class="hero">
+  <i class="blob b1"></i><i class="blob b2"></i><i class="blob b3"></i>
+  <div class="w">
+    <div class="lab rv">Case Study</div>
+    <h1 class="rv">Beijing Dimon CNC Technology</h1>
+
+    <div class="hero-btn-wrap rv">
+      <a class="btn" href="DMNC Demo.html">Try Live Demo</a>
+    </div>
+
+    <!-- Industry & Service Cards -->
+    <div class="cards grid-2 rv" style="margin-top:20px;">
+      <article class="card">
+        <div class="card-header-row">
+          <svg class="ic" viewBox="0 0 24 24">
+            <!-- Industry Icon -->
+            <path d="M2 20h20M5 20V8l5 4V4l6 4v12M19 20v-6l-3-2"/>
+          </svg>
+          <h3>Industry</h3>
+        </div>
+        <p>Industrial CNC Machinery Manufacturing</p>
+      </article>
+
+      <article class="card">
+        <div class="card-header-row">
+          <svg class="ic" viewBox="0 0 24 24">
+            <!-- Custom Software Development Icon -->
+            <polyline points="16 18 22 12 16 6"/>
+            <polyline points="8 6 2 12 8 18"/>
+            <line x1="14" y1="4" x2="10" y2="20"/>
+          </svg>
+          <h3>Service</h3>
+        </div>
+        <p>Custom Software Development</p>
+      </article>
+    </div>
+
+    <!-- Results at a Glance Stats Banner -->
+    <div class="stats-banner rv">
+      <div class="lab" style="margin-bottom:28px;">Results at a Glance</div>
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-val">-59%</div>
+          <div class="stat-lbl">Software subscription expenditure reduced in Year 1.</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-val">-91%</div>
+          <div class="stat-lbl">Long-term recurring software overhead eliminated in subsequent years.</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-val">4</div>
+          <div class="stat-lbl">Native Currency transactions across USD, EGP, CNY, and AED.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- SECTION: The Problem -->
+<section class="alt">
+  <div class="w">
+    <div class="work rv">
+      <div class="lab">The Problem</div>
+      <h2>Fragmented Spreadsheets, Disconnected Installments, and Multi-Currency Friction</h2>
+    </div>
+
+    <div class="narrative-block rv">
+      <p>As an industrial CNC machinery manufacturer, Beijing Dimon CNC Technology Co., Ltd. manages high-ticket machine sales involving structured installment agreements, staggered balance settlements, and international client accounts.</p>
+      <p>Prior to implementing a dedicated platform, the company relied on a patchwork of disconnected spreadsheets (Excel and Google Sheets) and commercial SaaS tools:</p>
+    </div>
+
+    <div class="cards grid-2 rv">
+      <article class="card">
+        <div class="card-header-row">
+          <svg class="ic" viewBox="0 0 24 24">
+            <!-- Spreadsheet-Driven Balances Icon -->
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+            <line x1="3" y1="9" x2="21" y2="9"/>
+            <line x1="3" y1="15" x2="21" y2="15"/>
+            <line x1="9" y1="3" x2="9" y2="21"/>
+            <line x1="15" y1="3" x2="15" y2="21"/>
+          </svg>
+          <h3>Spreadsheet-Driven Balances</h3>
+        </div>
+        <p>Tracking active installment plans, balance reductions, and customer balances across multiple Excel and Google Sheets created fragmented data silos and manual bookkeeping friction.</p>
+      </article>
+
+      <article class="card">
+        <div class="card-header-row">
+          <svg class="ic" viewBox="0 0 24 24">
+            <!-- Multi-Currency Transactions Icon -->
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="6" x2="12" y2="18"/>
+            <path d="M15 9.5a3.5 3.5 0 0 0-5 0c0 2 5 2 5 5a3.5 3.5 0 0 1-5 0"/>
+          </svg>
+          <h3>Multi-Currency Transactions</h3>
+        </div>
+        <p>The business conducts operations across four distinct currencies US Dollars (USD), Egyptian Pounds (EGP), Chinese Yuan (CNY), and UAE Dirhams (AED). Managing cross-border balances and billing schedules across separate sheets introduced calculation complexities and delayed ledger visibility.</p>
+      </article>
+
+      <article class="card">
+        <div class="card-header-row">
+          <svg class="ic" viewBox="0 0 24 24">
+            <!-- Manual Payment Reminders Icon -->
+            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+            <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+            <line x1="12" y1="2" x2="12" y2="4"/>
+          </svg>
+          <h3>Manual Payment Reminders</h3>
+        </div>
+        <p>Without automated installment triggers, staff had to manually monitor due dates across spreadsheets to send payment notices, risking delayed collections</p>
+      </article>
+
+      <article class="card">
+        <div class="card-header-row">
+          <svg class="ic" viewBox="0 0 24 24">
+            <!-- Mounting SaaS Costs Icon -->
+            <line x1="12" y1="1" x2="12" y2="23"/>
+            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+            <polyline points="18 10 21 7 18 4"/>
+          </svg>
+          <h3>Mounting SaaS Costs</h3>
+        </div>
+        <p>Relying on multiple off-the-shelf software tools created compounding recurring subscription fees without delivering a single unified system that fit their installment operations.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION: The Solution -->
+<section>
+  <div class="w">
+    <div class="work rv">
+      <div class="lab">The Solution</div>
+      <h2>A Purpose-Built CRM and Automated Multi-Currency Billing Platform</h2>
+      <p style="margin-top:16px;">To replace fragmented spreadsheets and off-the-shelf SaaS subscriptions, we architected and deployed a tailored, single-asset CRM and billing engine built directly around Dimon CNC's commercial workflow.</p>
+    </div>
+
+    <div class="cards grid-2 rv">
+      <article class="card">
+        <div class="card-header-row">
+          <svg class="ic" viewBox="0 0 24 24">
+            <!-- Centralized Client & Balance Management Icon -->
+            <ellipse cx="12" cy="5" rx="9" ry="3"/>
+            <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/>
+            <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
+          </svg>
+          <h3>Centralized Client &amp; Balance Management</h3>
+        </div>
+        <p>Replaced standalone Excel and Google Sheets with an integrated platform that consolidates client records, machine orders, installment milestones, and real-time outstanding balances in one place.</p>
+      </article>
+
+      <article class="card">
+        <div class="card-header-row">
+          <svg class="ic" viewBox="0 0 24 24">
+            <!-- Automated Email Reminders & Invoicing Icon -->
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+            <polyline points="22,6 12,13 2,6"/>
+          </svg>
+          <h3>Automated Email Reminders &amp; Invoicing</h3>
+        </div>
+        <p>integrated automated billing workflows that generate itemized invoices and dispatch scheduled monthly installment payment reminders directly to clients via email.</p>
+      </article>
+
+      <article class="card">
+        <div class="card-header-row">
+          <svg class="ic" viewBox="0 0 24 24">
+            <!-- Multi-Currency Architecture Icon -->
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="2" y1="12" x2="22" y2="12"/>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+          </svg>
+          <h3>Multi-Currency Architecture</h3>
+        </div>
+        <p>Built-in native support for four primary operating currencies, USD, EGP, CNY, and AED allowing the team to invoice, record incoming installments, and manage account balances across borders without third-party workarounds.</p>
+      </article>
+
+      <article class="card">
+        <div class="card-header-row">
+          <svg class="ic" viewBox="0 0 24 24">
+            <!-- Complete Ownership Without Subscriptions Icon -->
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <polyline points="9 12 11 14 15 10"/>
+          </svg>
+          <h3>Complete Ownership Without Subscriptions</h3>
+        </div>
+        <p>Deployed as an outright business asset with zero per-user seat fees or recurring platform subscriptions.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION: Why It Worked -->
+<section class="alt">
+  <div class="w">
+    <div class="work rv">
+      <div class="lab">Overview</div>
+      <h2>Why It Worked</h2>
+    </div>
+
+    <div class="cards grid-3 rv">
+      <article class="card">
+        <div class="card-header-row">
+          <svg class="ic" viewBox="0 0 24 24">
+            <!-- Sustained Cost Reduction Icon -->
+            <polyline points="23 18 13.5 8.5 8.5 13.5 1 6"/>
+            <polyline points="17 18 23 18 23 12"/>
+          </svg>
+          <h3>Sustained Cost Reduction</h3>
+        </div>
+        <p>Eliminating third-party tool dependencies cut total software subscription overhead by 59% in the first year and 91% in following years.</p>
+      </article>
+
+      <article class="card">
+        <div class="card-header-row">
+          <svg class="ic" viewBox="0 0 24 24">
+            <!-- Tailored Workflow Integration Icon -->
+            <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+            <polyline points="2 17 12 22 22 17"/>
+            <polyline points="2 12 12 17 22 12"/>
+          </svg>
+          <h3>Tailored Workflow Integration</h3>
+        </div>
+        <p>Rather than forcing machine manufacturing installments into generic SaaS accounting tools, every invoice schedule, currency selector, and ledger view reflects Dimon CNC's exact operations.</p>
+      </article>
+
+      <article class="card">
+        <div class="card-header-row">
+          <svg class="ic" viewBox="0 0 24 24">
+            <!-- Scalable Without Per-Seat Fees Icon -->
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
+          <h3>Scalable Without Per-Seat Fees</h3>
+        </div>
+        <p>The company can add internal operators and expand transaction volume across international territories without incurring recurring user fees.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- CTA & FOOTER -->
+<script src="../../components/layout.js" data-part="cta"></script>
+<script src="../../components/layout.js" data-part="footer"></script>
+
+<!-- Scroll Reveal Observer Script -->
+<script>
+const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.style.transitionDelay=(Math.min([...x.target.parentNode.children].indexOf(x.target),5)*90)+'ms';x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.12});
+document.querySelectorAll('.rv').forEach(e=>io.observe(e));
+</script>
+</body>
+</html>

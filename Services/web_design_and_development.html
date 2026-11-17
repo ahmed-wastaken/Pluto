@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <link rel="icon" type="image/png" href="../components/pluto-favicon.png">
+<title>Web design and development | Pluto</title>
+<style>
+:root{--bg:#fff;--bg2:#f7f6fd;--tx:#14102b;--mu:#5d5a78;--bd:#e7e4f5;--card:#fff;--p:#7b68ee;--p2:#ff02f0;--p3:#ffc800;--g:linear-gradient(120deg,#7b68ee,#ff02f0 70%,#ffc800);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e0b1f;--bg2:#15112e;--tx:#f3f1ff;--mu:#a9a5c8;--bd:#2a2550;--card:#1a1538}}
+:root[data-theme="dark"]{--bg:#0e0b1f;--bg2:#15112e;--tx:#f3f1ff;--mu:#a9a5c8;--bd:#2a2550;--card:#1a1538}
+*{box-sizing:border-box;margin:0}html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{background:var(--bg);color:var(--tx);font:16px/1.65 Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.w{max-width:1180px;margin:0 auto;padding:0 24px}
+li>span{cursor:pointer}
+.btn{display:inline-block;padding:13px 26px;border-radius:12px;font-weight:700;background:var(--g);background-size:200% 100%;color:#fff;transition:.4s;box-shadow:0 10px 28px rgba(123,104,238,.35)}
+.btn:hover{background-position:100% 0;transform:translateY(-2px);box-shadow:0 14px 34px rgba(255,2,240,.3)}
+.btn.o{background:none;color:var(--tx);box-shadow:none;border:1.5px solid var(--bd)}.btn.o:hover{border-color:var(--p);color:var(--p)}
+.row{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px}
+.hero{position:relative;text-align:center;padding:90px 0 60px;overflow:hidden}
+.blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:.38;z-index:-1;animation:fl 12s ease-in-out infinite}
+.b1{width:420px;height:420px;background:#7b68ee;top:-80px;left:-60px}.b2{width:380px;height:380px;background:#ff02f0;top:60px;right:-80px;animation-delay:-4s}.b3{width:300px;height:300px;background:#ffc800;top:300px;left:40%;animation-delay:-8s;opacity:.25}
+@keyframes fl{50%{transform:translate(40px,-30px) scale(1.12)}}
+h1{font-size:clamp(38px,6.4vw,76px);line-height:1.04;letter-spacing:-.035em;font-weight:900;max-width: 1000px;margin:0 auto 22px}
+h2{font-size:clamp(28px,4vw,46px);line-height:1.12;letter-spacing:-.03em;font-weight:800;margin-bottom:16px}
+.gt{background:linear-gradient(90deg,#7b68ee,#c04dff,#ff02f0,#ff8a5c,#ffc800,#ff8a5c,#ff02f0,#c04dff,#7b68ee);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sh 10s linear infinite}
+@keyframes sh{to{background-position:200% 0}}
+p{color:var(--mu);font-size:18px;}
+.hero p.l{max-width:720px;margin:0 auto;color:var(--mu);font-size:19px}
+.hero .row{justify-content:center}
+section{padding:96px 0}
+.alt{background:var(--bg2)}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.split.r .tx{order:2}
+.split p{color:var(--mu);font-size:17px}
+.work{text-align:center;max-width:780px;margin:0 auto 52px}.work p{color:var(--mu);font-size:18px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.cards.grid-2{grid-template-columns:repeat(2,1fr)}
+.cards.grid-4{grid-template-columns:repeat(4,1fr)}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:22px;padding:32px;display:flex;flex-direction:column;gap:14px;transition:.35s;position:relative;overflow:hidden}
+.card::before{content:"";position:absolute;inset:0 0 auto 0;height:4px;background:var(--g);transform:scaleX(0);transform-origin:left;transition:.5s}
+.card:hover{transform:translateY(-8px);box-shadow:0 30px 60px rgba(123,104,238,.2)}.card:hover::before{transform:none}
+.card p{color:var(--mu);font-size:15px}
+.card .btn{margin-top:auto; align-self: start;}
+.card .more{margin-top:auto;font-weight:800;color:var(--p)}
+.card-preview{width:100%;border-radius:12px;overflow:hidden;margin-bottom:8px}
+.card-preview img{width:100%;height:auto;display:block;border-radius:12px;object-fit:cover}
+.lg{height:52px;display:flex;align-items:center}
+h3{font-size:clamp(22px,3vw,32px);letter-spacing:-.02em;line-height:1.2;font-weight:800}
+.cta{text-align:center;margin-top:60px}.cta .row{justify-content:center}
+.lab{font-weight:800;color:var(--p);font-size:14px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px}
+.ic{width:44px;height:44px;padding:10px;border-radius:13px;background:var(--bg2);fill:none;stroke:var(--p);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:.3s; margin-bottom: 12px;}.rv{opacity:0;transform:translateY(36px);transition:opacity .8s,transform .8s cubic-bezier(.2,.7,.2,1)}.rv.in{opacity:1;transform:none}
+.timeline{position:relative;max-width:800px;margin:0 auto;padding-left:56px;}
+.timeline::before{content:'';position:absolute;left:15px;top:16px;bottom:16px;width:3px;background:var(--g);transform-origin:top;transform:scaleY(0);transition:transform 1.5s cubic-bezier(.2,.7,.2,1);}
+.timeline.in::before{transform:scaleY(1);}
+.tl-item{position:relative;margin-bottom:48px;}
+.tl-item:last-child{margin-bottom:0;}
+.tl-ic{position:absolute;left:-56px;top:0;width:32px;height:32px;padding:6px;border-radius:8px;background:var(--card);border:2px solid var(--p);fill:none;stroke:var(--p);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;z-index:2;}
+.tl-content h3{font-size:clamp(20px,2.8vw,24px);font-weight:800;color:var(--tx);margin-bottom:10px;}
+.tl-content p{color:var(--mu);font-size:16px;line-height:1.6;margin-bottom:14px;}
+.tl-content strong{color:var(--tx);}
+.img-placeholder{ width: 100%; aspect-ratio: 16/10; background: linear-gradient(135deg, #7b68ee, #c04dff 55%, #ff6ac1); border-radius: 12px; margin-bottom: 16px; }
+.img-placeholder.t2{ background: linear-gradient(135deg, #00b6ff, #7b68ee); }
+.img-placeholder.t3{ background: linear-gradient(135deg, #ff8a00, #ff02a0); }
+.img-placeholder.t4{ background: linear-gradient(135deg, #0fcf9c, #2b7bff); }
+
+@media(max-width:860px){.split,.cards,.cards.grid-4,.cards.grid-2{grid-template-columns:1fr}.split .tx,.split.r .tx{order:2}.split>:not(.tx){order:1}section{padding:64px 0}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+.hl{position:relative;display:inline-block;transition:color .25s}.hl::after{content:"";position:absolute;left:0;bottom:-4px;height:2px;width:100%;background:var(--g);transform:scaleX(0);transform-origin:left;transition:transform .35s cubic-bezier(.2,.7,.2,1)}.hl:hover{color:var(--p)}.hl:hover::after{transform:scaleX(1)}
+</style></head><body>
+<!-- Pluto nav bar: paste anywhere in <body>. Fully self-contained (HTML + CSS + JS). -->
+
+
+<script src="../components/layout.js" data-part="nav"></script>
+
+
+
+<header class="hero"><i class="blob b1"></i><i class="blob b2"></i><i class="blob b3"></i><div class="w">
+<h1 class="rv">Web Design and Development</h1>
+<p class="l rv">Some think Construction is boring. We think that's a bunch of hooey. Construction is the powerhouse behind progress, innovation, and moving business forward. But Construction marketing is nuanced - and no one navigates it better than Pluto. With a hyperfocus on lead generation, engaging audiences, and knocking our clients' socks off, Pluto gives you the absolute best in the Construction industry.</p>
+</div></header>
+
+<section><div class="w">
+<div class="work rv"><div class="lab">Benefits</div><h2>High-End Expertise, Tailored to Meet Your Business Needs.</h2>
+<p>Our product's core strengths lie in security, reliability, privacy, accessibility, and powerful web hosting. These attributes underpin our commitment to excellence, ensuring your experience is safe, dependable, private, user-friendly, and technologically robust.</p></div>
+<div class="cards">
+<article class="card rv"><svg class="ic" viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="3"/><path d="M8 10V7a4 4 0 018 0v3"/></svg><h3>Security</h3><p>Security is at the foundation of everything we do-keeping your business protected with a cutting-edge framework and multi-layered defense throughout our platform.</p><a class="more" href="../Benefits/security_page.html">Learn more →</a></article>
+<article class="card rv"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4m0-4h.01M8 12h8"/></svg><h3>Accessibility</h3><p>Your website is more powerful when it's designed for all, regardless of ability. With Pluto, you can create a website with accessibility settings built right in, allowing any visitor to interact with it.</p><a class="more" href="../Benefits/accessibility_page.html">Learn more →</a></article>
+<article class="card rv"><svg class="ic" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg><h3>Mobile Dashboard</h3><p>Use our Owner app to manage and grow your business or community on the go.</p><a class="more" href="../Benefits/mobile_dashboard.html">Learn more →</a></article>
+</div></div></section>
+
+<section class="alt"><div class="w">
+<div class="work rv"><div class="lab">Features</div><h2>Full Scale Software Development for Your Business Needs</h2>
+<p>Throughout all web development services, Pluto adheres to a quality-first approach based on ISO 9001-certified quality management system. Our comprehensive security management program with robust security controls, policies and technologies is compliant with ISO 27001 regulations.</p></div>
+<div class="cards grid-2">
+<article class="card rv"><svg class="ic" viewBox="0 0 24 24"><path d="M3 3v18h18M7 14l5-5 4 4 5-5"/></svg><h3>Business analysis</h3><p>Our business analysts focus on the needs of your target audience to perform requirements engineering and outline the scope of the solution.</p></article>
+<article class="card rv"><svg class="ic" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg><h3>UX and Ul design</h3><p>We start designing a web app with the analysis of target audience and planning convenient, quick and frictionless user journeys.</p></article>
+<article class="card rv"><svg class="ic" viewBox="0 0 24 24"><path d="M8 8l-5 4 5 4M16 8l5 4-5 4M14 5l-4 14"/></svg><h3>Integration</h3><p>We set up APIs to integrate your web app with corporate or third-party systems. App integration ensures immediate data synchronization across systems.</p></article>
+<article class="card rv"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-6"/></svg><h3>Testing and QA</h3><p>We guarantee that your web solution will function flawlessly, work fast, be user-friendly and secure. We have a team of skilled testing engineers to make promises like that.</p></article>
+<article class="card rv"><svg class="ic" viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2v10z"/></svg><h3>Help desk</h3><p>Providing L1, L2 and L3 support services, we deliver hot-fixes within 24 hours to prevent or resolve any issues in usage, technology and code that may arise.</p></article>
+<article class="card rv"><svg class="ic" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><h3>Continuous support</h3><p>We advance your web-based software to keep it efficient, competitive on the market, and compliant with all your evolving business needs.</p></article>
+<article class="card rv"><svg class="ic" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg><h3>ITB Form & Plan Room</h3><p>Streamline your bidding process with a custom Invitation to Bid (ITB) form and plan room. Effectively manage subcontractors, share project documents securely, and centralize all project bids directly on your website.</p></article>
+<article class="card rv"><svg class="ic" viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg><h3>Visitor Activity Tracking</h3><p>Understand your audience better with in-depth visitor tracking. We monitor user activity and engagement to provide actionable data that helps optimize conversions, improve user experience, and drive targeted leads.</p></article>
+<article class="card rv"><svg class="ic" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><h3>Privacy Policies & Compliance</h3><p>Protect your company from legal issues and comply with complex privacy laws. We implement comprehensive, up-to-date Privacy Policies tailored to your specific business operations to ensure you remain fully compliant.</p></article>
+<article class="card rv"><svg class="ic" viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg><h3>eCommerce Development</h3><p>Transform your website into a powerful online sales channel. We create secure, scalable eCommerce solutions to sell construction materials, equipment, and services directly to your clients.</p><a class="more" href="eCommerce.html">Learn more →</a></article>
+</div></div></section>
+
+<section id="demo"><div class="w">
+<div class="work rv in" style="transition-delay: 0ms;"><div class="lab">Demo</div><h2>See What We Build, Live</h2>
+<p>A closer look at the websites and web apps our team designs, builds and maintains for construction and engineering businesses.</p></div>
+<div class="cards grid-2">
+<article class="card rv in" style="transition-delay: 0ms;">
+  <div class="card-preview">
+    <img src="../Our Work/Websites/Cover Images/cpm enterprise.png" alt="CPM Enterprise Preview">
+  </div>
+  <h3>CPM Enterprise</h3>
+  <p>Comprehensive construction management platform highlighting civil, commercial, and infrastructure solutions.</p>
+  <a class="btn" href="../Our Work/Websites/CPM Enterprise.html" target="_blank" rel="noopener noreferrer">View live →</a>
+</article>
+<article class="card rv in" style="transition-delay: 90ms;">
+  <div class="card-preview">
+    <img src="../Our Work/Websites/Cover Images/Delta Line Construction.png" alt="Delta Line Construction Preview">
+  </div>
+  <h3>Delta Line Construction</h3>
+  <p>Engineered logistics and industrial contracting site designed for streamlined service inquiries.</p>
+  <a class="btn" href="../Our Work/Websites/Delta Line Construction.html" target="_blank" rel="noopener noreferrer">View live →</a>
+</article>
+<article class="card rv in" style="transition-delay: 180ms;">
+  <div class="card-preview">
+    <img src="../Our Work/Websites/Cover Images/MB Western.png" alt="M.B. Western Preview">
+  </div>
+  <h3>M.B. Western</h3>
+  <p>Industrial construction and field service showcase featuring fabrication capabilities and project specs.</p>
+  <a class="btn" href="../Our Work/Websites/MB Western.html" target="_blank" rel="noopener noreferrer">View live →</a>
+</article>
+<article class="card rv in" style="transition-delay: 270ms;">
+  <div class="card-preview">
+    <img src="../Our Work/Websites/Cover Images/Tri-State Electric.png" alt="Tri-State Electric Preview">
+  </div>
+  <h3>Tri-State Electric</h3>
+  <p>Technical engineering and fabrication portfolio built with detailed equipment catalogs and contact forms.</p>
+  <a class="btn" href="../Our Work/Websites/Tri-State Electric.html" target="_blank" rel="noopener noreferrer">View live →</a>
+</article>
+</div></div></section>
+
+<section class="alt"><div class="w">
+  <div class="work rv">
+    <div class="lab">Process</div>
+    <h2>Our Tried and Tested Four-Step Process</h2>
+    <p>We take a structured approach to web design. Our development process was created to ensure every project is delivered on time and on budget. Once your web design project kicks off, here's what to expect:</p>
+  </div>
+
+  <div class="timeline rv">
+    <div class="tl-item">
+      <svg class="tl-ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+      <div class="tl-content">
+        <h3>01 Discovery</h3>
+        <p><strong>1.1 Creative Brief</strong><br>To deeper understand your objectives with the new website - we invite you to complete our custom and proprietary Creative Brief as a first step to the design of your new website. Geared for results, your custom Brief will include questions about your audience, goals, CTAs, and your definition of success for our bespoke work.</p>
+        <p><strong>1.2 Digital Analysis</strong><br>Understanding the purpose of your website is vital to our success - we begin the process by discussing your new website's goals and audience. After, we craft a strategy to meet or exceed your objectives with analytics and cognitive behavior in mind.</p>
+        <p><strong>1.3 Strategy</strong><br>Having analyzed your industry, references, and industry direction - we devise a strong directional strategy for the next steps of the project and draw up a plan of the meeting schedule to follow. Our strategy includes visual direction and team brainstorming.</p>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <svg class="tl-ic" viewBox="0 0 24 24"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/></svg>
+      <div class="tl-content">
+        <h3>02 Design</h3>
+        <p><strong>2.1 Concept Ideation</strong><br>As a cohesive multidisciplinary team, our web designers collaborate with our branding team to ensure your website expresses your every brand essence and desire. We utilize knowledge transfer and design trends to understand your industry and craft a web design to help your business stand out.</p>
+        <p><strong>2.2 UX - Experience Design</strong><br>Flowcharts and wireframes identify user motivation and define the hierarchy of items on a site based on your audience's needs. We experiment with cutting-edge innovation and design principles to elevate your website to the top of your industry.</p>
+        <p><strong>2.3 UI - Interface Design</strong><br>Next, we build modern high-fidelity design screens that tell a story and reflect your newfound web design direction. This meticulous process expands into multiple device sizes and web design breakpoints.</p>
+        <p><strong>2.4 Prototype</strong><br>As a final step in our detailed design process, we create clickable animated prototypes to walk the client through what our vision of the web design will be and reference and additional animations we envision (or even create them using professional motion software).</p>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <svg class="tl-ic" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+      <div class="tl-content">
+        <h3>03 Development</h3>
+        <p><strong>3.1 Systems Architecture</strong><br>We thoughtfully discuss and decide the fundamental organization of a the backend system that will be optimal for your website. Selecting the most elegant of solutions to effectively reach the desired design solution in the allotted timeline - we proceed to the development stage.</p>
+        <p><strong>3.2 Full Stack and CMS Integrations</strong><br>We are skilled in a variety of programming languages to provide you with flexibility for your site. Unlike many web design companies that utilize outdated approaches and templates, all our work is entirely custom and we specialize in headless CMS as a back-end-only content management system, making website management and content creation easy.</p>
+        <p><strong>3.3 Quality Assurance</strong><br>Upon design completion, the website undergoes rigorous testing which utilizes the most state-of-the-art technologies to report and expedite any design inconsistencies and updates needed.</p>
+        <p><strong>3.4 Launch</strong><br>The most exciting of steps, we walk our clients through each and every step of the launch process and ensure nothing is overlooked. In the strictest of disciplines, website launches are the strictest!</p>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <svg class="tl-ic" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+      <div class="tl-content">
+        <h3>04 Support</h3>
+        <p><strong>4.1 Maintenance and Updates</strong><br>The relationship between a web design company and its clients should not end with the launch of a website. We ensure that your site continues working for you by maintaining secure hosting and providing daily data backups and security scans. We are also available for any updates, improvements, or expansions of your website.</p>
+        <p><strong>4.2 Performance Monitoring</strong><br>Every project we build has performance and security in mind. We exceed modern web standards by optimizing accessibility, usability, responsiveness across platforms, and organic search. These factors not only improve the user's experience but also drive sales, decrease potential legal issues and help your brand grow.</p>
+        <p><strong>4.3 Robust Training</strong><br>We ensure the process of creating and maintaining your website is as simple as possible. Part of our process teaches you the intricacies of your website to translate our knowledge to you. We provide training videos, guides, and/or on-site training to help your team get up to speed with your new website.</p>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<section><div class="w">
+<div class="work rv"><div class="lab">Deliverables</div><h2>What will you receive at the end of the project?</h2></div>
+<div class="cards grid-2">
+<article class="card rv"><svg class="ic" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18M8 21h8M12 18v3"/></svg><h3>Web Design and Development</h3><p>A responsive website that looks great, works well on all devices, secure, and brings in leads.</p></article>
+<article class="card rv"><svg class="ic" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg><h3>SEO optimization</h3><p>We guarantee excellent website performance, well-organized content, and accurate tags to avoid Google penalties.</p></article>
+<article class="card rv"><svg class="ic" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><h3>Continuous support</h3><p>L1, L2 and L3 support services, we deliver hot-fixes within 24 hours to prevent or resolve any issues in usage, technology and code that may arise.</p></article>
+<article class="card rv"><svg class="ic" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg><h3>Web Hosting</h3><p>Reliable and scalable web hosting with 99.9% uptime and can handle any amount of traffic.</p></article>
+<article class="card rv"><svg class="ic" viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="3"/><path d="M8 10V7a4 4 0 018 0v3"/></svg><h3>Security Monitoring</h3><p>24/7 security monitoring, HTTPS, SSL protection, and DDoS protection to make sure your website is secure at all times.</p></article>
+<article class="card rv"><svg class="ic" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><h3>Dedicated Website Manager</h3><p>Assigned manager to answer any questions and implements security updates, performance-enhancing measures, and content updates.</p></article>
+</div>
+</div>
+</section>
+
+<script src="../components/layout.js" data-part="cta"></script>
+
+
+
+
+
+<script src="../components/layout.js" data-part="footer"></script>
+
+<script>
+const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.style.transitionDelay=(Math.min([...x.target.parentNode.children].indexOf(x.target),5)*90)+'ms';x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.12});
+document.querySelectorAll('.rv').forEach(e=>io.observe(e));
+</script></body></html>

@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <link rel="icon" type="image/png" href="../components/pluto-favicon.png">
+<title>Security | Pluto</title>
+<style>
+/* ==========================================================================
+   Pluto Design System Tokens & Base Styling
+   ========================================================================== */
+:root{
+  --bg: #fff;
+  --bg2: #f7f6fd;
+  --tx: #14102b;
+  --mu: #5d5a78;
+  --bd: #e7e4f5;
+  --card: #fff;
+  --p: #7b68ee;
+  --p2: #ff02f0;
+  --p3: #ffc800;
+  --g: linear-gradient(120deg, #7b68ee, #ff02f0 70%, #ffc800);
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg: #0e0b1f;
+    --bg2: #15112e;
+    --tx: #f3f1ff;
+    --mu: #a9a5c8;
+    --bd: #2a2550;
+    --card: #1a1538;
+  }
+}
+
+:root[data-theme="dark"]{
+  --bg: #0e0b1f;
+  --bg2: #15112e;
+  --tx: #f3f1ff;
+  --mu: #a9a5c8;
+  --bd: #2a2550;
+  --card: #1a1538;
+}
+
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html{
+  scroll-behavior: smooth;
+  scroll-padding-top: env(safe-area-inset-top, 0px);
+}
+
+body{
+  background: var(--bg);
+  color: var(--tx);
+  font: 16px/1.65 Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  overflow-x: hidden;
+}
+
+a{
+  color: inherit;
+  text-decoration: none;
+}
+
+.w{
+  max-width:1180px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Tag style from Style Guide */
+.tag{
+  display: inline-block;
+  padding: 6px 18px;
+  border: 1px solid var(--bd);
+  border-radius: 99px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--p);
+  background: var(--card);
+  margin-bottom: 20px;
+  box-shadow: 0 4px 14px rgba(123, 104, 238, 0.1);
+}
+
+/* Button Styling */
+.btn{
+  display: inline-block;
+  padding: 13px 26px;
+  border-radius: 12px;
+  font-weight: 700;
+  background: var(--g);
+  background-size: 200% 100%;
+  color: #fff;
+  transition: .4s;
+  box-shadow: 0 10px 28px rgba(123, 104, 238, .35);
+  cursor: pointer;
+  border: none;
+}
+.btn:hover{
+  background-position: 100% 0;
+  transform: translateY(-2px);
+  box-shadow: 0 14px 34px rgba(255, 2, 240, .3);
+}
+
+.btn.o{
+  background: none;
+  color: var(--tx);
+  box-shadow: none;
+  border: 1.5px solid var(--bd);
+}
+.btn.o:hover{
+  border-color: var(--p);
+  color: var(--p);
+}
+
+/* Hero & Background Animated Blobs */
+.hero{
+  position: relative;
+  text-align: center;
+  padding:90px 0 60px;
+  overflow: hidden;
+}
+
+.blob{
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: .38;
+  z-index: -1;
+  animation: fl 12s ease-in-out infinite;
+}
+.b1{ width: 420px; height: 420px; background: #7b68ee; top: -80px; left: -60px; }
+.b2{ width: 380px; height: 380px; background: #ff02f0; top: 60px; right: -80px; animation-delay: -4s; }
+.b3{ width: 300px; height: 300px; background: #ffc800; top: 300px; left: 40%; animation-delay: -8s; opacity: .25; }
+
+@keyframes fl{
+  50% { transform: translate(40px, -30px) scale(1.12); }
+}
+
+h1{
+  font-size:clamp(38px,6.4vw,76px);
+  line-height:1.04;
+  letter-spacing:-.035em;
+  font-weight: 900;
+  max-width: 1000px;
+  margin: 0 auto 22px;
+}
+
+h2{
+  font-size:clamp(28px,4vw,46px);
+  line-height:1.12;
+  letter-spacing:-.03em;
+  font-weight: 800;
+  margin-bottom: 16px;
+}
+
+h3{
+  font-size: clamp(20px, 2.8vw, 26px);
+  letter-spacing: -.02em;
+  line-height: 1.25;
+  font-weight: 800;
+}
+
+p{
+  color: var(--mu);
+  font-size: 18px;
+}
+
+.hero p.l{
+  max-width: 820px;
+  margin: 0 auto;
+  color: var(--mu);
+  font-size: 20px;
+  line-height: 1.6;
+}
+
+/* Sections & Grid Layouts */
+section{
+  padding:96px 0;
+  border-bottom: 1px solid var(--bd);
+}
+
+section.alt{
+  background: var(--bg2);
+}
+
+.work{
+  text-align: center;
+  max-width: 860px;
+  margin: 0 auto 52px;
+}
+.work p{
+  color: var(--mu);
+  font-size: 18px;
+}
+
+.lab{
+  font-weight: 800;
+  color: var(--p);
+  font-size: 14px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.cards{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.cards.grid-4{
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.cards.grid-3{
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.card{
+  background: var(--card);
+  border: 1px solid var(--bd);
+  border-radius:22px;
+  padding:32px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: .35s;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before{
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 4px;
+  background: var(--g);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: .5s;
+}
+
+.card:hover{
+  transform: translateY(-8px);
+  box-shadow: 0 30px 60px rgba(123, 104, 238, .2);
+}
+
+.card:hover::before{
+  transform: none;
+}
+
+.card p{
+  color: var(--mu);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.ic{
+  width: 48px;
+  height: 48px;
+  padding: 10px;
+  border-radius: 13px;
+  background: var(--bg2);
+  fill: none;
+  stroke: var(--p);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: .3s;
+  margin-bottom: 8px;
+}
+
+/* Compliance Image Section */
+.compliance-wrapper{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  margin-top: 40px;
+}
+
+.compliance-img{
+  max-width: 100%;
+  height: auto;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(123, 104, 238, 0.15);
+  border: 1px solid var(--bd);
+  background: #fff;
+}
+
+/* Subgroups in Section 3 */
+.subgroup{
+  margin-bottom: 56px;
+}
+
+.subgroup:last-child{
+  margin-bottom: 0;
+}
+
+.subgroup-title{
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--tx);
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-left: 4px solid var(--p);
+  padding-left: 16px;
+}
+
+/* Reveal Animations */
+.rv{
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity .8s, transform .8s cubic-bezier(.2, .7, .2, 1);
+}
+.rv.in{
+  opacity: 1;
+  transform: none;
+}
+
+/* Responsive Styles */
+@media (max-width: 960px){
+  .cards, .cards.grid-3, .cards.grid-4{
+    grid-template-columns: 1fr;
+  }
+  section{
+    padding: 64px 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce){
+  *{
+    animation: none !important;
+    transition: none !important;
+  }
+  .rv{
+    opacity: 1;
+    transform: none;
+  }
+}
+</style>
+</head>
+<body>
+
+<script src="../components/layout.js" data-part="nav"></script>
+
+<!-- Page Header / Hero Section -->
+<header class="hero">
+  <i class="blob b1"></i><i class="blob b2"></i><i class="blob b3"></i>
+  <div class="w">
+    <!-- Style Guide Tag instruction //Place a "Infinite Possibilities, One Place" tag from the style guide with the text "Security" -->
+    <div class="rv"><span class="tag">Security</span></div>
+    <h1 class="rv">Fortify your business</h1>
+    <p class="l rv">Security is at the foundation of everything we do-keeping your business protected with a cutting-edge framework and multi-layered defense throughout our platform.</p>
+  </div>
+</header>
+
+<!-- Section 1: Account-Level Security -->
+<section><div class="w">
+  <div class="work rv">
+    <h2>We take security into account</h2>
+    <p>Pluto's account-level security features deliver the advanced protection capabilities you need to ensure that your business remains secure at all times.</p>
+  </div>
+  
+  <div class="cards">
+    <!-- (*) Multi-Factor Authentication -->
+    <article class="card rv">
+      <svg class="ic" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><circle cx="12" cy="16" r="1"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+      <h3>Multi-Factor Authentication</h3>
+      <p>Provide all your users with MFA through authenticator apps, SMS, and more, for extra layers of protection that help keep their accounts secure.</p>
+    </article>
+    
+    <!-- (*) Roles & Permissions -->
+    <article class="card rv">
+      <svg class="ic" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      <h3>Roles & Permissions</h3>
+      <p>Control user access by predefined roles or create custom permissions per site, site group, or dashboard area to match your business needs.</p>
+    </article>
+
+    <!-- (*) IP Allowlisting -->
+    <article class="card rv">
+      <svg class="ic" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/><path d="M12 7v4"/><path d="M10 9h4"/></svg>
+      <h3>IP Allowlisting</h3>
+      <p>Secure your business systems and assets by adding, managing, or deleting IP addresses and ranges for enhanced access control and security.</p>
+    </article>
+
+    <!-- (*) Audit Log -->
+    <article class="card rv">
+      <svg class="ic" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+      <h3>Audit Log</h3>
+      <p>Keep a full audit trail of account activity, including any changes to sites and assets, to assist with debugging, regulatory compliance, and more.</p>
+    </article>
+  </div>
+</div></section>
+
+<!-- Section 2: Privacy & Compliance -->
+<section class="alt"><div class="w">
+  <div class="work rv">
+    <div class="lab">Compliance & Privacy</div>
+    <h2>Fully compliant, totally private</h2>
+    <p>We're committed to your privacy and data protection-and that of your customers. Pluto is compliant and certified with the highest international privacy and security regulations, including SOC 2 Type 2, PCI DSS Level 1, several ISOS, GDPR, CCPA, and LGPD.</p>
+  </div>
+
+  <!-- Image {https://static.wixstatic.com/media/0173c2787a0e9d2c994f92bc3bda9b14ec2020~mv2.png} -->
+
+</div></section>
+
+<!-- Section 3: Built-in Defense Framework -->
+<section><div class="w">
+  <div class="work rv">
+    <div class="lab">Multi-Layered Protection</div>
+    <h2>Your every-line of Defense</h2>
+    <p>With a full range of built-in security features, 24/7 monitoring by a global team of experts and rapid response plans to contain threats, Pluto's security framework keeps your business running as planned, without unexpected interruptions.</p>
+  </div>
+
+  <!-- Subgroup: Prevention -->
+  <div class="subgroup rv">
+    <div class="subgroup-title">Prevention</div>
+    <div class="cards">
+      <!-- () SSDLC -->
+      <article class="card">
+        <h3>SSDLC</h3>
+        <p>Pluto implements security best practices at each step of the development process, from design to code review, threat modeling and penetration test-resulting in unwavering protection throughout the platform.</p>
+      </article>
+
+      <!-- () Safe Data Encryption -->
+      <article class="card">
+        <h3>Safe Data Encryption</h3>
+        <p>Pluto data in transit encryption uses HTTPS, TLS 1.2+ and automatic SSL, while data at rest uses AES-256. Our high-security PCI environment uses a FIPS 140-2-certified HSM.</p>
+      </article>
+
+      <!-- () Secure Payments & Anti-Fraud -->
+      <article class="card">
+        <h3>Secure Payments & Anti-Fraud</h3>
+        <p>All Pluto sites are compliant with PCI DSS Level 1, and are supported by anti-fraud protection in order to safeguard payment info and deliver maximum protection for all transactions.</p>
+      </article>
+
+      <!-- () Third-Party Risk Management -->
+      <article class="card">
+        <h3>Third-Party Risk Management</h3>
+        <p>To help protect client data and site safety in working with third-party services, Pluto operates a strict TPRM Program to ensure vendors align with our unrelenting security standard.</p>
+      </article>
+    </div>
+  </div>
+
+  <!-- Subgroup: Detection -->
+  <div class="subgroup rv" style="margin-top: 48px;">
+    <div class="subgroup-title">Detection</div>
+    <div class="cards">
+      <!-- () SIEM & SOC -->
+      <article class="card">
+        <h3>SIEM & SOC</h3>
+        <p>Our experts in the Security Operations Center work 24/7/365 with advanced system information and events monitoring to quickly detect and respond to threats.</p>
+      </article>
+
+      <!-- () Anti-DDoS Protection -->
+      <article class="card">
+        <h3>Anti-DDoS Protection</h3>
+        <p>Pluto takes immediate action to counter denial of service attacks to make sure all of your sites stay resilient and available at all times.</p>
+      </article>
+
+      <!-- () Security Visibility -->
+      <article class="card">
+        <h3>Security Visibility</h3>
+        <p>Pluto invests heavily in state-of-the-art tools and technologies to achieve high-security visibility, ensuring secure operations throughout our platform.</p>
+      </article>
+
+      <!-- () Data Analysis & Machine Learning -->
+      <article class="card">
+        <h3>Data Analysis & Machine Learning</h3>
+        <p>Machine learning is used to detect pattern changes and suspicious activity, in order to block any attempted misuse of your account, data or site.</p>
+      </article>
+    </div>
+  </div>
+
+  <!-- Subgroup: Response -->
+  <div class="subgroup rv" style="margin-top: 48px;">
+    <div class="subgroup-title">Response</div>
+    <div class="cards grid-3">
+      <!-- () Incident Response -->
+      <article class="card">
+        <h3>Incident Response</h3>
+        <p>In case of emergency, our dedicated IR team is highly trained to take immediate action and rapidly respond to cyber security threats.</p>
+      </article>
+
+      <!-- () Business Continuation Plan -->
+      <article class="card">
+        <h3>Business Continuation Plan</h3>
+        <p>To ensure secure Pluto operations during potential disruptive events, Pluto has a BCP that outlines steps for reliable continuation and smooth recovery.</p>
+      </article>
+
+      <!-- () Periodic Training & Simulations -->
+      <article class="card">
+        <h3>Periodic Training & Simulations</h3>
+        <p>We perform regular BCP simulations to prepare each of our teams for quick action, so you can continue to run your business uninterrupted.</p>
+      </article>
+    </div>
+  </div>
+</div></section>
+
+<!-- Section 4: Security by Design -->
+<section class="alt"><div class="w">
+  <div class="work rv" style="margin-bottom: 0;">
+    <h2>Security by design</h2>
+    <div style="text-align: left; max-width: 900px; margin: 24px auto 0; display: flex; flex-direction: column; gap: 20px;">
+      <p style="font-size: 19px; line-height: 1.7; color: var(--mu);">Pluto places site security at the core of everything we do. Your business-and ours-depends on it. Because of this, for every new piece of infrastructure we build, feature we develop, or partnership we engage on, we consider the impact on security from the beginning.</p>
+      <p style="font-size: 19px; line-height: 1.7; color: var(--mu);">We only proceed when we're certain we'll be able to maintain the high standards that we, and our customers, expect and then back it up with a fully-monitored Security Operations Center, a team of experts on duty 24/7, and a battle-tested framework methodology for threat detection and response.</p>
+    </div>
+  </div>
+</div></section>
+
+<script src="../components/layout.js" data-part="cta"></script>
+
+<script src="../components/layout.js" data-part="footer"></script>
+
+<!-- Interactive Scripts -->
+<script>
+  
+
+  // Intersection Observer Reveal Effect
+  (function() {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(x => {
+        if (x.isIntersecting) {
+          x.target.style.transitionDelay = (Math.min([...x.target.parentNode.children].indexOf(x.target), 5) * 90) + 'ms';
+          x.target.classList.add('in');
+          io.unobserve(x.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.rv').forEach(e => io.observe(e));
+  })();
+
+  
+</script>
+
+</body>
+</html>

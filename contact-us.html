@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Contact us | Pluto</title>
+<style>
+/* Pluto Base Design Tokens */
+:root {
+  --bg: #fff; --bg2: #f7f6fd; --tx: #14102b; --mu: #5d5a78; --bd: #e7e4f5; --card: #fff; --p: #7b68ee;
+  --g: linear-gradient(120deg, #7b68ee, #ff02f0 70%, #ffc800);
+}
+@media(prefers-color-scheme:dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0e0b1f; --bg2: #15112e; --tx: #f3f1ff; --mu: #a9a5c8; --bd: #2a2550; --card: #1a1538;
+  }
+}
+
+/* Global Reset & Typography */
+* { box-sizing: border-box; margin: 0; }
+body {
+  background: var(--bg);
+  color: var(--tx);
+  font: 16px/1.6 Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Application Container */
+.app-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Pushes the footer down */
+  padding: 40px 0; /* Adds breathing room around the iframe */
+}
+
+#google-script-iframe {
+  width: 100%;
+  border: none;
+  min-height: 80vh; 
+  transition: height 0.2s ease-in-out;
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<script src="components/layout.js" data-part="nav"></script>
+
+<main class="app-container">
+  <iframe 
+    id="google-script-iframe"
+    src="https://script.google.com/macros/s/AKfycbz6SA4csWz_UkvKsCYNynhlLNHZ0enT3gUYiqnnsp201-78yWyTNYFgM4z2sNyhRw6yPA/exec" 
+    title="Pluto Project Form" 
+    allowfullscreen>
+  </iframe>
+</main>
+
+<!-- FOOTER -->
+<script src="components/layout.js" data-part="footer"></script>
+
+<!-- Dynamic Resize Script -->
+<script>
+  window.addEventListener('message', function(event) {
+    if (event.data && event.data.type === 'pluto-form-height') {
+      console.log("Pluto Form Height Received:", event.data.height);
+      const iframe = document.getElementById('google-script-iframe');
+      if (iframe) {
+        // Apply height plus a 50px buffer to account for Google's wrapper
+        iframe.style.height = (event.data.height + 50) + 'px';
+      }
+    }
+  });
+</script>
+
+</body>
+</html>
