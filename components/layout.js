@@ -32,7 +32,7 @@
     contact:       ROOT + 'contact-us.html',
     work:          ROOT + 'our_work.html',
     webDesign:     ROOT + 'Services/web_design_and_development.html',
-    eCommerce:     ROOT + 'Services/ecommerce.html',
+    eCommerce:     ROOT + 'Services/eCommerce.html',
     leadGen:       ROOT + 'Services/lead_generation.html',
     customSoft:    ROOT + 'Services/custom_software_development.html',
     education:     ROOT + 'Services/education_suite.html',
